@@ -134,3 +134,53 @@ export interface RuleGraphJSON {
     label?: string;
   }[];
 }
+
+// ----------------------------------------------------
+// Task 3: Enterprise Admin Panel Types
+// ----------------------------------------------------
+
+export interface SystemUser {
+  id: string;
+  name: string;
+  email: string;
+  role: UserRole;
+  status: 'Active' | 'Pending' | 'Suspended';
+  department: string;
+  lastActive: string;
+  permissions: {
+    vdr: 'Read' | 'Write' | 'Admin';
+    chat: 'Read' | 'Write' | 'Admin';
+    tree: 'Read' | 'Write' | 'Admin';
+    admin: 'None' | 'Read' | 'Full';
+  };
+}
+
+export interface ComplianceRulePolicy {
+  id: string;
+  ruleCode: string;
+  title: string;
+  jurisdiction: 'SEC' | 'FINRA' | 'State' | 'Internal';
+  severity: 'Low' | 'Medium' | 'High' | 'Critical';
+  isActive: boolean;
+  violationCount: number;
+  lastUpdated: string;
+  description: string;
+}
+
+export interface FeatureFlag {
+  id: string;
+  name: string;
+  key: string;
+  description: string;
+  category: 'Security' | 'AI Model' | 'Audit' | 'Performance';
+  enabled: boolean;
+  requiresRestart?: boolean;
+}
+
+export interface SystemHealthMetric {
+  service: string;
+  status: 'Operational' | 'Degraded' | 'Down';
+  latencyMs: number;
+  uptimePercent: number;
+  lastChecked: string;
+}
