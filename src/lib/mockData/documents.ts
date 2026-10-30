@@ -29,6 +29,20 @@ export const initialFolders: VDRFolder[] = [
     createdAt: '2026-02-20T14:45:00Z',
     description: 'PwC / internal quarterly compliance testing workpapers',
   },
+  {
+    id: 'folder-aml-kyc',
+    name: 'AML & Institutional KYC',
+    parentId: 'folder-root',
+    createdAt: '2026-02-15T11:00:00Z',
+    description: 'Beneficial ownership registries, FinCEN filings, and CIP verifications',
+  },
+  {
+    id: 'folder-trading',
+    name: 'Trade Supervision & Best Execution',
+    parentId: 'folder-root',
+    createdAt: '2026-02-18T09:30:00Z',
+    description: 'Quarterly trade allocation tickets, TCA analysis, and soft dollar disclosures',
+  },
 ];
 
 export const defaultPermissions = (sensitivity: string) => {
@@ -203,9 +217,167 @@ Pursuant to SEA Rule 17a-4(f)(3)(vii), Glynac has executed an agreement with an 
   ]
 }`,
   },
+  {
+    id: 'doc-5',
+    name: 'Institutional_LP_Side_Letter_Apex.pdf',
+    folderId: 'folder-agreements',
+    extension: 'pdf',
+    sizeBytes: 1845000,
+    createdAt: '2026-02-14T09:00:00Z',
+    updatedAt: '2026-02-22T13:30:00Z',
+    uploadedBy: 'Natnael Ashenafi (Compliance Officer)',
+    sensitivity: 'Restricted',
+    permissions: defaultPermissions('Restricted'),
+    tags: ['MFN-Clause', 'Side Letter', 'Private Equity'],
+    flaggedClauses: [
+      {
+        id: 'flag-5',
+        ruleCode: 'SEC-Rule-211(h)(2)-1',
+        severity: 'High',
+        textSnippet: 'Preferential liquidity rights granted allowing withdrawal within 30 days notice without prorated gate fees.',
+        reason: 'SEC Private Fund Adviser Rules restrict preferential liquidity terms that have a material negative effect on other investors unless disclosed.',
+        suggestedRemedy: 'Provide written disclosure of preferential terms to all current and prospective fund investors.',
+      },
+    ],
+    content: `# CONFIDENTIAL SIDE LETTER AGREEMENT
+Fund: Glynac Opportunities Fund III LP
+Investor: Apex Sovereign Pension Authority (Subscriber #811)
+Effective: February 2026
+
+ARTICLE 1: MOST FAVORED NATION (MFN) RIGHT
+The General Partner agrees that if any other Limited Partner receives more favorable management fee tiers, identical terms will be offered to the Investor.
+
+ARTICLE 2: PREFERENTIAL LIQUIDITY COVENANTS
+[FLAGGED SECTION - SEC Rule 211(h)(2)-1]
+Preferential liquidity rights granted allowing withdrawal within 30 days notice without prorated gate fees, contingent upon quarterly capital balance exceeding $25,000,000.`,
+  },
+  {
+    id: 'doc-6',
+    name: 'FinCEN_Beneficial_Ownership_Attestation.json',
+    folderId: 'folder-aml-kyc',
+    extension: 'json',
+    sizeBytes: 284000,
+    createdAt: '2026-01-29T14:15:00Z',
+    updatedAt: '2026-02-10T16:20:00Z',
+    uploadedBy: 'Natnael Ashenafi (Compliance Officer)',
+    sensitivity: 'Confidential',
+    permissions: defaultPermissions('Confidential'),
+    tags: ['FinCEN', 'BOI', 'Corporate Transparency Act'],
+    flaggedClauses: [],
+    content: `{
+  "filing_jurisdiction": "United States Department of the Treasury / FinCEN",
+  "statutory_basis": "Corporate Transparency Act 31 CFR 1010.380",
+  "reporting_entity": "Glynac Wealth Advisory HoldCo LLC",
+  "ein": "13-8829410",
+  "fin_cen_id": "BOIR-2026-99214-00",
+  "beneficial_owners": [
+    {
+      "full_name": "Marcus Vance",
+      "date_of_birth": "1978-04-12",
+      "residential_address": "780 5th Avenue, New York, NY",
+      "ownership_percentage": 34.5,
+      "control_prong": "Senior Executive Officer"
+    },
+    {
+      "full_name": "Sarah Lin",
+      "date_of_birth": "1982-09-28",
+      "residential_address": "120 Central Park West, New York, NY",
+      "ownership_percentage": 22.0,
+      "control_prong": "General Counsel / CCO"
+    }
+  ],
+  "verification_status": "Certified Valid"
+}`,
+  },
+  {
+    id: 'doc-7',
+    name: 'Q4_2025_Best_Execution_TCA_Report.md',
+    folderId: 'folder-trading',
+    extension: 'md',
+    sizeBytes: 920000,
+    createdAt: '2026-02-08T11:00:00Z',
+    updatedAt: '2026-02-23T15:40:00Z',
+    uploadedBy: 'David Miller (Senior Auditor)',
+    sensitivity: 'Internal Only',
+    permissions: defaultPermissions('Internal Only'),
+    tags: ['Best Execution', 'Rule 606', 'TCA', 'Equities'],
+    flaggedClauses: [],
+    content: `# QUARTERLY BEST EXECUTION & TRANSACTION COST ANALYSIS (TCA)
+Review Period: Q4 2025
+Designated Principal: Natnael Ashenafi, Compliance Director
+Broker-Dealers Reviewed: Morgan Stanley, Virtu Financial, Citadel Securities, Jane Street
+
+1. STATUTORY OBLIGATION
+Under FINRA Rule 5310, Glynac has conducted rigorous quarterly order routing and execution quality audits to guarantee the most favorable price realization under prevailing market conditions.
+
+2. EXECUTION QUALITY BENCHMARKS
+- Volume Weighted Average Price (VWAP) Slippage: +0.42 bps (Within institutional tolerance of 1.5 bps).
+- Effective vs Quoted Spread: 98.4% improvement on lit venue routing.
+- Zero payment-for-order-flow (PFOF) accepted across all retail and institutional accounts.`,
+  },
+  {
+    id: 'doc-8',
+    name: 'Form_CRS_Client_Relationship_Summary.pdf',
+    folderId: 'folder-regulatory',
+    extension: 'pdf',
+    sizeBytes: 1120000,
+    createdAt: '2026-01-10T10:00:00Z',
+    updatedAt: '2026-02-18T12:00:00Z',
+    uploadedBy: 'Sarah Lin (Chief Compliance Officer)',
+    sensitivity: 'Public',
+    permissions: defaultPermissions('Public'),
+    tags: ['Form CRS', 'SEC-RegBI', 'Retail Disclosure'],
+    flaggedClauses: [],
+    content: `# FORM CRS (CUSTOMER RELATIONSHIP SUMMARY)
+Glynac Wealth Advisory LLC - SEC File No. 801-99821
+
+ITEM 1: INTRODUCTION
+Glynac Wealth Advisory LLC is registered with the Securities and Exchange Commission (SEC) as an investment adviser. Brokerage and investment advisory services and fees differ, and it is important for retail investors to understand these differences.
+
+ITEM 2: RELATIONSHIPS AND SERVICES
+"What investment services and advice can you provide me?"
+We offer continuous portfolio management services tailored to individual family risk profiles. Our discretionary authority permits rebalancing without prior consultation on each transaction.`,
+  },
+  {
+    id: 'doc-9',
+    name: 'Sanctions_Screening_OFAC_Log_Feb2026.json',
+    folderId: 'folder-aml-kyc',
+    extension: 'json',
+    sizeBytes: 195000,
+    createdAt: '2026-02-25T08:30:00Z',
+    updatedAt: '2026-02-25T08:30:00Z',
+    uploadedBy: 'Natnael Ashenafi (Compliance Officer)',
+    sensitivity: 'Confidential',
+    permissions: defaultPermissions('Confidential'),
+    tags: ['OFAC', 'SDN', 'Sanctions', 'Automated Daily'],
+    flaggedClauses: [],
+    content: `{
+  "batch_scan_id": "OFAC-BATCH-2026-02-25",
+  "list_versions": [
+    "OFAC Specially Designated Nationals (SDN) 2026-02-24",
+    "EU Consolidated Financial Sanctions List",
+    "UK HM Treasury Financial Sanctions Notice"
+  ],
+  "entities_scanned": 1248,
+  "false_positive_cleared": 4,
+  "confirmed_matches": 0,
+  "escalated_to_legal": 0,
+  "system_operator": "Automated LexisNexis Bridger API Engine"
+}`,
+  },
 ];
 
 export const initialAuditLogs: AuditEvent[] = [
+  {
+    id: 'audit-7',
+    documentId: 'doc-5',
+    action: 'Flagged',
+    timestamp: '2026-02-24T17:15:00Z',
+    userId: 'user-current',
+    userName: 'Natnael Ashenafi',
+    userRole: 'Compliance Officer',
+    details: 'Flagged preferential liquidity terms under SEC Rule 211(h)(2)-1 (Private Fund Adviser Rules)',
+  },
   {
     id: 'audit-1',
     documentId: 'doc-1',
@@ -247,6 +419,16 @@ export const initialAuditLogs: AuditEvent[] = [
     details: 'Downloaded encrypted watermarked PDF copy',
   },
   {
+    id: 'audit-8',
+    documentId: 'doc-6',
+    action: 'Uploaded',
+    timestamp: '2026-01-29T14:15:00Z',
+    userId: 'user-current',
+    userName: 'Natnael Ashenafi',
+    userRole: 'Compliance Officer',
+    details: 'Uploaded FinCEN Beneficial Ownership Information (BOI) verification attestation',
+  },
+  {
     id: 'audit-5',
     documentId: 'doc-1',
     action: 'Uploaded',
@@ -267,4 +449,3 @@ export const initialAuditLogs: AuditEvent[] = [
     details: 'Uploaded PwC surprise examination findings JSON dataset',
   },
 ];
-
