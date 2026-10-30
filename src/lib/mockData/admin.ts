@@ -237,7 +237,7 @@ export const reviewTrendData = [
 export const severityDistributionData = [
   { name: 'Critical', count: 4, fill: '#f43f5e' },
   { name: 'High', count: 6, fill: '#f59e0b' },
-  { name: 'Medium', count: 3, fill: '#3b82f6' },
+  { name: 'Medium', count: 3, fill: '#ededed' },
   { name: 'Low', count: 8, fill: '#10b981' },
 ];
 

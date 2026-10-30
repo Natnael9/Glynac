@@ -19,10 +19,10 @@ export const CustomRuleNode = memo(({ data, selected }: NodeProps) => {
     switch (nodeData.nodeType) {
       case 'root':
         return {
-          icon: <ShieldCheck className="h-4 w-4 text-purple-400" />,
+          icon: <ShieldCheck className="h-4 w-4 text-white" />,
           badge: 'Root Policy',
-          badgeColor: 'bg-purple-500/20 text-purple-300 border-purple-500/30',
-          borderColor: 'border-purple-500/50',
+          badgeColor: 'bg-[#181818] text-white border-[#333333]',
+          borderColor: 'border-white/50',
           bgColor: 'bg-[#050505]',
         };
       case 'rule':
@@ -67,7 +67,7 @@ export const CustomRuleNode = memo(({ data, selected }: NodeProps) => {
       className={`min-w-[240px] max-w-[280px] rounded-2xl border-2 p-3.5 shadow-2xl transition-all select-none ${
         style.bgColor
       } ${style.borderColor} ${
-        selected ? 'ring-2 ring-white shadow-blue-500/30 scale-105' : 'hover:border-[#333333]'
+        selected ? 'ring-2 ring-white shadow-2xl scale-105' : 'hover:border-[#333333]'
       }`}
     >
       {/* Input Handle */}

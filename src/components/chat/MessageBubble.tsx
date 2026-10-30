@@ -69,8 +69,8 @@ export function MessageBubble({ message }: { message: ChatMessage }) {
       {/* Avatar */}
       <div className="shrink-0 pt-0.5">
         {isAssistant ? (
-          <div className="h-7 w-7 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-500 flex items-center justify-center text-white shadow-md shadow-blue-500/20">
-            <Sparkles className="h-4 w-4" />
+          <div className="h-7 w-7 rounded-xl bg-white text-black flex items-center justify-center shadow-sm">
+            <Sparkles className="h-3.5 w-3.5 text-black" />
           </div>
         ) : (
           <div className="h-7 w-7 rounded-xl bg-[#141414] border border-[#262626] flex items-center justify-center text-[#d1d1d1] font-bold text-xs">
@@ -95,7 +95,7 @@ export function MessageBubble({ message }: { message: ChatMessage }) {
             </span>
             {message.isStreaming && (
               <span className="inline-flex items-center gap-1 text-[10px] text-[#ffffff] animate-pulse font-medium">
-                <span className="h-1.5 w-1.5 rounded-full bg-blue-400" />
+                <span className="h-1.5 w-1.5 rounded-full bg-white" />
                 Thinking & Streaming...
               </span>
             )}

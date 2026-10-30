@@ -253,7 +253,7 @@ export function UploadModal() {
               </div>
               <div className="w-full h-2 rounded-full bg-[#050505] overflow-hidden">
                 <div
-                  className="h-full bg-gradient-to-r from-blue-500 to-indigo-500 transition-all duration-150"
+                  className="h-full bg-white transition-all duration-150"
                   style={{ width: `${uploadProgress}%` }}
                 />
               </div>
@@ -272,7 +272,7 @@ export function UploadModal() {
           <button
             onClick={handleSimulatedUpload}
             disabled={!selectedFile || uploadProgress !== null}
-            className="px-4 py-1.5 rounded-lg text-xs font-semibold bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white disabled:opacity-50 shadow-md shadow-blue-600/20"
+            className="px-4 py-1.5 rounded-lg text-xs font-semibold bg-white hover:bg-[#e0e0e0] text-black disabled:opacity-50 shadow-sm"
           >
             {uploadProgress !== null ? 'Uploading...' : 'Confirm Upload'}
           </button>

@@ -112,7 +112,7 @@ export const initialTreeEdges: Edge[] = [
     source: 'root-1',
     target: 'rule-17a4',
     animated: false,
-    style: { stroke: '#3b82f6', strokeWidth: 2 },
+    style: { stroke: '#ffffff', strokeWidth: 1.5 },
   },
   {
     id: 'e2-4',

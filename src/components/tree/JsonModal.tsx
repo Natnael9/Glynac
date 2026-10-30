@@ -157,7 +157,7 @@ export function JsonModal({
               </div>
 
               <div className="p-3 rounded-xl bg-[#050505] border border-[#1a1a1a] overflow-x-auto max-h-[350px]">
-                <pre className="text-[11px] font-mono text-cyan-300 leading-relaxed select-text">
+                <pre className="text-[11px] font-mono text-[#ededed] leading-relaxed select-text">
                   {jsonString}
                 </pre>
               </div>

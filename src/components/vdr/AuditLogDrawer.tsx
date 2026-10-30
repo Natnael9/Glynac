@@ -64,13 +64,13 @@ export function AuditLogDrawer() {
         };
       case 'Uploaded':
         return {
-          icon: <Upload className="h-3.5 w-3.5 text-indigo-400" />,
-          color: 'bg-indigo-500/10 text-indigo-400 border-indigo-500/20',
+          icon: <Upload className="h-3.5 w-3.5 text-white" />,
+          color: 'bg-[#181818] text-white border-[#333333]',
         };
       case 'Renamed':
         return {
-          icon: <Edit2 className="h-3.5 w-3.5 text-cyan-400" />,
-          color: 'bg-cyan-500/10 text-cyan-400 border-cyan-500/20',
+          icon: <Edit2 className="h-3.5 w-3.5 text-[#ededed]" />,
+          color: 'bg-[#181818] text-[#ededed] border-[#333333]',
         };
       default:
         return {

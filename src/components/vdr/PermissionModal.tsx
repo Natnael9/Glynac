@@ -173,7 +173,7 @@ export function PermissionModal() {
                           type="checkbox"
                           checked={perm.canView}
                           onChange={() => handleTogglePermission(perm.role, 'canView')}
-                          className="rounded border-[#262626] text-blue-600 focus:ring-0 bg-[#0a0a0a] cursor-pointer h-4 w-4"
+                          className="rounded border-[#262626] accent-white bg-[#0a0a0a] cursor-pointer h-4 w-4"
                         />
                       </td>
                       <td className="py-2.5 px-2 text-center">
@@ -181,7 +181,7 @@ export function PermissionModal() {
                           type="checkbox"
                           checked={perm.canEdit}
                           onChange={() => handleTogglePermission(perm.role, 'canEdit')}
-                          className="rounded border-[#262626] text-blue-600 focus:ring-0 bg-[#0a0a0a] cursor-pointer h-4 w-4"
+                          className="rounded border-[#262626] accent-white bg-[#0a0a0a] cursor-pointer h-4 w-4"
                         />
                       </td>
                       <td className="py-2.5 px-2 text-center">
@@ -189,7 +189,7 @@ export function PermissionModal() {
                           type="checkbox"
                           checked={perm.canShare}
                           onChange={() => handleTogglePermission(perm.role, 'canShare')}
-                          className="rounded border-[#262626] text-blue-600 focus:ring-0 bg-[#0a0a0a] cursor-pointer h-4 w-4"
+                          className="rounded border-[#262626] accent-white bg-[#0a0a0a] cursor-pointer h-4 w-4"
                         />
                       </td>
                       <td className="py-2.5 px-2 text-center">
@@ -197,7 +197,7 @@ export function PermissionModal() {
                           type="checkbox"
                           checked={perm.canDownload}
                           onChange={() => handleTogglePermission(perm.role, 'canDownload')}
-                          className="rounded border-[#262626] text-blue-600 focus:ring-0 bg-[#0a0a0a] cursor-pointer h-4 w-4"
+                          className="rounded border-[#262626] accent-white bg-[#0a0a0a] cursor-pointer h-4 w-4"
                         />
                       </td>
                     </tr>
@@ -223,7 +223,7 @@ export function PermissionModal() {
             </button>
             <button
               onClick={handleSave}
-              className="px-4 py-1.5 rounded-lg text-xs font-semibold bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white shadow-md shadow-blue-600/20"
+              className="px-4 py-1.5 rounded-lg text-xs font-semibold bg-white hover:bg-[#e0e0e0] text-black shadow-sm"
             >
               Apply Permissions
             </button>

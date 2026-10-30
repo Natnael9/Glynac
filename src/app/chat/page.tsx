@@ -25,7 +25,7 @@ export default function ChatPage() {
   }, [activeThread?.messages, isStreaming]);
 
   return (
-    <div className="flex h-full w-full bg-[#090d16] overflow-hidden select-none">
+    <div className="flex h-full w-full bg-[#000000] overflow-hidden select-none">
       {/* Left Conversation Threads Sidebar */}
       <ChatSidebar />
 
@@ -68,7 +68,7 @@ export default function ChatPage() {
             ))
           ) : (
             <div className="h-full flex flex-col items-center justify-center p-8 text-center">
-              <div className="h-14 w-14 rounded-2xl bg-[#181818] border border-[#2b2b2b] border border-[#333333] flex items-center justify-center text-[#ffffff] mb-3 shadow-lg shadow-blue-500/10">
+              <div className="h-14 w-14 rounded-2xl bg-[#141414] border border-[#262626] flex items-center justify-center text-white mb-3 shadow-sm">
                 <Sparkles className="h-7 w-7" />
               </div>
               <h3 className="text-sm font-bold text-white mb-1">

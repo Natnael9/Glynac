@@ -66,7 +66,7 @@ export function ChatSidebar() {
           </div>
           <button
             onClick={() => createNewThread()}
-            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-white text-black hover:bg-[#e0e0e0] text-xs font-semibold shadow-md shadow-blue-600/20 transition-colors"
+            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-white text-black hover:bg-[#e0e0e0] text-xs font-semibold shadow-sm transition-colors"
           >
             <Plus className="h-3.5 w-3.5" />
             <span>New Chat</span>

@@ -115,7 +115,7 @@ export function ChatInput() {
           <button
             type="submit"
             disabled={(!input.trim() && selectedAttachments.length === 0) || isStreaming}
-            className="p-2 rounded-xl bg-white text-black hover:bg-[#e0e0e0] disabled:opacity-40 disabled:hover:bg-[#181818] border border-[#2b2b2b] transition-all shadow-md shadow-blue-600/20 shrink-0"
+            className="p-2 rounded-xl bg-white text-black hover:bg-[#e0e0e0] disabled:opacity-40 disabled:hover:bg-[#181818] border border-[#2b2b2b] transition-all shadow-sm shrink-0"
           >
             <Send className="h-4 w-4" />
           </button>

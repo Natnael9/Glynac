@@ -280,7 +280,7 @@ export function DocumentPreviewer() {
 
         {activeTab === 'json' && (
           <div className="p-3 rounded-xl bg-[#050505] border border-[#1a1a1a] overflow-x-auto">
-            <pre className="text-[11px] font-mono text-cyan-300 leading-tight">
+            <pre className="text-[11px] font-mono text-[#ededed] leading-tight">
               {JSON.stringify(activeDoc, null, 2)}
             </pre>
           </div>

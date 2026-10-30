@@ -171,7 +171,7 @@ export function PropertiesPanel({
 
         <button
           onClick={onClose}
-          className="px-3 py-1.5 rounded-lg bg-white text-black hover:bg-[#e0e0e0] text-xs font-semibold shadow-md shadow-blue-600/20"
+          className="px-3 py-1.5 rounded-lg bg-white text-black hover:bg-[#e0e0e0] text-xs font-semibold shadow-sm"
         >
           Done
         </button>

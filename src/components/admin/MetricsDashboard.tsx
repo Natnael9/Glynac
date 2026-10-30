@@ -59,8 +59,8 @@ export function MetricsDashboard() {
       change: '-45 mins',
       trend: 'up',
       subtitle: 'AI accelerated triage',
-      icon: <Clock className="h-5 w-5 text-indigo-400" />,
-      bg: 'bg-indigo-500/10 border-indigo-500/20',
+      icon: <Clock className="h-5 w-5 text-white" />,
+      bg: 'bg-[#181818] border-[#333333]',
     },
   ];
 
@@ -120,35 +120,35 @@ export function MetricsDashboard() {
               <AreaChart data={reviewTrendData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
                 <defs>
                   <linearGradient id="colorDocs" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.35} />
-                    <stop offset="95%" stopColor="#3b82f6" stopOpacity={0.0} />
+                    <stop offset="5%" stopColor="#ffffff" stopOpacity={0.25} />
+                    <stop offset="95%" stopColor="#ffffff" stopOpacity={0.0} />
                   </linearGradient>
                 </defs>
-                <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" vertical={false} />
-                <XAxis dataKey="month" stroke="#64748b" fontSize={11} tickLine={false} />
-                <YAxis stroke="#64748b" fontSize={11} tickLine={false} />
+                <CartesianGrid strokeDasharray="3 3" stroke="#262626" vertical={false} />
+                <XAxis dataKey="month" stroke="#888888" fontSize={11} tickLine={false} />
+                <YAxis stroke="#888888" fontSize={11} tickLine={false} />
                 <Tooltip
                   contentStyle={{
-                    backgroundColor: '#0f172a',
-                    borderColor: '#334155',
+                    backgroundColor: '#141414',
+                    borderColor: '#262626',
                     borderRadius: '0.75rem',
                     fontSize: '11px',
-                    color: '#f8fafc',
+                    color: '#ededed',
                   }}
                 />
                 <Area
                   type="monotone"
                   dataKey="documents"
-                  stroke="#3b82f6"
-                  strokeWidth={2.5}
+                  stroke="#ffffff"
+                  strokeWidth={2}
                   fillOpacity={1}
                   fill="url(#colorDocs)"
                 />
                 <Area
                   type="monotone"
                   dataKey="passRate"
-                  stroke="#10b981"
-                  strokeWidth={2}
+                  stroke="#888888"
+                  strokeWidth={1.5}
                   fill="none"
                 />
               </AreaChart>
@@ -170,13 +170,13 @@ export function MetricsDashboard() {
             <div className="h-48 w-full">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={severityDistributionData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" vertical={false} />
-                  <XAxis dataKey="name" stroke="#64748b" fontSize={11} tickLine={false} />
-                  <YAxis stroke="#64748b" fontSize={11} tickLine={false} />
+                  <CartesianGrid strokeDasharray="3 3" stroke="#262626" vertical={false} />
+                  <XAxis dataKey="name" stroke="#888888" fontSize={11} tickLine={false} />
+                  <YAxis stroke="#888888" fontSize={11} tickLine={false} />
                   <Tooltip
                     contentStyle={{
-                      backgroundColor: '#0f172a',
-                      borderColor: '#334155',
+                      backgroundColor: '#141414',
+                      borderColor: '#262626',
                       borderRadius: '0.75rem',
                       fontSize: '11px',
                       color: '#f8fafc',

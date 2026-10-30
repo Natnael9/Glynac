@@ -20,7 +20,7 @@ export default function AdminPage() {
   const [activeTab, setActiveTab] = useState<'metrics' | 'rbac' | 'policies' | 'flags'>('metrics');
 
   return (
-    <div className="flex flex-col h-full bg-[#090d16] overflow-y-auto select-none">
+    <div className="flex flex-col h-full bg-[#000000] overflow-y-auto select-none">
       {/* Header Banner */}
       <div className="border-b border-[#1a1a1a] bg-[#050505] px-4 sm:px-6 py-4">
         <div className="flex flex-wrap items-center justify-between gap-4">
@@ -36,14 +36,14 @@ export default function AdminPage() {
           <div className="flex items-center gap-2">
             <Link
               href="/vdr"
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#0a0a0a] border border-[#1a1a1a] text-xs font-semibold text-[#d1d1d1] hover:text-white hover:bg-[#141414] transition-colors"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#0a0a0a] border border-[#1a1a1a] text-xs font-semibold text-[#d1d1d1] hover:text-white hover:bg-[#141414] transition-colors"
             >
               <Lock className="h-3.5 w-3.5 text-[#ffffff]" />
               <span>Data Room</span>
             </Link>
             <Link
               href="/chat"
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#181818] border border-[#2b2b2b] border border-[#333333] text-[#ededed] hover:bg-[#181818] border border-[#2b2b2b] text-xs font-semibold transition-colors"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#0a0a0a] border border-[#1a1a1a] text-[#ededed] hover:text-white hover:bg-[#141414] text-xs font-semibold transition-colors"
             >
               <Sparkles className="h-3.5 w-3.5" />
               <span>AI Assistant</span>
@@ -55,9 +55,9 @@ export default function AdminPage() {
         <div className="flex items-center gap-1 mt-4 pt-2 border-t border-[#1a1a1a] overflow-x-auto text-xs">
           <button
             onClick={() => setActiveTab('metrics')}
-            className={`flex items-center gap-2 px-3 py-1.5 rounded-xl font-semibold transition-all ${
+            className={`flex items-center gap-2 px-3 py-1.5 rounded-lg font-semibold transition-all ${
               activeTab === 'metrics'
-                ? 'bg-[#181818] border border-[#2b2b2b] text-[#ffffff] border border-[#333333]'
+                ? 'bg-[#ffffff] text-[#000000]'
                 : 'text-[#888888] hover:text-[#ededed] hover:bg-[#0a0a0a]'
             }`}
           >
@@ -67,9 +67,9 @@ export default function AdminPage() {
 
           <button
             onClick={() => setActiveTab('rbac')}
-            className={`flex items-center gap-2 px-3 py-1.5 rounded-xl font-semibold transition-all ${
+            className={`flex items-center gap-2 px-3 py-1.5 rounded-lg font-semibold transition-all ${
               activeTab === 'rbac'
-                ? 'bg-[#181818] border border-[#2b2b2b] text-[#ffffff] border border-[#333333]'
+                ? 'bg-[#ffffff] text-[#000000]'
                 : 'text-[#888888] hover:text-[#ededed] hover:bg-[#0a0a0a]'
             }`}
           >
@@ -79,9 +79,9 @@ export default function AdminPage() {
 
           <button
             onClick={() => setActiveTab('policies')}
-            className={`flex items-center gap-2 px-3 py-1.5 rounded-xl font-semibold transition-all ${
+            className={`flex items-center gap-2 px-3 py-1.5 rounded-lg font-semibold transition-all ${
               activeTab === 'policies'
-                ? 'bg-[#181818] border border-[#2b2b2b] text-[#ffffff] border border-[#333333]'
+                ? 'bg-[#ffffff] text-[#000000]'
                 : 'text-[#888888] hover:text-[#ededed] hover:bg-[#0a0a0a]'
             }`}
           >
@@ -91,9 +91,9 @@ export default function AdminPage() {
 
           <button
             onClick={() => setActiveTab('flags')}
-            className={`flex items-center gap-2 px-3 py-1.5 rounded-xl font-semibold transition-all ${
+            className={`flex items-center gap-2 px-3 py-1.5 rounded-lg font-semibold transition-all ${
               activeTab === 'flags'
-                ? 'bg-[#181818] border border-[#2b2b2b] text-[#ffffff] border border-[#333333]'
+                ? 'bg-[#ffffff] text-[#000000]'
                 : 'text-[#888888] hover:text-[#ededed] hover:bg-[#0a0a0a]'
             }`}
           >

@@ -110,7 +110,7 @@ export function FileExplorer() {
       case 'json':
         return <FileCode className="h-4 w-4 text-amber-400" />;
       case 'md':
-        return <FileSpreadsheet className="h-4 w-4 text-cyan-400" />;
+        return <FileSpreadsheet className="h-4 w-4 text-[#ededed]" />;
       default:
         return <FileText className="h-4 w-4 text-[#ffffff]" />;
     }
@@ -205,7 +205,7 @@ export function FileExplorer() {
 
           <button
             onClick={() => setIsUploadModalOpen(true)}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-xs font-semibold text-white transition-all shadow-md shadow-blue-600/20"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white hover:bg-[#e0e0e0] text-black text-xs font-semibold transition-all shadow-sm"
           >
             <Upload className="h-3.5 w-3.5" />
             <span>Upload File</span>
@@ -334,7 +334,7 @@ export function FileExplorer() {
             </p>
             <button
               onClick={() => setIsUploadModalOpen(true)}
-              className="mt-4 px-3 py-1.5 rounded-lg bg-[#ffffff] !text-black hover:bg-[#e5e5e5] text-white text-xs font-medium"
+              className="mt-4 px-3 py-1.5 rounded-lg bg-white text-black hover:bg-[#e0e0e0] text-xs font-semibold"
             >
               Upload Document
             </button>
@@ -384,8 +384,8 @@ export function FileExplorer() {
                       }}
                       className={`group cursor-pointer transition-colors ${
                         isSelected
-                          ? 'bg-[#ffffff] !text-black hover:bg-[#ffffff] !text-black'
-                          : 'hover:bg-[#0a0a0a]'
+                          ? 'bg-[#181818] border-l-2 border-white'
+                          : 'hover:bg-[#111111]'
                       }`}
                     >
                       <td className="py-2.5 px-3" onClick={(e) => e.stopPropagation()}>
@@ -424,13 +424,13 @@ export function FileExplorer() {
                                 />
                                 <button
                                   onClick={() => handleSaveRename(doc.id)}
-                                  className="text-[10px] px-1.5 py-0.5 rounded bg-[#ffffff] !text-black text-white font-semibold"
+                                  className="text-[10px] px-2 py-0.5 rounded bg-white text-black font-semibold hover:bg-[#e0e0e0]"
                                 >
                                   Save
                                 </button>
                               </div>
                             ) : (
-                              <div className="font-medium text-[#ededed] group-hover:text-[#ededed] truncate">
+                              <div className={`truncate ${isSelected ? 'text-white font-semibold' : 'text-[#ededed] font-medium group-hover:text-white'}`}>
                                 {doc.name}
                               </div>
                             )}
@@ -532,8 +532,8 @@ export function FileExplorer() {
                   }}
                   className={`group relative p-3.5 rounded-xl border transition-all cursor-pointer flex flex-col justify-between ${
                     isSelected
-                      ? 'bg-[#ffffff] !text-black border-[#333333] shadow-lg shadow-blue-500/10 ring-1 ring-white'
-                      : 'bg-[#0a0a0a] border-[#1a1a1a] hover:border-[#262626] hover:bg-[#0a0a0a]'
+                      ? 'bg-[#181818] border-white/60 ring-1 ring-white/30'
+                      : 'bg-[#0a0a0a] border-[#1a1a1a] hover:border-[#333333] hover:bg-[#111111]'
                   }`}
                 >
                   <div>
@@ -558,7 +558,7 @@ export function FileExplorer() {
                       </div>
                     </div>
 
-                    <h5 className="font-semibold text-xs text-[#ededed] group-hover:text-[#ededed] line-clamp-2 mb-1.5">
+                    <h5 className={`font-semibold text-xs line-clamp-2 mb-1.5 ${isSelected ? 'text-white' : 'text-[#ededed] group-hover:text-white'}`}>
                       {doc.name}
                     </h5>
 
@@ -642,7 +642,7 @@ export function FileExplorer() {
                 <button
                   type="submit"
                   disabled={!newFolderName.trim()}
-                  className="px-3 py-1.5 rounded-lg text-xs font-semibold bg-[#ffffff] !text-black hover:bg-[#e5e5e5] text-white disabled:opacity-50"
+                  className="px-3 py-1.5 rounded-lg text-xs font-semibold bg-white text-black hover:bg-[#e0e0e0] disabled:opacity-50"
                 >
                   Create Folder
                 </button>

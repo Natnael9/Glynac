@@ -109,7 +109,7 @@ export function RbacUserTable() {
 
           <button
             onClick={() => setIsAddUserModalOpen(true)}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white text-black hover:bg-[#e0e0e0] text-xs font-semibold shadow-md shadow-blue-600/20"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white text-black hover:bg-[#e0e0e0] text-xs font-semibold shadow-sm"
           >
             <UserPlus className="h-3.5 w-3.5" />
             <span>Add User</span>
@@ -135,7 +135,7 @@ export function RbacUserTable() {
               <tr key={user.id} className="hover:bg-[#0a0a0a] transition-colors">
                 <td className="py-3 px-4">
                   <div className="flex items-center gap-3">
-                    <div className="h-8 w-8 rounded-full bg-gradient-to-tr from-blue-600 to-indigo-600 text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-md">
+                    <div className="h-8 w-8 rounded-full bg-[#181818] border border-[#333333] text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-sm">
                       {user.name.charAt(0)}
                     </div>
                     <div className="min-w-0">
@@ -332,7 +332,7 @@ export function RbacUserTable() {
                   );
                   setEditingUser(null);
                 }}
-                className="px-4 py-1.5 rounded-lg text-xs font-semibold bg-white text-black hover:bg-[#e0e0e0] shadow-md shadow-blue-600/20"
+                className="px-4 py-1.5 rounded-lg text-xs font-semibold bg-white text-black hover:bg-[#e0e0e0] shadow-sm"
               >
                 Save Role Updates
               </button>
@@ -408,7 +408,7 @@ export function RbacUserTable() {
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-1.5 rounded-lg text-xs font-semibold bg-white text-black hover:bg-[#e0e0e0] shadow-md shadow-blue-600/20"
+                  className="px-4 py-1.5 rounded-lg text-xs font-semibold bg-white text-black hover:bg-[#e0e0e0] shadow-sm"
                 >
                   Create User
                 </button>

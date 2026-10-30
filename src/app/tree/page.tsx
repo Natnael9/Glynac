@@ -72,7 +72,7 @@ export default function TreePage() {
           {
             ...connection,
             animated: true,
-            style: { stroke: '#3b82f6', strokeWidth: 2 },
+            style: { stroke: '#ffffff', strokeWidth: 1.5 },
           },
           eds
         )
@@ -197,7 +197,7 @@ export default function TreePage() {
   }, [nodes, searchQuery]);
 
   return (
-    <div className="flex flex-col h-full bg-[#090d16] overflow-hidden select-none">
+    <div className="flex flex-col h-full bg-[#000000] overflow-hidden select-none">
       {/* Top Controls Toolbar */}
       <div className="p-3 border-b border-[#1a1a1a] bg-[#050505] flex flex-wrap items-center justify-between gap-3 z-10">
         <div>
@@ -219,7 +219,7 @@ export default function TreePage() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search rule node..."
-              className="pl-8 pr-3 py-1.5 bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg text-xs text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 w-44"
+              className="pl-8 pr-3 py-1.5 bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg text-xs text-white placeholder-slate-500 focus:outline-none focus:border-[#333333] w-44"
             />
           </div>
 
@@ -227,7 +227,7 @@ export default function TreePage() {
             onClick={handleAutoLayout}
             className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#0a0a0a] border border-[#1a1a1a] hover:border-[#262626] text-[#d1d1d1] hover:text-white font-medium transition-colors"
           >
-            <LayoutTemplate className="h-3.5 w-3.5 text-indigo-400" />
+            <LayoutTemplate className="h-3.5 w-3.5 text-[#ededed]" />
             <span>Auto-Layout</span>
           </button>
 
@@ -241,7 +241,7 @@ export default function TreePage() {
 
           <button
             onClick={() => setIsJsonModalOpen(true)}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-semibold transition-colors shadow-md shadow-indigo-600/20"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white hover:bg-[#e0e0e0] text-black font-semibold transition-colors shadow-sm"
           >
             <FileCode className="h-3.5 w-3.5" />
             <span>JSON Engine</span>
@@ -281,7 +281,7 @@ export default function TreePage() {
         <NodePalette onAddNode={handleAddNode} />
 
         {/* Center Interactive Flow Canvas */}
-        <div className="flex-1 h-full relative bg-[#060911]">
+        <div className="flex-1 h-full relative bg-[#000000]">
           <ReactFlow
             nodes={highlightedNodes}
             edges={edges}
@@ -298,12 +298,12 @@ export default function TreePage() {
               variant={BackgroundVariant.Dots}
               gap={24}
               size={1.5}
-              color="#1e293b"
+              color="#222222"
             />
             <Controls className="!bg-[#0a0a0a] !border-[#1a1a1a] !text-[#888888]" />
             <MiniMap
-              nodeColor="#3b82f6"
-              maskColor="rgba(15, 23, 42, 0.85)"
+              nodeColor="#ffffff"
+              maskColor="rgba(0, 0, 0, 0.85)"
               className="!bg-[#050505] !border !border-[#1a1a1a] !rounded-xl overflow-hidden"
             />
           </ReactFlow>

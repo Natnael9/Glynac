@@ -59,7 +59,7 @@ export function RulePolicyManager() {
 
         <button
           onClick={() => setIsAddPolicyModalOpen(true)}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white text-black hover:bg-[#e0e0e0] text-xs font-semibold shadow-md shadow-blue-600/20"
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white text-black hover:bg-[#e0e0e0] text-xs font-semibold shadow-sm"
         >
           <Plus className="h-3.5 w-3.5" />
           <span>New Rule Policy</span>
@@ -228,7 +228,7 @@ export function RulePolicyManager() {
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-1.5 rounded-lg text-xs font-semibold bg-white text-black hover:bg-[#e0e0e0] shadow-md shadow-blue-600/20"
+                  className="px-4 py-1.5 rounded-lg text-xs font-semibold bg-white text-black hover:bg-[#e0e0e0] shadow-sm"
                 >
                   Save Policy
                 </button>
