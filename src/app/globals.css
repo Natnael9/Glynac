@@ -1,107 +1,61 @@
 @import "tailwindcss";
 
 :root {
-  --font-display: 'Cinzel', serif, Georgia;
-  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
-
-  /* Luxury Obsidian & Champagne Gold Theme */
-  --color-obsidian: #07090e;
-  --color-carbon-surface: #0e1219;
-  --color-carbon-elevated: #151a24;
-  --color-champagne: #d4af37;
-  --color-champagne-light: #f5deb3;
-  --color-champagne-muted: #8d732c;
-  --color-champagne-glow: rgba(212, 175, 55, 0.18);
-  --color-border-lux: rgba(212, 175, 55, 0.15);
-  --color-border-subtle: rgba(255, 255, 255, 0.08);
+  --background: #090a0f;
+  --surface: #10121a;
+  --surface-hover: #161922;
+  --border: #1e222d;
+  --border-subtle: #171a23;
+  --text-primary: #ededed;
+  --text-secondary: #8b92a0;
+  --text-muted: #555c6b;
+  --accent: #2563eb;
 }
 
 body {
-  background-color: var(--color-obsidian);
-  background-image: 
-    radial-gradient(at 100% 0%, rgba(212, 175, 55, 0.07) 0px, transparent 45%),
-    radial-gradient(at 0% 100%, rgba(30, 41, 59, 0.35) 0px, transparent 50%),
-    radial-gradient(at 50% 50%, rgba(14, 18, 25, 0.6) 0px, transparent 100%);
-  background-attachment: fixed;
-  color: #f4f4f7;
-  font-family: var(--font-body);
+  background-color: var(--background);
+  color: var(--text-primary);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
 
-/* Luxury Editorial Display Headings */
-.font-display {
-  font-family: var(--font-display);
-  letter-spacing: 0.04em;
+/* Minimal clean surfaces - no glow, no blur, no heavy gradients */
+.minimal-surface {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
 }
 
-/* Data-Dense Monospace Figures */
-.font-mono-numbers {
-  font-family: var(--font-mono);
-  font-variant-numeric: tabular-nums;
+.minimal-card {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  transition: background-color 0.15s ease;
 }
 
-/* Champagne Gold Metallic Shimmer Gradient */
-.gold-shimmer-text {
-  background: linear-gradient(135deg, #fae596 0%, #d4af37 50%, #aa820a 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.minimal-card:hover {
+  background-color: var(--surface-hover);
 }
 
-.gold-border-glow {
-  border: 1px solid var(--color-border-lux);
-  box-shadow: 0 0 20px -3px var(--color-champagne-glow);
-}
-
-/* Glassmorphism Surface Elevation */
-.glass-panel {
-  background: rgba(14, 18, 25, 0.82);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid var(--color-border-subtle);
-}
-
-.glass-card {
-  background: rgba(18, 23, 33, 0.6);
-  backdrop-filter: blur(14px);
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.glass-card:hover {
-  border-color: rgba(212, 175, 55, 0.4);
-  box-shadow: 0 12px 30px -5px rgba(0, 0, 0, 0.8), 0 0 20px -5px rgba(212, 175, 55, 0.2);
-  transform: translateY(-1.5px);
-}
-
-/* High-Finance Watermark Texture */
-.regulatory-watermark {
-  background-image: radial-gradient(rgba(212, 175, 55, 0.06) 1px, transparent 0);
-  background-size: 24px 24px;
-}
-
-/* Custom Scrollbars */
+/* Crisp slim scrollbars */
 ::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
+  width: 4px;
+  height: 4px;
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(7, 9, 14, 0.8);
+  background: var(--background);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(85, 75, 45, 0.5);
-  border-radius: 9999px;
+  background: #252a38;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(212, 175, 55, 0.8);
+  background: #3b4255;
 }
 
-/* Focus Ring */
+/* Simple crisp focus outline */
 *:focus-visible {
-  outline: none;
-  box-shadow: 0 0 0 2px #07090e, 0 0 0 4px #d4af37 !important;
+  outline: 1px solid #3b82f6 !important;
+  outline-offset: 1px;
 }
