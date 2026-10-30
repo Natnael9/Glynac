@@ -18,42 +18,55 @@ export default function VDRPage() {
 
   return (
     <div className="flex flex-col h-full bg-[#000000] overflow-hidden select-none text-xs">
-      {/* Top Simple Sub-header - Linear Monochrome */}
-      <div className="border-b border-[#1c1c1c] bg-[#050505] px-4 py-2.5 flex flex-wrap items-center justify-between gap-3 shrink-0">
-        <div className="flex items-center gap-3">
-          <span className="font-semibold text-white">
-            Repository
-          </span>
-          <span className="text-[#333333]">/</span>
-          <div className="flex items-center gap-3 text-[11px] text-[#8a8a8a]">
-            <span>{totalDocs} files</span>
-            <span>•</span>
-            <span className={flaggedCount > 0 ? 'text-[#e5e5e5]' : ''}>{flaggedCount} flagged</span>
-            <span>•</span>
-            <span>{restrictedCount} restricted</span>
+      {/* Top Simple Sub-header — Pure Stark Monochrome */}
+      <div className="border-b border-[#1a1a1a] bg-[#050505] px-4 sm:px-6 py-2.5 shrink-0">
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <div>
+            <h1 className="text-xs font-semibold text-white">
+              Virtual Data Room
+            </h1>
+            <p className="text-[11px] text-[#666666]">
+              Secure document repository, permissions, and audit logs
+            </p>
           </div>
-        </div>
 
-        <div className="flex items-center gap-2">
-          <Link
-            href="/chat"
-            className="px-2.5 py-1 rounded border border-[#262626] bg-[#0f0f0f] hover:bg-[#1a1a1a] text-[#ededed] text-xs transition-colors"
-          >
-            Audit with AI
-          </Link>
+          {/* Simple Clean Monochrome Metrics */}
+          <div className="flex items-center gap-2 text-xs">
+            <div className="flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#0a0a0a] border border-[#222222]">
+              <span className="text-[#666666] text-[11px]">Files:</span>
+              <span className="font-semibold text-white text-[11px] font-mono">{totalDocs}</span>
+            </div>
+
+            <div className="flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#0a0a0a] border border-[#222222]">
+              <span className="text-[#666666] text-[11px]">Flagged:</span>
+              <span className="font-semibold text-white text-[11px] font-mono">{flaggedCount}</span>
+            </div>
+
+            <div className="flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#0a0a0a] border border-[#222222]">
+              <span className="text-[#666666] text-[11px]">Restricted:</span>
+              <span className="font-semibold text-white text-[11px] font-mono">{restrictedCount}</span>
+            </div>
+
+            <Link
+              href="/chat"
+              className="px-2.5 py-1 rounded bg-[#ffffff] text-[#000000] hover:bg-[#eaeaea] text-[11px] font-medium transition-colors"
+            >
+              Ask AI
+            </Link>
+          </div>
         </div>
       </div>
 
       {/* Main Split-Screen Workspace */}
       <div className="flex-1 flex overflow-hidden">
         {/* Left: Dynamic File Explorer */}
-        <div className={`h-full ${activeDoc ? 'w-full lg:w-3/5 xl:w-7/12' : 'w-full'}`}>
+        <div className={`h-full transition-all duration-150 ${activeDoc ? 'w-full lg:w-3/5 xl:w-7/12' : 'w-full'}`}>
           <FileExplorer />
         </div>
 
         {/* Right: In-App Document Previewer */}
         {activeDoc && (
-          <div className="hidden lg:block lg:w-2/5 xl:w-5/12 h-full border-l border-[#1c1c1c] bg-[#050505]">
+          <div className="hidden lg:block lg:w-2/5 xl:w-5/12 h-full border-l border-[#1a1a1a] bg-[#050505]">
             <DocumentPreviewer />
           </div>
         )}

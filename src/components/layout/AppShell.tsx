@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import {
-  Folder,
+  FolderLock,
   MessageSquare,
   Network,
   Shield,
@@ -26,7 +26,7 @@ export function AppShell({ children }: AppShellProps) {
     {
       name: 'Data Room',
       href: '/vdr',
-      icon: Folder,
+      icon: FolderLock,
       current: pathname === '/vdr' || pathname === '/',
     },
     {
@@ -51,14 +51,14 @@ export function AppShell({ children }: AppShellProps) {
 
   return (
     <div className="flex h-screen w-full bg-[#000000] text-[#ededed] overflow-hidden select-none font-sans text-xs">
-      {/* Retractable Desktop Sidebar - Pure Neutral Monochrome */}
+      {/* Retractable Sidebar - Pure Stark Monochrome Dark */}
       <aside
-        className={`hidden md:flex flex-col bg-[#050505] text-[#a1a1a1] border-r border-[#1c1c1c] transition-all duration-150 shrink-0 select-none ${
+        className={`hidden md:flex flex-col bg-[#050505] text-[#a1a1a1] border-r border-[#1a1a1a] transition-all duration-150 shrink-0 select-none ${
           isCollapsed ? 'w-14' : 'w-56'
         }`}
       >
         {/* Brand & Toggle Bar */}
-        <div className="h-12 px-3.5 flex items-center justify-between border-b border-[#1c1c1c]">
+        <div className="h-12 px-3 flex items-center justify-between border-b border-[#1a1a1a]">
           {!isCollapsed && (
             <span className="font-semibold text-white tracking-tight text-xs">
               Glynac
@@ -66,7 +66,7 @@ export function AppShell({ children }: AppShellProps) {
           )}
           <button
             onClick={() => setIsCollapsed(!isCollapsed)}
-            className="p-1 rounded text-[#737373] hover:text-white hover:bg-[#171717] transition-colors ml-auto"
+            className="p-1 rounded text-[#777777] hover:text-white hover:bg-[#141414] transition-colors ml-auto"
             title={isCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
           >
             {isCollapsed ? (
@@ -86,10 +86,10 @@ export function AppShell({ children }: AppShellProps) {
                 key={item.name}
                 href={item.href}
                 title={isCollapsed ? item.name : undefined}
-                className={`flex items-center gap-2.5 px-2.5 py-2 rounded-md text-xs transition-colors ${
+                className={`flex items-center gap-2.5 px-2.5 py-2 rounded transition-colors ${
                   item.current
-                    ? 'bg-[#1c1c1c] text-white font-medium'
-                    : 'text-[#8a8a8a] hover:text-[#ededed] hover:bg-[#121212]'
+                    ? 'bg-[#141414] text-white font-medium border border-[#262626]'
+                    : 'text-[#888888] hover:text-[#ededed] hover:bg-[#0d0d0d]'
                 }`}
               >
                 <Icon className="h-4 w-4 shrink-0" />
@@ -100,14 +100,14 @@ export function AppShell({ children }: AppShellProps) {
         </nav>
 
         {/* User Card */}
-        <div className="p-3 border-t border-[#1c1c1c]">
+        <div className="p-3 border-t border-[#1a1a1a] bg-[#050505]">
           {!isCollapsed ? (
-            <div className="px-1 text-xs">
-              <p className="font-medium text-[#ededed] truncate">Natnael Ashenafi</p>
-              <p className="text-[#666666] text-[11px] truncate">Compliance Officer</p>
+            <div className="text-[11px]">
+              <p className="font-medium text-white truncate">Natnael Ashenafi</p>
+              <p className="text-[#666666] text-[10px] truncate">Compliance Officer</p>
             </div>
           ) : (
-            <div className="h-7 w-7 mx-auto rounded bg-[#171717] border border-[#262626] text-[#ededed] flex items-center justify-center font-semibold text-[10px]">
+            <div className="h-7 w-7 mx-auto rounded bg-[#141414] text-white border border-[#262626] flex items-center justify-center font-bold text-[10px]">
               NA
             </div>
           )}
@@ -117,15 +117,17 @@ export function AppShell({ children }: AppShellProps) {
       {/* Main Panel */}
       <div className="flex-1 flex flex-col min-w-0 overflow-hidden bg-[#000000]">
         {/* Top Header */}
-        <header className="h-12 border-b border-[#1c1c1c] bg-[#050505] px-4 flex items-center justify-between shrink-0">
-          <div className="flex items-center gap-2.5">
+        <header className="h-12 border-b border-[#1a1a1a] bg-[#050505] px-4 sm:px-6 flex items-center justify-between shrink-0">
+          <div className="flex items-center gap-2">
             <button
               onClick={() => setIsMobileOpen(!isMobileOpen)}
-              className="md:hidden p-1 rounded text-[#737373] hover:text-white hover:bg-[#171717]"
+              className="md:hidden p-1 rounded text-[#888888] hover:text-white"
             >
               <Menu className="h-4 w-4" />
             </button>
-            <span className="font-medium text-[#ededed] text-xs">
+            <span className="text-[#666666]">Platform</span>
+            <span className="text-[#333333]">/</span>
+            <span className="text-white font-medium">
               {pathname === '/vdr' || pathname === '/'
                 ? 'Virtual Data Room'
                 : pathname === '/chat'
@@ -136,21 +138,21 @@ export function AppShell({ children }: AppShellProps) {
             </span>
           </div>
 
-          <div className="text-[11px] text-[#525252] font-mono">
+          <div className="text-[11px] text-[#666666] font-mono">
             SEC 17a-4
           </div>
         </header>
 
         {/* Mobile Navigation Drawer */}
         {isMobileOpen && (
-          <div className="md:hidden border-b border-[#1c1c1c] bg-[#050505] text-[#ededed] p-2 space-y-0.5">
+          <div className="md:hidden border-b border-[#1a1a1a] bg-[#050505] text-white p-3 space-y-1">
             {navigation.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
                 onClick={() => setIsMobileOpen(false)}
                 className={`flex items-center gap-2.5 px-2.5 py-2 rounded text-xs ${
-                  item.current ? 'bg-[#1c1c1c] text-white' : 'text-[#8a8a8a]'
+                  item.current ? 'bg-[#141414] text-white' : 'text-[#888888]'
                 }`}
               >
                 <span>{item.name}</span>

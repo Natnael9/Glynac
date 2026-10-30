@@ -17,7 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="h-full antialiased dark">
-      <body className="min-h-full flex flex-col bg-[#000000] text-[#ededed] font-sans selection:bg-[#262626] selection:text-white">
+      <body className="min-h-full flex flex-col bg-[#000000] text-[#ededed] font-sans selection:bg-white selection:text-black">
         <VDRProvider>
           <ChatProvider>
             <AdminProvider>
