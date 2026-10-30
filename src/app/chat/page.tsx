@@ -33,26 +33,20 @@ export default function ChatPage() {
       <div className="flex-1 flex flex-col h-full min-w-0 bg-[#050505]">
         {/* Chat Thread Header */}
         <div className="p-4 border-b border-[#1a1a1a] bg-[#050505] flex items-center justify-between gap-3">
-          <div className="flex items-center gap-2.5 min-w-0">
-            <div className="p-2 rounded-xl bg-[#181818] border border-[#2b2b2b] text-[#ffffff] border border-[#333333] shrink-0">
-              <MessageSquareCode className="h-5 w-5" />
+          <div className="min-w-0">
+            <div className="flex items-center gap-2">
+              <h2 className="text-base font-bold text-white tracking-tight truncate">
+                {activeThread ? activeThread.title : 'Compliance AI Assistant'}
+              </h2>
+              {activeThread?.pinned && (
+                <span className="p-0.5 rounded bg-amber-500/10 text-amber-400">
+                  <Pin className="h-3.5 w-3.5 fill-amber-400" />
+                </span>
+              )}
             </div>
-            <div className="min-w-0">
-              <div className="flex items-center gap-2">
-                <h2 className="text-sm font-bold text-white truncate">
-                  {activeThread ? activeThread.title : 'Compliance AI Assistant'}
-                </h2>
-                {activeThread?.pinned && (
-                  <span className="p-0.5 rounded bg-amber-500/10 text-amber-400">
-                    <Pin className="h-3 w-3 fill-amber-400" />
-                  </span>
-                )}
-              </div>
-              <p className="text-[11px] text-[#888888] flex items-center gap-1.5">
-                <ShieldCheck className="h-3 w-3 text-emerald-400" />
-                SEC & FINRA Audited AI Reasoning Engine
-              </p>
-            </div>
+            <p className="text-xs text-[#888888]">
+              Automated regulatory compliance analysis & citation lookup
+            </p>
           </div>
 
           <div className="flex items-center gap-2">

@@ -22,10 +22,10 @@ export default function VDRPage() {
       <div className="border-b border-[#1a1a1a] bg-[#050505] px-4 sm:px-6 py-2.5 shrink-0">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
-            <h1 className="text-xs font-semibold text-white">
+            <h1 className="text-base font-bold text-white tracking-tight">
               Virtual Data Room
             </h1>
-            <p className="text-[11px] text-[#666666]">
+            <p className="text-xs text-[#888888]">
               Secure document repository, permissions, and audit logs
             </p>
           </div>
