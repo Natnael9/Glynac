@@ -1,52 +1,84 @@
 @import "tailwindcss";
 
 :root {
-  --background: #060911;
-  --foreground: #f8fafc;
-  --panel-bg: rgba(13, 19, 33, 0.75);
-  --border-subtle: rgba(51, 65, 85, 0.45);
-  --border-accent: rgba(99, 102, 241, 0.3);
-  --glow-accent: rgba(99, 102, 241, 0.15);
+  --font-display: 'Cinzel', serif, Georgia;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Luxury Obsidian & Champagne Gold Theme */
+  --color-obsidian: #07090e;
+  --color-carbon-surface: #0e1219;
+  --color-carbon-elevated: #151a24;
+  --color-champagne: #d4af37;
+  --color-champagne-light: #f5deb3;
+  --color-champagne-muted: #8d732c;
+  --color-champagne-glow: rgba(212, 175, 55, 0.18);
+  --color-border-lux: rgba(212, 175, 55, 0.15);
+  --color-border-subtle: rgba(255, 255, 255, 0.08);
 }
 
 body {
-  background-color: var(--background);
+  background-color: var(--color-obsidian);
   background-image: 
-    radial-gradient(at 100% 0%, rgba(30, 58, 138, 0.18) 0px, transparent 50%),
-    radial-gradient(at 0% 100%, rgba(88, 28, 135, 0.14) 0px, transparent 50%),
-    radial-gradient(at 50% 50%, rgba(15, 23, 42, 0.5) 0px, transparent 100%);
+    radial-gradient(at 100% 0%, rgba(212, 175, 55, 0.07) 0px, transparent 45%),
+    radial-gradient(at 0% 100%, rgba(30, 41, 59, 0.35) 0px, transparent 50%),
+    radial-gradient(at 50% 50%, rgba(14, 18, 25, 0.6) 0px, transparent 100%);
   background-attachment: fixed;
-  color: var(--foreground);
-  font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: #f4f4f7;
+  font-family: var(--font-body);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
 
+/* Luxury Editorial Display Headings */
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: 0.04em;
+}
+
+/* Data-Dense Monospace Figures */
+.font-mono-numbers {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Champagne Gold Metallic Shimmer Gradient */
+.gold-shimmer-text {
+  background: linear-gradient(135deg, #fae596 0%, #d4af37 50%, #aa820a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gold-border-glow {
+  border: 1px solid var(--color-border-lux);
+  box-shadow: 0 0 20px -3px var(--color-champagne-glow);
+}
+
 /* Glassmorphism Surface Elevation */
 .glass-panel {
-  background: var(--panel-bg);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--border-subtle);
+  background: rgba(14, 18, 25, 0.82);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--color-border-subtle);
 }
 
 .glass-card {
-  background: rgba(15, 23, 42, 0.55);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(51, 65, 85, 0.5);
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  background: rgba(18, 23, 33, 0.6);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .glass-card:hover {
-  border-color: rgba(99, 102, 241, 0.45);
-  box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.8), 0 0 15px 0 var(--glow-accent);
-  transform: translateY(-1px);
+  border-color: rgba(212, 175, 55, 0.4);
+  box-shadow: 0 12px 30px -5px rgba(0, 0, 0, 0.8), 0 0 20px -5px rgba(212, 175, 55, 0.2);
+  transform: translateY(-1.5px);
 }
 
-/* Financial Micro-Watermark Texture */
+/* High-Finance Watermark Texture */
 .regulatory-watermark {
-  background-image: radial-gradient(rgba(148, 163, 184, 0.08) 1px, transparent 0);
-  background-size: 20px 20px;
+  background-image: radial-gradient(rgba(212, 175, 55, 0.06) 1px, transparent 0);
+  background-size: 24px 24px;
 }
 
 /* Custom Scrollbars */
@@ -56,20 +88,20 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(6, 9, 17, 0.7);
+  background: rgba(7, 9, 14, 0.8);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(71, 85, 105, 0.5);
+  background: rgba(85, 75, 45, 0.5);
   border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(129, 140, 248, 0.7);
+  background: rgba(212, 175, 55, 0.8);
 }
 
-/* Accessible focus ring */
+/* Focus Ring */
 *:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px #090d16, 0 0 0 4px #6366f1 !important;
+  box-shadow: 0 0 0 2px #07090e, 0 0 0 4px #d4af37 !important;
 }

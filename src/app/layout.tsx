@@ -6,9 +6,9 @@ import { ChatProvider } from '@/lib/chatContext';
 import { AdminProvider } from '@/lib/adminContext';
 
 export const metadata: Metadata = {
-  title: 'Glynac Wealth Management & Compliance Platform',
+  title: 'GLYNAC | Wealth Management & Institutional Compliance OS',
   description:
-    'Enterprise Frontend System: Virtual Data Room, Real-Time Compliance AI Chat, Visual Tree DAG Editor, and Admin RBAC Dashboard.',
+    'Tier-1 Private Wealth Management & Regulatory Compliance Terminal. SEC, FINRA, SEA Rule 17a-4 WORM storage.',
 };
 
 export default function RootLayout({
@@ -18,7 +18,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="h-full antialiased dark">
-      <body className="min-h-full flex flex-col bg-[#090d16] text-slate-100 font-sans selection:bg-blue-600 selection:text-white">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body className="min-h-full flex flex-col bg-[#07090e] text-[#f4f4f7] selection:bg-[#d4af37]/30 selection:text-[#fae596]">
         <VDRProvider>
           <ChatProvider>
             <AdminProvider>
