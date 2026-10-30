@@ -1,95 +1,45 @@
 @import "tailwindcss";
 
 :root {
-  --bg-app: #0c0d0e;
-  --bg-sidebar: #08090a;
-  --bg-panel: #111214;
-  --bg-hover: #17181c;
-  --border-app: #1f2126;
-  --border-strong: #2c2f36;
-  --amber-terminal: #f59e0b;
-  --text-main: #f0f1f3;
-  --text-muted: #737887;
-  --font-code: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --bg-app: #f8fafc;
+  --bg-sidebar: #0f172a;
+  --bg-surface: #ffffff;
+  --border-app: #e2e8f0;
+  --border-strong: #cbd5e1;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --primary: #0284c7;
 }
 
+/* Institutional Clean Professional Theme (Datasite / Carta style) */
 body {
-  background-color: var(--bg-app);
-  color: var(--text-main);
-  font-family: var(--font-code);
-  font-size: 12px;
-  line-height: 1.5;
-  letter-spacing: -0.01em;
+  background-color: #f8fafc;
+  color: #0f172a;
+  font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
 
-/* Sharp raw architectural borders - zero pill shapes */
-.terminal-window {
-  background-color: var(--bg-panel);
-  border: 1px solid var(--border-app);
-}
-
-.terminal-row {
-  border-bottom: 1px solid var(--border-app);
-}
-
-.terminal-btn {
-  background-color: transparent;
-  border: 1px solid var(--border-app);
-  color: var(--text-main);
-  font-family: var(--font-code);
-  font-size: 11px;
-  padding: 4px 10px;
-  transition: all 0.1s ease;
-}
-
-.terminal-btn:hover {
-  background-color: #f0f1f3;
-  color: #0c0d0e;
-  border-color: #f0f1f3;
-}
-
-.terminal-btn-primary {
-  background-color: var(--amber-terminal);
-  border: 1px solid var(--amber-terminal);
-  color: #000000;
-  font-weight: 600;
-  font-family: var(--font-code);
-  font-size: 11px;
-  padding: 4px 10px;
-}
-
-.terminal-btn-primary:hover {
-  background-color: #fbbf24;
-  border-color: #fbbf24;
-}
-
-/* Utilitarian raw badge */
-.terminal-badge {
-  font-family: var(--font-code);
-  font-size: 10px;
-  padding: 1px 6px;
-  border: 1px solid var(--border-strong);
-  text-transform: uppercase;
-}
-
-/* Raw scrollbars */
+/* Scrollbars */
 ::-webkit-scrollbar {
-  width: 4px;
-  height: 4px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--bg-sidebar);
+  background: #f1f5f9;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--border-strong);
+  background: #cbd5e1;
+  border-radius: 3px;
 }
 
-/* Sharp focus */
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
 *:focus-visible {
-  outline: 1px solid var(--amber-terminal) !important;
-  outline-offset: -1px;
+  outline: 2px solid #0284c7 !important;
+  outline-offset: 1px;
 }

@@ -205,14 +205,11 @@ export default function TreePage() {
             <Network className="h-5 w-5" />
           </div>
           <div>
-            <h2 className="text-sm font-bold text-white flex items-center gap-2">
-              Visual Tree & DAG Policy Editor
-              <span className="text-[10px] px-2 py-0.5 rounded-full bg-indigo-500/10 text-indigo-300 border border-indigo-500/20 font-medium">
-                React Flow Canvas
-              </span>
+            <h2 className="text-sm font-semibold text-slate-900">
+              Policy Graph Editor
             </h2>
-            <p className="text-[11px] text-slate-400">
-              Interactive node graph builder, parent-child linking, and JSON compliance schemas.
+            <p className="text-xs text-slate-500">
+              Interactive rule tree and parent-child dependency graph
             </p>
           </div>
         </div>

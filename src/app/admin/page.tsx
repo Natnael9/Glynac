@@ -29,14 +29,11 @@ export default function AdminPage() {
               <ShieldAlert className="h-6 w-6" />
             </div>
             <div>
-              <h1 className="text-sm font-bold text-white flex items-center gap-2">
-                Enterprise Admin & Compliance Governance
-                <span className="text-[10px] px-2 py-0.5 rounded-full bg-cyan-500/10 text-cyan-300 border border-cyan-500/20 font-medium">
-                  RBAC Level 4 (Full Admin)
-                </span>
+              <h1 className="text-sm font-semibold text-slate-900">
+                System Administration
               </h1>
-              <p className="text-xs text-slate-400">
-                Governance dashboard for role-based access control, active SEC/FINRA rule policies, and system-wide telemetry.
+              <p className="text-xs text-slate-500">
+                Manage access roles, compliance policies, and system configuration.
               </p>
             </div>
           </div>
