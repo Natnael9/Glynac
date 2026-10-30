@@ -17,62 +17,52 @@ export default function VDRPage() {
   const restrictedCount = documents.filter((d) => d.sensitivity === 'Restricted').length;
 
   return (
-    <div className="flex flex-col h-full bg-[#090a0f] overflow-hidden select-none">
-      {/* Top Simple Sub-header — Clean border, no glow, no dots */}
-      <div className="border-b border-[#1e222d] bg-[#0c0e14] px-4 sm:px-6 py-2.5 shrink-0">
-        <div className="flex flex-wrap items-center justify-between gap-3">
-          <div>
-            <h1 className="text-xs font-semibold text-white">
-              Virtual Data Room
-            </h1>
-            <p className="text-[11px] text-[#8b92a0]">
-              Secure document repository, permissions, and audit trails
-            </p>
+    <div className="flex flex-col h-full bg-[#0c0d0e] overflow-hidden select-none font-mono text-[11px]">
+      {/* Dense Utilitarian Stats Header */}
+      <div className="border-b border-[#1f2126] bg-[#0c0d0e] px-4 py-2 flex flex-wrap items-center justify-between gap-3 shrink-0">
+        <div className="flex items-center gap-4">
+          <span className="font-bold text-white uppercase tracking-wider">
+            DATA_ROOM // ARCHIVE
+          </span>
+          <span className="text-[#525766]">|</span>
+          <div className="flex items-center gap-3 text-[10px]">
+            <span>
+              TOTAL: <span className="text-white font-bold">{totalDocs}</span>
+            </span>
+            <span>
+              FLAGGED: <span className="text-[#f59e0b] font-bold">{flaggedCount}</span>
+            </span>
+            <span>
+              RESTRICTED: <span className="text-[#f43f5e] font-bold">{restrictedCount}</span>
+            </span>
           </div>
+        </div>
 
-          {/* Simple Clean Metrics */}
-          <div className="flex items-center gap-3 text-xs">
-            <div className="flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#10121a] border border-[#1e222d]">
-              <span className="text-[#8b92a0] text-[11px]">Documents:</span>
-              <span className="font-semibold text-white text-[11px] font-mono">{totalDocs}</span>
-            </div>
-
-            <div className="flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#10121a] border border-[#1e222d]">
-              <span className="text-[#8b92a0] text-[11px]">Flagged:</span>
-              <span className="font-semibold text-amber-400 text-[11px] font-mono">{flaggedCount}</span>
-            </div>
-
-            <div className="flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#10121a] border border-[#1e222d]">
-              <span className="text-[#8b92a0] text-[11px]">Restricted:</span>
-              <span className="font-semibold text-rose-400 text-[11px] font-mono">{restrictedCount}</span>
-            </div>
-
-            <Link
-              href="/chat"
-              className="px-2.5 py-1 rounded bg-[#1e222d] hover:bg-[#282d3c] text-white text-[11px] font-medium transition-colors"
-            >
-              Ask AI
-            </Link>
-          </div>
+        <div className="flex items-center gap-2">
+          <Link
+            href="/chat"
+            className="terminal-btn bg-[#17181c] hover:bg-[#f59e0b] hover:text-black hover:border-[#f59e0b] font-semibold text-[10px] px-2.5 py-1 uppercase"
+          >
+            [ DISPATCH_AI_AUDIT ]
+          </Link>
         </div>
       </div>
 
-      {/* Main Split-Screen Workspace — Clean solid surfaces */}
+      {/* Split Workstation View */}
       <div className="flex-1 flex overflow-hidden">
-        {/* Left: Dynamic File Explorer */}
-        <div className={`h-full transition-all duration-200 ${activeDoc ? 'w-full lg:w-3/5 xl:w-7/12' : 'w-full'}`}>
+        {/* Left Explorer */}
+        <div className={`h-full ${activeDoc ? 'w-full lg:w-3/5 xl:w-7/12' : 'w-full'}`}>
           <FileExplorer />
         </div>
 
-        {/* Right: In-App Document Previewer */}
+        {/* Right Preview */}
         {activeDoc && (
-          <div className="hidden lg:block lg:w-2/5 xl:w-5/12 h-full border-l border-[#1e222d] bg-[#0c0e14]">
+          <div className="hidden lg:block lg:w-2/5 xl:w-5/12 h-full border-l border-[#1f2126] bg-[#0c0d0e]">
             <DocumentPreviewer />
           </div>
         )}
       </div>
 
-      {/* Modals & Drawers */}
       <PermissionModal />
       <AuditLogDrawer />
       <UploadModal />

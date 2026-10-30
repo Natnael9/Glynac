@@ -6,8 +6,8 @@ import { ChatProvider } from '@/lib/chatContext';
 import { AdminProvider } from '@/lib/adminContext';
 
 export const metadata: Metadata = {
-  title: 'Glynac — Compliance Platform',
-  description: 'Virtual Data Room, Compliance AI, Policy Graphs, and Enterprise RBAC.',
+  title: 'GLYNAC / COMPLIANCE SYSTEM',
+  description: 'Enterprise compliance audit terminal and policy editor.',
 };
 
 export default function RootLayout({
@@ -17,7 +17,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="h-full antialiased dark">
-      <body className="min-h-full flex flex-col bg-[#090a0f] text-[#ededed] font-sans selection:bg-blue-600/30 selection:text-white">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body className="min-h-full flex flex-col bg-[#0c0d0e] text-[#f0f1f3] selection:bg-[#f59e0b] selection:text-black">
         <VDRProvider>
           <ChatProvider>
             <AdminProvider>

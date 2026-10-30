@@ -1,61 +1,95 @@
 @import "tailwindcss";
 
 :root {
-  --background: #090a0f;
-  --surface: #10121a;
-  --surface-hover: #161922;
-  --border: #1e222d;
-  --border-subtle: #171a23;
-  --text-primary: #ededed;
-  --text-secondary: #8b92a0;
-  --text-muted: #555c6b;
-  --accent: #2563eb;
+  --bg-app: #0c0d0e;
+  --bg-sidebar: #08090a;
+  --bg-panel: #111214;
+  --bg-hover: #17181c;
+  --border-app: #1f2126;
+  --border-strong: #2c2f36;
+  --amber-terminal: #f59e0b;
+  --text-main: #f0f1f3;
+  --text-muted: #737887;
+  --font-code: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
 body {
-  background-color: var(--background);
-  color: var(--text-primary);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--bg-app);
+  color: var(--text-main);
+  font-family: var(--font-code);
+  font-size: 12px;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
 
-/* Minimal clean surfaces - no glow, no blur, no heavy gradients */
-.minimal-surface {
-  background-color: var(--surface);
-  border: 1px solid var(--border);
+/* Sharp raw architectural borders - zero pill shapes */
+.terminal-window {
+  background-color: var(--bg-panel);
+  border: 1px solid var(--border-app);
 }
 
-.minimal-card {
-  background-color: var(--surface);
-  border: 1px solid var(--border);
-  transition: background-color 0.15s ease;
+.terminal-row {
+  border-bottom: 1px solid var(--border-app);
 }
 
-.minimal-card:hover {
-  background-color: var(--surface-hover);
+.terminal-btn {
+  background-color: transparent;
+  border: 1px solid var(--border-app);
+  color: var(--text-main);
+  font-family: var(--font-code);
+  font-size: 11px;
+  padding: 4px 10px;
+  transition: all 0.1s ease;
 }
 
-/* Crisp slim scrollbars */
+.terminal-btn:hover {
+  background-color: #f0f1f3;
+  color: #0c0d0e;
+  border-color: #f0f1f3;
+}
+
+.terminal-btn-primary {
+  background-color: var(--amber-terminal);
+  border: 1px solid var(--amber-terminal);
+  color: #000000;
+  font-weight: 600;
+  font-family: var(--font-code);
+  font-size: 11px;
+  padding: 4px 10px;
+}
+
+.terminal-btn-primary:hover {
+  background-color: #fbbf24;
+  border-color: #fbbf24;
+}
+
+/* Utilitarian raw badge */
+.terminal-badge {
+  font-family: var(--font-code);
+  font-size: 10px;
+  padding: 1px 6px;
+  border: 1px solid var(--border-strong);
+  text-transform: uppercase;
+}
+
+/* Raw scrollbars */
 ::-webkit-scrollbar {
   width: 4px;
   height: 4px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--background);
+  background: var(--bg-sidebar);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #252a38;
+  background: var(--border-strong);
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #3b4255;
-}
-
-/* Simple crisp focus outline */
+/* Sharp focus */
 *:focus-visible {
-  outline: 1px solid #3b82f6 !important;
-  outline-offset: 1px;
+  outline: 1px solid var(--amber-terminal) !important;
+  outline-offset: -1px;
 }
