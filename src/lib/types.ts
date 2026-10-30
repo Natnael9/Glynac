@@ -101,7 +101,7 @@ export interface ChatThread {
 
 export type RuleNodeType = 'root' | 'rule' | 'condition' | 'action';
 
-export interface RuleNodeData {
+export interface RuleNodeData extends Record<string, unknown> {
   label: string;
   ruleId: string;
   nodeType: RuleNodeType;
