@@ -39,8 +39,11 @@ import {
   FileCode,
   LayoutTemplate,
 } from 'lucide-react';
+import { useTheme } from '@/lib/themeContext';
 
 export default function TreePage() {
+  const { theme } = useTheme();
+  const isLight = theme === 'light';
   const [nodes, setNodes] = useState<Node<RuleNodeData>[]>(initialTreeNodes);
   const [edges, setEdges] = useState<Edge[]>(initialTreeEdges);
   const [selectedNodeId, setSelectedNodeId] = useState<string | null>('rule-2210');
@@ -298,13 +301,13 @@ export default function TreePage() {
               variant={BackgroundVariant.Dots}
               gap={24}
               size={1.5}
-              color="#222222"
+              color={isLight ? '#d1d5db' : '#222222'}
             />
-            <Controls className="!bg-[#0a0a0a] !border-[#1a1a1a] !text-[#888888]" />
+            <Controls className={isLight ? '!bg-white !border-[#e5e7eb] !text-[#6b7280]' : '!bg-[#0a0a0a] !border-[#1a1a1a] !text-[#888888]'} />
             <MiniMap
-              nodeColor="#ffffff"
-              maskColor="rgba(0, 0, 0, 0.85)"
-              className="!bg-[#050505] !border !border-[#1a1a1a] !rounded-xl overflow-hidden"
+              nodeColor={isLight ? '#111827' : '#ffffff'}
+              maskColor={isLight ? 'rgba(243, 244, 246, 0.7)' : 'rgba(0, 0, 0, 0.85)'}
+              className={isLight ? '!bg-white !border !border-[#e5e7eb] !rounded-xl overflow-hidden' : '!bg-[#050505] !border !border-[#1a1a1a] !rounded-xl overflow-hidden'}
             />
           </ReactFlow>
         </div>

@@ -23,8 +23,11 @@ import {
   Cell,
 } from 'recharts';
 import { reviewTrendData, severityDistributionData } from '@/lib/mockData/admin';
+import { useTheme } from '@/lib/themeContext';
 
 export function MetricsDashboard() {
+  const { theme } = useTheme();
+  const isLight = theme === 'light';
   const kpis = [
     {
       title: 'Total Documents Audited',
@@ -120,26 +123,26 @@ export function MetricsDashboard() {
               <AreaChart data={reviewTrendData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
                 <defs>
                   <linearGradient id="colorDocs" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#ffffff" stopOpacity={0.25} />
-                    <stop offset="95%" stopColor="#ffffff" stopOpacity={0.0} />
+                    <stop offset="5%" stopColor={isLight ? '#111827' : '#ffffff'} stopOpacity={0.25} />
+                    <stop offset="95%" stopColor={isLight ? '#111827' : '#ffffff'} stopOpacity={0.0} />
                   </linearGradient>
                 </defs>
-                <CartesianGrid strokeDasharray="3 3" stroke="#262626" vertical={false} />
-                <XAxis dataKey="month" stroke="#888888" fontSize={11} tickLine={false} />
-                <YAxis stroke="#888888" fontSize={11} tickLine={false} />
+                <CartesianGrid strokeDasharray="3 3" stroke={isLight ? '#e5e7eb' : '#262626'} vertical={false} />
+                <XAxis dataKey="month" stroke={isLight ? '#6b7280' : '#888888'} fontSize={11} tickLine={false} />
+                <YAxis stroke={isLight ? '#6b7280' : '#888888'} fontSize={11} tickLine={false} />
                 <Tooltip
                   contentStyle={{
-                    backgroundColor: '#141414',
-                    borderColor: '#262626',
+                    backgroundColor: isLight ? '#ffffff' : '#141414',
+                    borderColor: isLight ? '#e5e7eb' : '#262626',
                     borderRadius: '0.75rem',
                     fontSize: '11px',
-                    color: '#ededed',
+                    color: isLight ? '#111827' : '#ededed',
                   }}
                 />
                 <Area
                   type="monotone"
                   dataKey="documents"
-                  stroke="#ffffff"
+                  stroke={isLight ? '#111827' : '#ffffff'}
                   strokeWidth={2}
                   fillOpacity={1}
                   fill="url(#colorDocs)"
@@ -147,7 +150,7 @@ export function MetricsDashboard() {
                 <Area
                   type="monotone"
                   dataKey="passRate"
-                  stroke="#888888"
+                  stroke={isLight ? '#10b981' : '#888888'}
                   strokeWidth={1.5}
                   fill="none"
                 />
@@ -170,16 +173,16 @@ export function MetricsDashboard() {
             <div className="h-48 w-full">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={severityDistributionData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#262626" vertical={false} />
-                  <XAxis dataKey="name" stroke="#888888" fontSize={11} tickLine={false} />
-                  <YAxis stroke="#888888" fontSize={11} tickLine={false} />
+                  <CartesianGrid strokeDasharray="3 3" stroke={isLight ? '#e5e7eb' : '#262626'} vertical={false} />
+                  <XAxis dataKey="name" stroke={isLight ? '#6b7280' : '#888888'} fontSize={11} tickLine={false} />
+                  <YAxis stroke={isLight ? '#6b7280' : '#888888'} fontSize={11} tickLine={false} />
                   <Tooltip
                     contentStyle={{
-                      backgroundColor: '#141414',
-                      borderColor: '#262626',
+                      backgroundColor: isLight ? '#ffffff' : '#141414',
+                      borderColor: isLight ? '#e5e7eb' : '#262626',
                       borderRadius: '0.75rem',
                       fontSize: '11px',
-                      color: '#f8fafc',
+                      color: isLight ? '#111827' : '#f8fafc',
                     }}
                   />
                   <Bar dataKey="count" radius={[6, 6, 0, 0]}>
