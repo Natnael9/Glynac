@@ -10,9 +10,16 @@ import {
   Plus,
   HelpCircle,
   Move,
+  X,
 } from 'lucide-react';
 
-export function NodePalette({ onAddNode }: { onAddNode: (type: RuleNodeType) => void }) {
+interface NodePaletteProps {
+  onAddNode: (type: RuleNodeType) => void;
+  isOpen?: boolean;
+  onClose?: () => void;
+}
+
+export function NodePalette({ onAddNode, isOpen, onClose }: NodePaletteProps) {
   const nodeTypes: {
     type: RuleNodeType;
     label: string;
@@ -43,16 +50,32 @@ export function NodePalette({ onAddNode }: { onAddNode: (type: RuleNodeType) => 
     },
   ];
 
-  return (
-    <div className="w-64 bg-[#050505] border-r border-[#1a1a1a] p-3.5 flex flex-col h-full select-none shrink-0">
-      <div className="pb-3 border-b border-[#1a1a1a] mb-3">
-        <h4 className="text-xs font-bold text-white uppercase tracking-wider flex items-center gap-1.5">
-          <Move className="h-3.5 w-3.5 text-[#ffffff]" />
-          Node Palette
-        </h4>
-        <p className="text-[10px] text-[#888888] mt-0.5">
-          Click or drag onto canvas to insert into DAG
-        </p>
+  const handleSelect = (type: RuleNodeType) => {
+    onAddNode(type);
+    if (onClose) onClose();
+  };
+
+  const paletteContent = (
+    <div className="w-full h-full bg-[#050505] p-3.5 flex flex-col select-none">
+      <div className="pb-3 border-b border-[#1a1a1a] mb-3 flex items-center justify-between">
+        <div>
+          <h4 className="text-xs font-bold text-white uppercase tracking-wider flex items-center gap-1.5">
+            <Move className="h-3.5 w-3.5 text-[#ffffff]" />
+            Node Palette
+          </h4>
+          <p className="text-[10px] text-[#888888] mt-0.5">
+            Click or drag onto canvas to insert into DAG
+          </p>
+        </div>
+        {onClose && (
+          <button
+            onClick={onClose}
+            className="md:hidden p-1 rounded-lg text-[#888888] hover:text-white hover:bg-[#141414] transition-colors cursor-pointer"
+            title="Close Palette"
+          >
+            <X className="h-4 w-4" />
+          </button>
+        )}
       </div>
 
       <div className="space-y-2 flex-1 overflow-y-auto">
@@ -60,8 +83,8 @@ export function NodePalette({ onAddNode }: { onAddNode: (type: RuleNodeType) => 
           <button
             key={item.type}
             type="button"
-            onClick={() => onAddNode(item.type)}
-            className={`w-full p-2.5 rounded-xl border border-[#1a1a1a] text-left transition-all ${item.color} group hover:scale-[1.02] shadow-sm`}
+            onClick={() => handleSelect(item.type)}
+            className={`w-full p-2.5 rounded-xl border border-[#1a1a1a] text-left transition-all ${item.color} group hover:scale-[1.02] shadow-sm cursor-pointer`}
           >
             <div className="flex items-center justify-between mb-1">
               <div className="flex items-center gap-2">
@@ -89,6 +112,28 @@ export function NodePalette({ onAddNode }: { onAddNode: (type: RuleNodeType) => 
         </p>
       </div>
     </div>
+  );
+
+  return (
+    <>
+      {/* Desktop Persistent Palette */}
+      <aside className="hidden md:flex flex-col h-full bg-[#050505] border-r border-[#1a1a1a] w-64 shrink-0 select-none">
+        {paletteContent}
+      </aside>
+
+      {/* Mobile Slide-Over Drawer */}
+      {isOpen && (
+        <div className="md:hidden fixed inset-0 z-50 flex">
+          <div
+            onClick={onClose}
+            className="fixed inset-0 bg-black/75 backdrop-blur-xs transition-opacity"
+          />
+          <div className="relative w-72 max-w-[85vw] bg-[#050505] border-r border-[#1a1a1a] h-full shadow-2xl flex flex-col z-10 animate-in slide-in-from-left duration-200">
+            {paletteContent}
+          </div>
+        </div>
+      )}
+    </>
   );
 }
 

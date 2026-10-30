@@ -67,8 +67,8 @@ export function RulePolicyManager() {
       </div>
 
       {/* Rules Table */}
-      <div className="border border-[#1a1a1a] rounded-2xl overflow-hidden bg-[#0a0a0a] shadow-xl">
-        <table className="w-full text-left text-xs">
+      <div className="border border-[#1a1a1a] rounded-2xl overflow-x-auto bg-[#0a0a0a] shadow-xl">
+        <table className="w-full text-left text-xs min-w-[480px]">
           <thead className="bg-[#050505] text-[#888888] font-semibold border-b border-[#1a1a1a]">
             <tr>
               <th className="py-3 px-4">Rule Code & Title</th>

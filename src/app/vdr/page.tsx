@@ -31,25 +31,25 @@ export default function VDRPage() {
           </div>
 
           {/* Simple Clean Monochrome Metrics */}
-          <div className="flex items-center gap-2 text-xs">
-            <div className="flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#0a0a0a] border border-[#222222]">
-              <span className="text-[#666666] text-[11px]">Files:</span>
-              <span className="font-semibold text-white text-[11px] font-mono">{totalDocs}</span>
+          <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 text-xs">
+            <div className="flex items-center gap-1.5 px-2 sm:px-2.5 py-1 rounded bg-[#0a0a0a] border border-[#222222]">
+              <span className="text-[#666666] text-[10px] sm:text-[11px]">Files:</span>
+              <span className="font-semibold text-white text-[10px] sm:text-[11px] font-mono">{totalDocs}</span>
             </div>
 
-            <div className="flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#0a0a0a] border border-[#222222]">
-              <span className="text-[#666666] text-[11px]">Flagged:</span>
-              <span className="font-semibold text-white text-[11px] font-mono">{flaggedCount}</span>
+            <div className="flex items-center gap-1.5 px-2 sm:px-2.5 py-1 rounded bg-[#0a0a0a] border border-[#222222]">
+              <span className="text-[#666666] text-[10px] sm:text-[11px]">Flagged:</span>
+              <span className="font-semibold text-white text-[10px] sm:text-[11px] font-mono">{flaggedCount}</span>
             </div>
 
-            <div className="flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#0a0a0a] border border-[#222222]">
-              <span className="text-[#666666] text-[11px]">Restricted:</span>
-              <span className="font-semibold text-white text-[11px] font-mono">{restrictedCount}</span>
+            <div className="flex items-center gap-1.5 px-2 sm:px-2.5 py-1 rounded bg-[#0a0a0a] border border-[#222222]">
+              <span className="text-[#666666] text-[10px] sm:text-[11px]">Restricted:</span>
+              <span className="font-semibold text-white text-[10px] sm:text-[11px] font-mono">{restrictedCount}</span>
             </div>
 
             <Link
               href="/chat"
-              className="px-2.5 py-1 rounded bg-[#ffffff] text-[#000000] hover:bg-[#eaeaea] text-[11px] font-medium transition-colors"
+              className="px-2.5 py-1 rounded bg-[#ffffff] text-[#000000] hover:bg-[#eaeaea] text-[10px] sm:text-[11px] font-medium transition-colors"
             >
               Ask AI
             </Link>
@@ -58,7 +58,7 @@ export default function VDRPage() {
       </div>
 
       {/* Main Split-Screen Workspace */}
-      <div className="flex-1 flex overflow-hidden">
+      <div className="flex-1 flex overflow-hidden relative">
         {/* Left: Dynamic File Explorer */}
         <div className={`h-full transition-all duration-150 ${activeDoc ? 'w-full lg:w-3/5 xl:w-7/12' : 'w-full'}`}>
           <FileExplorer />
@@ -66,9 +66,17 @@ export default function VDRPage() {
 
         {/* Right: In-App Document Previewer */}
         {activeDoc && (
-          <div className="hidden lg:block lg:w-2/5 xl:w-5/12 h-full border-l border-[#1a1a1a] bg-[#050505]">
-            <DocumentPreviewer />
-          </div>
+          <>
+            {/* Desktop split view */}
+            <div className="hidden lg:block lg:w-2/5 xl:w-5/12 h-full border-l border-[#1a1a1a] bg-[#050505]">
+              <DocumentPreviewer />
+            </div>
+
+            {/* Mobile / Tablet Full-Screen Sheet */}
+            <div className="lg:hidden fixed inset-0 z-40 bg-[#050505] flex flex-col animate-in slide-in-from-right duration-200">
+              <DocumentPreviewer />
+            </div>
+          </>
         )}
       </div>
 

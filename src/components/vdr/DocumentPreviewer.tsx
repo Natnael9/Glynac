@@ -17,6 +17,7 @@ import {
   FileCode,
   Tag,
   Info,
+  ChevronLeft,
 } from 'lucide-react';
 
 export function DocumentPreviewer() {
@@ -109,9 +110,19 @@ export function DocumentPreviewer() {
   return (
     <div className="h-full flex flex-col bg-[#050505] border-l border-[#1a1a1a] overflow-hidden select-text">
       {/* Top Header */}
-      <div className="p-4 border-b border-[#1a1a1a] bg-[#0a0a0a] flex items-center justify-between gap-2">
-        <div className="flex items-center gap-2.5 min-w-0">
-          <div className="p-2 rounded-lg bg-[#0a0a0a] border border-[#1a1a1a] shrink-0">
+      <div className="p-3 sm:p-4 border-b border-[#1a1a1a] bg-[#0a0a0a] flex items-center justify-between gap-2">
+        <div className="flex items-center gap-2 sm:gap-2.5 min-w-0">
+          {/* Mobile Back Button */}
+          <button
+            onClick={() => setSelectedDocId(null)}
+            className="lg:hidden flex items-center gap-1 px-2 py-1 rounded-lg bg-[#141414] border border-[#262626] text-white text-xs font-semibold hover:bg-[#202020] transition-colors shrink-0 cursor-pointer"
+            title="Back to File Explorer"
+          >
+            <ChevronLeft className="h-3.5 w-3.5" />
+            <span className="text-[11px]">Back</span>
+          </button>
+
+          <div className="p-1.5 sm:p-2 rounded-lg bg-[#0a0a0a] border border-[#1a1a1a] shrink-0">
             <FileText className="h-4 w-4 text-[#ffffff]" />
           </div>
           <div className="min-w-0">

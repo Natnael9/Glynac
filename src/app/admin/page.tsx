@@ -52,10 +52,10 @@ export default function AdminPage() {
         </div>
 
         {/* Tab Selector */}
-        <div className="flex items-center gap-1 mt-4 pt-2 border-t border-[#1a1a1a] overflow-x-auto text-xs">
+        <div className="flex items-center gap-1.5 mt-4 pt-2 border-t border-[#1a1a1a] overflow-x-auto text-xs pb-1">
           <button
             onClick={() => setActiveTab('metrics')}
-            className={`flex items-center gap-2 px-3 py-1.5 rounded-lg font-semibold transition-all ${
+            className={`flex items-center gap-2 px-3 py-1.5 rounded-lg font-semibold shrink-0 whitespace-nowrap transition-all ${
               activeTab === 'metrics'
                 ? 'bg-[#ffffff] text-[#000000]'
                 : 'text-[#888888] hover:text-[#ededed] hover:bg-[#0a0a0a]'
@@ -67,7 +67,7 @@ export default function AdminPage() {
 
           <button
             onClick={() => setActiveTab('rbac')}
-            className={`flex items-center gap-2 px-3 py-1.5 rounded-lg font-semibold transition-all ${
+            className={`flex items-center gap-2 px-3 py-1.5 rounded-lg font-semibold shrink-0 whitespace-nowrap transition-all ${
               activeTab === 'rbac'
                 ? 'bg-[#ffffff] text-[#000000]'
                 : 'text-[#888888] hover:text-[#ededed] hover:bg-[#0a0a0a]'
@@ -79,7 +79,7 @@ export default function AdminPage() {
 
           <button
             onClick={() => setActiveTab('policies')}
-            className={`flex items-center gap-2 px-3 py-1.5 rounded-lg font-semibold transition-all ${
+            className={`flex items-center gap-2 px-3 py-1.5 rounded-lg font-semibold shrink-0 whitespace-nowrap transition-all ${
               activeTab === 'policies'
                 ? 'bg-[#ffffff] text-[#000000]'
                 : 'text-[#888888] hover:text-[#ededed] hover:bg-[#0a0a0a]'
@@ -91,7 +91,7 @@ export default function AdminPage() {
 
           <button
             onClick={() => setActiveTab('flags')}
-            className={`flex items-center gap-2 px-3 py-1.5 rounded-lg font-semibold transition-all ${
+            className={`flex items-center gap-2 px-3 py-1.5 rounded-lg font-semibold shrink-0 whitespace-nowrap transition-all ${
               activeTab === 'flags'
                 ? 'bg-[#ffffff] text-[#000000]'
                 : 'text-[#888888] hover:text-[#ededed] hover:bg-[#0a0a0a]'

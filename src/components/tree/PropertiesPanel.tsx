@@ -33,7 +33,14 @@ export function PropertiesPanel({
   const data = selectedNode.data;
 
   return (
-    <div className="w-80 bg-[#050505] border-l border-[#1a1a1a] flex flex-col h-full shadow-2xl select-none z-10 shrink-0">
+    <>
+      {/* Mobile Backdrop */}
+      <div
+        onClick={onClose}
+        className="md:hidden fixed inset-0 z-40 bg-black/75 backdrop-blur-xs transition-opacity"
+      />
+
+      <div className="fixed md:relative inset-y-0 right-0 z-50 md:z-10 w-full sm:w-80 md:w-80 bg-[#050505] border-l border-[#1a1a1a] flex flex-col h-full shadow-2xl select-none shrink-0 animate-in slide-in-from-right duration-200">
       {/* Header */}
       <div className="p-4 border-b border-[#1a1a1a] bg-[#0a0a0a] flex items-center justify-between">
         <div className="flex items-center gap-2">
@@ -177,6 +184,7 @@ export function PropertiesPanel({
         </button>
       </div>
     </div>
+    </>
   );
 }
 

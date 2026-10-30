@@ -38,6 +38,7 @@ import {
   Maximize2,
   FileCode,
   LayoutTemplate,
+  Plus,
 } from 'lucide-react';
 import { useTheme } from '@/lib/themeContext';
 
@@ -46,7 +47,8 @@ export default function TreePage() {
   const isLight = theme === 'light';
   const [nodes, setNodes] = useState<Node<RuleNodeData>[]>(initialTreeNodes);
   const [edges, setEdges] = useState<Edge[]>(initialTreeEdges);
-  const [selectedNodeId, setSelectedNodeId] = useState<string | null>('rule-2210');
+  const [selectedNodeId, setSelectedNodeId] = useState<string | null>(null);
+  const [isPaletteOpen, setIsPaletteOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [isJsonModalOpen, setIsJsonModalOpen] = useState(false);
   const [validationAlert, setValidationAlert] = useState<{
@@ -202,18 +204,27 @@ export default function TreePage() {
   return (
     <div className="flex flex-col h-full bg-[#000000] overflow-hidden select-none">
       {/* Top Controls Toolbar */}
-      <div className="p-3 border-b border-[#1a1a1a] bg-[#050505] flex flex-wrap items-center justify-between gap-3 z-10">
+      <div className="p-3 border-b border-[#1a1a1a] bg-[#050505] flex flex-wrap items-center justify-between gap-2.5 z-10">
         <div>
-          <h2 className="text-base font-bold text-white tracking-tight">
+          <h2 className="text-sm sm:text-base font-bold text-white tracking-tight">
             Policy Graph Editor
           </h2>
-          <p className="text-xs text-[#888888]">
+          <p className="text-[11px] text-[#888888] hidden sm:block">
             Interactive rule tree and parent-child dependency graph
           </p>
         </div>
 
         {/* Toolbar Action Buttons */}
-        <div className="flex items-center gap-2 text-xs">
+        <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 text-xs">
+          {/* Mobile Open Palette Button */}
+          <button
+            onClick={() => setIsPaletteOpen(true)}
+            className="md:hidden flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-white text-black font-semibold text-xs shadow-sm hover:bg-[#e0e0e0] transition-colors cursor-pointer"
+          >
+            <Plus className="h-3.5 w-3.5" />
+            <span>Add Node</span>
+          </button>
+
           {/* Search Box */}
           <div className="relative">
             <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-[#666666]" />
@@ -221,30 +232,32 @@ export default function TreePage() {
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search rule node..."
-              className="pl-8 pr-3 py-1.5 bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg text-xs text-white placeholder-slate-500 focus:outline-none focus:border-[#333333] w-44"
+              placeholder="Search node..."
+              className="pl-8 pr-2.5 py-1.5 bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg text-xs text-white placeholder-slate-500 focus:outline-none focus:border-[#333333] w-28 sm:w-44"
             />
           </div>
 
           <button
             onClick={handleAutoLayout}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#0a0a0a] border border-[#1a1a1a] hover:border-[#262626] text-[#d1d1d1] hover:text-white font-medium transition-colors"
+            className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg bg-[#0a0a0a] border border-[#1a1a1a] hover:border-[#262626] text-[#d1d1d1] hover:text-white font-medium transition-colors"
+            title="Auto-Layout Hierarchy"
           >
             <LayoutTemplate className="h-3.5 w-3.5 text-[#ededed]" />
-            <span>Auto-Layout</span>
+            <span className="hidden sm:inline">Auto-Layout</span>
           </button>
 
           <button
             onClick={handleValidateTree}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#0a0a0a] border border-[#1a1a1a] hover:border-[#262626] text-[#d1d1d1] hover:text-white font-medium transition-colors"
+            className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg bg-[#0a0a0a] border border-[#1a1a1a] hover:border-[#262626] text-[#d1d1d1] hover:text-white font-medium transition-colors"
+            title="Validate DAG"
           >
             <CheckCircle2 className="h-3.5 w-3.5 text-emerald-400" />
-            <span>Validate DAG</span>
+            <span className="hidden sm:inline">Validate</span>
           </button>
 
           <button
             onClick={() => setIsJsonModalOpen(true)}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white hover:bg-[#e0e0e0] text-black font-semibold transition-colors shadow-sm"
+            className="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white hover:bg-[#e0e0e0] text-black font-semibold transition-colors shadow-sm"
           >
             <FileCode className="h-3.5 w-3.5" />
             <span>JSON Engine</span>
@@ -281,7 +294,11 @@ export default function TreePage() {
       {/* Workspace Area: Palette | Canvas | Inspector */}
       <div className="flex-1 flex overflow-hidden relative">
         {/* Left Drag & Click Palette */}
-        <NodePalette onAddNode={handleAddNode} />
+        <NodePalette
+          onAddNode={handleAddNode}
+          isOpen={isPaletteOpen}
+          onClose={() => setIsPaletteOpen(false)}
+        />
 
         {/* Center Interactive Flow Canvas */}
         <div className="flex-1 h-full relative bg-[#000000]">
@@ -307,7 +324,7 @@ export default function TreePage() {
             <MiniMap
               nodeColor={isLight ? '#111827' : '#ffffff'}
               maskColor={isLight ? 'rgba(243, 244, 246, 0.7)' : 'rgba(0, 0, 0, 0.85)'}
-              className={isLight ? '!bg-white !border !border-[#e5e7eb] !rounded-xl overflow-hidden' : '!bg-[#050505] !border !border-[#1a1a1a] !rounded-xl overflow-hidden'}
+              className={isLight ? '!bg-white !border !border-[#e5e7eb] !rounded-xl overflow-hidden hidden sm:block' : '!bg-[#050505] !border !border-[#1a1a1a] !rounded-xl overflow-hidden hidden sm:block'}
             />
           </ReactFlow>
         </div>

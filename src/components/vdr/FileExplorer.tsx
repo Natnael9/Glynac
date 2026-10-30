@@ -228,7 +228,7 @@ export function FileExplorer() {
         </div>
 
         {/* Folder Filter Bar - Uniform height buttons */}
-        <div className="hidden lg:flex items-center gap-1.5 overflow-x-auto">
+        <div className="flex items-center gap-1.5 overflow-x-auto max-w-full pb-1 sm:pb-0">
           <button
             onClick={() => setSelectedFolderId(null)}
             className={`h-7 px-3 rounded text-[11px] font-medium transition-colors whitespace-nowrap shrink-0 flex items-center ${
@@ -341,8 +341,8 @@ export function FileExplorer() {
           </div>
         ) : viewMode === 'table' ? (
           /* Table View */
-          <div className="border border-[#1a1a1a] rounded-xl overflow-hidden bg-[#0a0a0a]">
-            <table className="w-full text-left text-xs">
+          <div className="border border-[#1a1a1a] rounded-xl overflow-x-auto bg-[#0a0a0a]">
+            <table className="w-full text-left text-xs min-w-[320px]">
               <thead className="bg-[#0a0a0a] text-[#888888] font-semibold border-b border-[#1a1a1a]">
                 <tr>
                   <th className="py-2.5 px-3 w-8">
@@ -430,7 +430,7 @@ export function FileExplorer() {
                                 </button>
                               </div>
                             ) : (
-                              <div className={`truncate ${isSelected ? 'text-white font-semibold' : 'text-[#ededed] font-medium group-hover:text-white'}`}>
+                              <div className={`truncate max-w-[130px] sm:max-w-xs md:max-w-md ${isSelected ? 'text-white font-semibold' : 'text-[#ededed] font-medium group-hover:text-white'}`}>
                                 {doc.name}
                               </div>
                             )}

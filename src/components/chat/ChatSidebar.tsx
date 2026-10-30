@@ -13,9 +13,15 @@ import {
   Sparkles,
   Calendar,
   MessageCircle,
+  X,
 } from 'lucide-react';
 
-export function ChatSidebar() {
+interface ChatSidebarProps {
+  isOpen?: boolean;
+  onClose?: () => void;
+}
+
+export function ChatSidebar({ isOpen, onClose }: ChatSidebarProps) {
   const {
     threads,
     activeThreadId,
@@ -51,8 +57,18 @@ export function ChatSidebar() {
     setRenamingId(null);
   };
 
-  return (
-    <div className="flex flex-col h-full bg-[#050505] border-r border-[#1a1a1a] w-80 shrink-0 select-none">
+  const handleSelectThread = (id: string) => {
+    setActiveThreadId(id);
+    if (onClose) onClose();
+  };
+
+  const handleNewChat = () => {
+    createNewThread();
+    if (onClose) onClose();
+  };
+
+  const sidebarContent = (
+    <div className="flex flex-col h-full bg-[#050505] w-full select-none">
       {/* Top Header */}
       <div className="p-4 border-b border-[#1a1a1a] bg-[#0a0a0a]">
         <div className="flex items-center justify-between mb-3">
@@ -64,13 +80,24 @@ export function ChatSidebar() {
               Compliance Threads
             </h3>
           </div>
-          <button
-            onClick={() => createNewThread()}
-            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-white text-black hover:bg-[#e0e0e0] text-xs font-semibold shadow-sm transition-colors"
-          >
-            <Plus className="h-3.5 w-3.5" />
-            <span>New Chat</span>
-          </button>
+          <div className="flex items-center gap-1.5">
+            <button
+              onClick={handleNewChat}
+              className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-white text-black hover:bg-[#e0e0e0] text-xs font-semibold shadow-sm transition-colors cursor-pointer"
+            >
+              <Plus className="h-3.5 w-3.5" />
+              <span>New Chat</span>
+            </button>
+            {onClose && (
+              <button
+                onClick={onClose}
+                className="md:hidden p-1.5 rounded-lg text-[#888888] hover:text-white hover:bg-[#141414] transition-colors cursor-pointer"
+                title="Close sidebar"
+              >
+                <X className="h-4 w-4" />
+              </button>
+            )}
+          </div>
         </div>
 
         {/* Search Input */}
@@ -104,7 +131,7 @@ export function ChatSidebar() {
                   renamingId={renamingId}
                   renameValue={renameValue}
                   setRenameValue={setRenameValue}
-                  onSelect={() => setActiveThreadId(thread.id)}
+                  onSelect={() => handleSelectThread(thread.id)}
                   onPin={(e) => {
                     e.stopPropagation();
                     pinThread(thread.id);
@@ -141,7 +168,7 @@ export function ChatSidebar() {
                   renamingId={renamingId}
                   renameValue={renameValue}
                   setRenameValue={setRenameValue}
-                  onSelect={() => setActiveThreadId(thread.id)}
+                  onSelect={() => handleSelectThread(thread.id)}
                   onPin={(e) => {
                     e.stopPropagation();
                     pinThread(thread.id);
@@ -159,6 +186,28 @@ export function ChatSidebar() {
         </div>
       </div>
     </div>
+  );
+
+  return (
+    <>
+      {/* Desktop Persistent Sidebar */}
+      <aside className="hidden md:flex flex-col h-full bg-[#050505] border-r border-[#1a1a1a] w-80 shrink-0 select-none">
+        {sidebarContent}
+      </aside>
+
+      {/* Mobile Slide-Over Drawer */}
+      {isOpen && (
+        <div className="md:hidden fixed inset-0 z-50 flex">
+          <div
+            onClick={onClose}
+            className="fixed inset-0 bg-black/75 backdrop-blur-xs transition-opacity"
+          />
+          <div className="relative w-80 max-w-[85vw] bg-[#050505] border-r border-[#1a1a1a] h-full shadow-2xl flex flex-col z-10 animate-in slide-in-from-left duration-200">
+            {sidebarContent}
+          </div>
+        </div>
+      )}
+    </>
   );
 }
 

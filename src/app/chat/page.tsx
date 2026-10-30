@@ -1,12 +1,13 @@
 'use client';
 
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { useChat } from '@/lib/chatContext';
 import { ChatSidebar } from '@/components/chat/ChatSidebar';
 import { MessageBubble } from '@/components/chat/MessageBubble';
 import { ChatInput } from '@/components/chat/ChatInput';
 import { CitationPopover } from '@/components/chat/CitationPopover';
 import {
+  MessageSquare,
   MessageSquareCode,
   Sparkles,
   ShieldCheck,
@@ -18,6 +19,7 @@ import Link from 'next/link';
 
 export default function ChatPage() {
   const { activeThread, isStreaming } = useChat();
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -27,32 +29,44 @@ export default function ChatPage() {
   return (
     <div className="flex h-full w-full bg-[#000000] overflow-hidden select-none">
       {/* Left Conversation Threads Sidebar */}
-      <ChatSidebar />
+      <ChatSidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
 
       {/* Main Chat Interface */}
       <div className="flex-1 flex flex-col h-full min-w-0 bg-[#050505]">
         {/* Chat Thread Header */}
-        <div className="p-4 border-b border-[#1a1a1a] bg-[#050505] flex items-center justify-between gap-3">
-          <div className="min-w-0">
-            <div className="flex items-center gap-2">
-              <h2 className="text-base font-bold text-white tracking-tight truncate">
-                {activeThread ? activeThread.title : 'Compliance AI Assistant'}
-              </h2>
-              {activeThread?.pinned && (
-                <span className="p-0.5 rounded bg-amber-500/10 text-amber-400">
-                  <Pin className="h-3.5 w-3.5 fill-amber-400" />
-                </span>
-              )}
+        <div className="p-3 sm:p-4 border-b border-[#1a1a1a] bg-[#050505] flex items-center justify-between gap-2 sm:gap-3">
+          <div className="flex items-center gap-2 min-w-0">
+            {/* Mobile Open Threads Button */}
+            <button
+              onClick={() => setIsSidebarOpen(true)}
+              className="md:hidden flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-[#0a0a0a] border border-[#1a1a1a] hover:border-[#333333] text-xs font-semibold text-white hover:bg-[#141414] transition-colors shrink-0 cursor-pointer"
+              title="View Conversation Threads"
+            >
+              <MessageSquare className="h-3.5 w-3.5 text-[#ffffff]" />
+              <span className="text-[11px]">Threads</span>
+            </button>
+
+            <div className="min-w-0">
+              <div className="flex items-center gap-1.5 sm:gap-2">
+                <h2 className="text-sm sm:text-base font-bold text-white tracking-tight truncate">
+                  {activeThread ? activeThread.title : 'Compliance AI Assistant'}
+                </h2>
+                {activeThread?.pinned && (
+                  <span className="p-0.5 rounded bg-amber-500/10 text-amber-400 shrink-0">
+                    <Pin className="h-3 w-3 fill-amber-400" />
+                  </span>
+                )}
+              </div>
+              <p className="text-[11px] text-[#888888] truncate hidden sm:block">
+                Automated regulatory compliance analysis & citation lookup
+              </p>
             </div>
-            <p className="text-xs text-[#888888]">
-              Automated regulatory compliance analysis & citation lookup
-            </p>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 shrink-0">
             <Link
               href="/vdr"
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#0a0a0a] border border-[#1a1a1a] text-xs font-medium text-[#d1d1d1] hover:text-white hover:bg-[#141414] transition-colors"
+              className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg bg-[#0a0a0a] border border-[#1a1a1a] text-xs font-medium text-[#d1d1d1] hover:text-white hover:bg-[#141414] transition-colors"
             >
               <Lock className="h-3.5 w-3.5 text-[#ffffff]" />
               <span className="hidden sm:inline">Open Data Room</span>
