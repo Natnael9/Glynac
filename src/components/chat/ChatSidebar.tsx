@@ -52,12 +52,12 @@ export function ChatSidebar() {
   };
 
   return (
-    <div className="flex flex-col h-full bg-slate-950/70 border-r border-slate-800/80 w-80 shrink-0 select-none">
+    <div className="flex flex-col h-full bg-[#050505] border-r border-[#1a1a1a] w-80 shrink-0 select-none">
       {/* Top Header */}
-      <div className="p-4 border-b border-slate-800/80 bg-slate-900/30">
+      <div className="p-4 border-b border-[#1a1a1a] bg-[#0a0a0a]">
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center gap-2">
-            <div className="p-1.5 rounded-lg bg-blue-600/20 text-blue-400">
+            <div className="p-1.5 rounded-lg bg-[#ffffff] !text-black text-[#ffffff]">
               <Sparkles className="h-4 w-4" />
             </div>
             <h3 className="text-xs font-bold text-white tracking-wide uppercase">
@@ -66,7 +66,7 @@ export function ChatSidebar() {
           </div>
           <button
             onClick={() => createNewThread()}
-            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold shadow-md shadow-blue-600/20 transition-colors"
+            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-[#ffffff] !text-black hover:bg-[#e5e5e5] text-white text-xs font-semibold shadow-md shadow-blue-600/20 transition-colors"
           >
             <Plus className="h-3.5 w-3.5" />
             <span>New Chat</span>
@@ -75,13 +75,13 @@ export function ChatSidebar() {
 
         {/* Search Input */}
         <div className="relative">
-          <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-slate-500" />
+          <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-[#666666]" />
           <input
             type="text"
             value={searchFilter}
             onChange={(e) => setSearchFilter(e.target.value)}
             placeholder="Search chat conversations..."
-            className="w-full pl-8 pr-3 py-1.5 bg-slate-900/90 border border-slate-800 rounded-lg text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-blue-500 transition-colors"
+            className="w-full pl-8 pr-3 py-1.5 bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg text-xs text-[#ededed] placeholder-slate-500 focus:outline-none focus:border-[#333333] transition-colors"
           />
         </div>
       </div>
@@ -91,7 +91,7 @@ export function ChatSidebar() {
         {/* Pinned Threads */}
         {pinnedThreads.length > 0 && (
           <div>
-            <div className="flex items-center gap-1.5 text-[10px] font-bold text-slate-400 uppercase tracking-wider px-2 mb-1.5">
+            <div className="flex items-center gap-1.5 text-[10px] font-bold text-[#888888] uppercase tracking-wider px-2 mb-1.5">
               <Pin className="h-3 w-3 text-amber-400" />
               Pinned Inquiries
             </div>
@@ -123,12 +123,12 @@ export function ChatSidebar() {
 
         {/* Regular Threads */}
         <div>
-          <div className="flex items-center gap-1.5 text-[10px] font-bold text-slate-400 uppercase tracking-wider px-2 mb-1.5">
-            <Calendar className="h-3 w-3 text-blue-400" />
+          <div className="flex items-center gap-1.5 text-[10px] font-bold text-[#888888] uppercase tracking-wider px-2 mb-1.5">
+            <Calendar className="h-3 w-3 text-[#ffffff]" />
             Recent Conversations
           </div>
           {regularThreads.length === 0 ? (
-            <div className="text-center py-6 text-[11px] text-slate-400">
+            <div className="text-center py-6 text-[11px] text-[#888888]">
               No threads found matching filter.
             </div>
           ) : (
@@ -192,13 +192,13 @@ function ThreadItem({
       onClick={onSelect}
       className={`group relative flex items-center justify-between p-2.5 rounded-xl cursor-pointer transition-all ${
         isActive
-          ? 'bg-blue-600/15 border border-blue-500/40 text-white shadow-sm'
-          : 'border border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-900/50'
+          ? 'bg-[#ffffff] !text-black border border-[#333333] text-white shadow-sm'
+          : 'border border-transparent text-[#888888] hover:text-[#ededed] hover:bg-[#0a0a0a]'
       }`}
     >
       <div className="flex items-center gap-2.5 min-w-0 flex-1">
         <MessageCircle
-          className={`h-4 w-4 shrink-0 ${isActive ? 'text-blue-400' : 'text-slate-500'}`}
+          className={`h-4 w-4 shrink-0 ${isActive ? 'text-[#ffffff]' : 'text-[#666666]'}`}
         />
         {isRenaming ? (
           <div className="flex items-center gap-1 flex-1" onClick={(e) => e.stopPropagation()}>
@@ -209,12 +209,12 @@ function ThreadItem({
               onKeyDown={(e) => {
                 if (e.key === 'Enter') onRenameSave();
               }}
-              className="w-full px-2 py-0.5 bg-slate-950 border border-blue-500 rounded text-xs text-white focus:outline-none"
+              className="w-full px-2 py-0.5 bg-[#050505] border border-[#333333] rounded text-xs text-white focus:outline-none"
               autoFocus
             />
             <button
               onClick={onRenameSave}
-              className="p-1 rounded bg-blue-600 text-white hover:bg-blue-500"
+              className="p-1 rounded bg-[#ffffff] !text-black text-white hover:bg-[#e5e5e5]"
             >
               <Check className="h-3 w-3" />
             </button>
@@ -222,7 +222,7 @@ function ThreadItem({
         ) : (
           <div className="min-w-0 flex-1">
             <span className="block truncate font-medium text-xs leading-snug">{thread.title}</span>
-            <span className="text-[10px] text-slate-400">
+            <span className="text-[10px] text-[#888888]">
               {thread.messages.length} messages
             </span>
           </div>
@@ -235,21 +235,21 @@ function ThreadItem({
           <button
             onClick={onPin}
             title={thread.pinned ? 'Unpin Thread' : 'Pin Thread'}
-            className="p-1 rounded hover:text-amber-400 hover:bg-slate-800 transition-colors"
+            className="p-1 rounded hover:text-amber-400 hover:bg-[#141414] transition-colors"
           >
             <Pin className={`h-3 w-3 ${thread.pinned ? 'text-amber-400 fill-amber-400' : ''}`} />
           </button>
           <button
             onClick={onRenameStart}
             title="Rename"
-            className="p-1 rounded hover:text-white hover:bg-slate-800 transition-colors"
+            className="p-1 rounded hover:text-white hover:bg-[#141414] transition-colors"
           >
             <Edit2 className="h-3 w-3" />
           </button>
           <button
             onClick={onDelete}
             title="Delete"
-            className="p-1 rounded hover:text-red-400 hover:bg-slate-800 transition-colors"
+            className="p-1 rounded hover:text-red-400 hover:bg-[#141414] transition-colors"
           >
             <Trash2 className="h-3 w-3" />
           </button>

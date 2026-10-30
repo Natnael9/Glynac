@@ -44,13 +44,13 @@ export function NodePalette({ onAddNode }: { onAddNode: (type: RuleNodeType) => 
   ];
 
   return (
-    <div className="w-64 bg-slate-950/80 border-r border-slate-800/80 p-3.5 flex flex-col h-full select-none shrink-0">
-      <div className="pb-3 border-b border-slate-800/80 mb-3">
+    <div className="w-64 bg-[#050505] border-r border-[#1a1a1a] p-3.5 flex flex-col h-full select-none shrink-0">
+      <div className="pb-3 border-b border-[#1a1a1a] mb-3">
         <h4 className="text-xs font-bold text-white uppercase tracking-wider flex items-center gap-1.5">
-          <Move className="h-3.5 w-3.5 text-blue-400" />
+          <Move className="h-3.5 w-3.5 text-[#ffffff]" />
           Node Palette
         </h4>
-        <p className="text-[10px] text-slate-400 mt-0.5">
+        <p className="text-[10px] text-[#888888] mt-0.5">
           Click or drag onto canvas to insert into DAG
         </p>
       </div>
@@ -61,27 +61,27 @@ export function NodePalette({ onAddNode }: { onAddNode: (type: RuleNodeType) => 
             key={item.type}
             type="button"
             onClick={() => onAddNode(item.type)}
-            className={`w-full p-2.5 rounded-xl border border-slate-800/80 text-left transition-all ${item.color} group hover:scale-[1.02] shadow-sm`}
+            className={`w-full p-2.5 rounded-xl border border-[#1a1a1a] text-left transition-all ${item.color} group hover:scale-[1.02] shadow-sm`}
           >
             <div className="flex items-center justify-between mb-1">
               <div className="flex items-center gap-2">
-                <div className="p-1.5 rounded-lg bg-slate-900 border border-slate-800">
+                <div className="p-1.5 rounded-lg bg-[#0a0a0a] border border-[#1a1a1a]">
                   {item.icon}
                 </div>
-                <span className="font-bold text-xs text-slate-200 group-hover:text-white">
+                <span className="font-bold text-xs text-[#ededed] group-hover:text-white">
                   {item.label}
                 </span>
               </div>
-              <Plus className="h-3.5 w-3.5 text-slate-500 group-hover:text-white" />
+              <Plus className="h-3.5 w-3.5 text-[#666666] group-hover:text-white" />
             </div>
-            <p className="text-[10px] text-slate-400 leading-snug pl-8">{item.desc}</p>
+            <p className="text-[10px] text-[#888888] leading-snug pl-8">{item.desc}</p>
           </button>
         ))}
       </div>
 
-      <div className="p-3 rounded-xl bg-slate-900/60 border border-slate-800/80 text-[11px] text-slate-400 mt-auto">
-        <div className="font-semibold text-slate-300 mb-1 flex items-center gap-1">
-          <HelpCircle className="h-3.5 w-3.5 text-blue-400" />
+      <div className="p-3 rounded-xl bg-[#0a0a0a] border border-[#1a1a1a] text-[11px] text-[#888888] mt-auto">
+        <div className="font-semibold text-[#d1d1d1] mb-1 flex items-center gap-1">
+          <HelpCircle className="h-3.5 w-3.5 text-[#ffffff]" />
           Workflow Guide
         </div>
         <p className="text-[10px] leading-relaxed">

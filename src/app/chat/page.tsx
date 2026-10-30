@@ -30,11 +30,11 @@ export default function ChatPage() {
       <ChatSidebar />
 
       {/* Main Chat Interface */}
-      <div className="flex-1 flex flex-col h-full min-w-0 bg-slate-950/40">
+      <div className="flex-1 flex flex-col h-full min-w-0 bg-[#050505]">
         {/* Chat Thread Header */}
-        <div className="p-4 border-b border-slate-800/80 bg-slate-950/60 flex items-center justify-between gap-3">
+        <div className="p-4 border-b border-[#1a1a1a] bg-[#050505] flex items-center justify-between gap-3">
           <div className="flex items-center gap-2.5 min-w-0">
-            <div className="p-2 rounded-xl bg-blue-600/15 text-blue-400 border border-blue-500/20 shrink-0">
+            <div className="p-2 rounded-xl bg-[#ffffff] !text-black text-[#ffffff] border border-[#333333] shrink-0">
               <MessageSquareCode className="h-5 w-5" />
             </div>
             <div className="min-w-0">
@@ -48,7 +48,7 @@ export default function ChatPage() {
                   </span>
                 )}
               </div>
-              <p className="text-[11px] text-slate-400 flex items-center gap-1.5">
+              <p className="text-[11px] text-[#888888] flex items-center gap-1.5">
                 <ShieldCheck className="h-3 w-3 text-emerald-400" />
                 SEC & FINRA Audited AI Reasoning Engine
               </p>
@@ -58,29 +58,29 @@ export default function ChatPage() {
           <div className="flex items-center gap-2">
             <Link
               href="/vdr"
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-xs font-medium text-slate-300 hover:text-white hover:bg-slate-800 transition-colors"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#0a0a0a] border border-[#1a1a1a] text-xs font-medium text-[#d1d1d1] hover:text-white hover:bg-[#141414] transition-colors"
             >
-              <Lock className="h-3.5 w-3.5 text-blue-400" />
+              <Lock className="h-3.5 w-3.5 text-[#ffffff]" />
               <span className="hidden sm:inline">Open Data Room</span>
             </Link>
           </div>
         </div>
 
         {/* Message Feed */}
-        <div className="flex-1 overflow-y-auto divide-y divide-slate-800/40 select-text">
+        <div className="flex-1 overflow-y-auto divide-y divide-[#1a1a1a] select-text">
           {activeThread && activeThread.messages.length > 0 ? (
             activeThread.messages.map((message) => (
               <MessageBubble key={message.id} message={message} />
             ))
           ) : (
             <div className="h-full flex flex-col items-center justify-center p-8 text-center">
-              <div className="h-14 w-14 rounded-2xl bg-blue-600/10 border border-blue-500/20 flex items-center justify-center text-blue-400 mb-3 shadow-lg shadow-blue-500/10">
+              <div className="h-14 w-14 rounded-2xl bg-[#ffffff] !text-black border border-[#333333] flex items-center justify-center text-[#ffffff] mb-3 shadow-lg shadow-blue-500/10">
                 <Sparkles className="h-7 w-7" />
               </div>
               <h3 className="text-sm font-bold text-white mb-1">
                 How can I assist your compliance audit today?
               </h3>
-              <p className="text-xs text-slate-400 max-w-sm mb-4 leading-relaxed">
+              <p className="text-xs text-[#888888] max-w-sm mb-4 leading-relaxed">
                 Ask questions about FINRA Rule 2210 promotional restrictions, SEA Rule 17a-4 recordkeeping, or attach a document from the VDR to scan for violations.
               </p>
             </div>

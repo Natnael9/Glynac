@@ -97,7 +97,7 @@ export function FileExplorer() {
       case 'Confidential':
         return 'bg-amber-500/10 text-amber-400 border-amber-500/20';
       case 'Internal Only':
-        return 'bg-blue-500/10 text-blue-400 border-blue-500/20';
+        return 'bg-[#141414] text-[#ffffff] border-[#333333]';
       case 'Public':
         return 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20';
     }
@@ -112,7 +112,7 @@ export function FileExplorer() {
       case 'md':
         return <FileSpreadsheet className="h-4 w-4 text-cyan-400" />;
       default:
-        return <FileText className="h-4 w-4 text-blue-400" />;
+        return <FileText className="h-4 w-4 text-[#ffffff]" />;
     }
   };
 
@@ -148,15 +148,15 @@ export function FileExplorer() {
     filteredDocs.length > 0 && filteredDocs.every((d) => selectedDocIds.includes(d.id));
 
   return (
-    <div className="flex flex-col h-full bg-slate-950/40 select-none">
+    <div className="flex flex-col h-full bg-[#050505] select-none">
       {/* Explorer Top Toolbar */}
-      <div className="p-4 border-b border-slate-800/80 bg-slate-900/30 flex flex-wrap items-center justify-between gap-3">
+      <div className="p-4 border-b border-[#1a1a1a] bg-[#0a0a0a] flex flex-wrap items-center justify-between gap-3">
         {/* Breadcrumb Navigation */}
         <div className="flex items-center gap-1 text-xs">
           <button
             onClick={() => setSelectedFolderId(null)}
             className={`font-semibold hover:text-white transition-colors flex items-center gap-1.5 ${
-              selectedFolderId === null ? 'text-blue-400 font-bold' : 'text-slate-400'
+              selectedFolderId === null ? 'text-[#ffffff] font-bold' : 'text-[#888888]'
             }`}
           >
             <Folder className="h-3.5 w-3.5" />
@@ -164,9 +164,9 @@ export function FileExplorer() {
           </button>
           {currentFolder && (
             <>
-              <ChevronRight className="h-3 w-3 text-slate-600" />
+              <ChevronRight className="h-3 w-3 text-[#444444]" />
               <span className="text-white font-medium flex items-center gap-1">
-                <Folder className="h-3.5 w-3.5 text-blue-400" />
+                <Folder className="h-3.5 w-3.5 text-[#ffffff]" />
                 {currentFolder.name}
               </span>
             </>
@@ -177,7 +177,7 @@ export function FileExplorer() {
         <div className="flex items-center gap-2">
           {/* Multi-selection bar */}
           {selectedDocIds.length > 0 && (
-            <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-blue-500/15 border border-blue-500/30 text-xs text-blue-300">
+            <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#141414] border border-[#333333] text-xs text-[#ededed]">
               <span className="font-semibold">{selectedDocIds.length} selected</span>
               <button
                 onClick={() => deleteDocuments(selectedDocIds)}
@@ -188,7 +188,7 @@ export function FileExplorer() {
               </button>
               <button
                 onClick={clearDocSelection}
-                className="text-[10px] text-slate-400 hover:text-slate-200 ml-1 underline"
+                className="text-[10px] text-[#888888] hover:text-[#ededed] ml-1 underline"
               >
                 Clear
               </button>
@@ -197,9 +197,9 @@ export function FileExplorer() {
 
           <button
             onClick={() => setIsNewFolderModalOpen(true)}
-            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 hover:border-slate-700 text-xs font-medium text-slate-300 hover:text-white transition-all shadow-sm"
+            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-[#0a0a0a] border border-[#1a1a1a] hover:border-[#262626] text-xs font-medium text-[#d1d1d1] hover:text-white transition-all shadow-sm"
           >
-            <FolderPlus className="h-3.5 w-3.5 text-blue-400" />
+            <FolderPlus className="h-3.5 w-3.5 text-[#ffffff]" />
             <span className="hidden sm:inline">New Folder</span>
           </button>
 
@@ -214,16 +214,16 @@ export function FileExplorer() {
       </div>
 
       {/* Filter and View Bar */}
-      <div className="px-4 py-2.5 border-b border-slate-800/80 bg-slate-950/20 flex flex-wrap items-center justify-between gap-3 text-xs">
+      <div className="px-4 py-2.5 border-b border-[#1a1a1a] bg-[#050505] flex flex-wrap items-center justify-between gap-3 text-xs">
         {/* Search Input */}
         <div className="relative flex-1 min-w-[200px] max-w-md">
-          <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-slate-400" />
+          <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-[#888888]" />
           <input
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search documents by name, tag, or sensitivity..."
-            className="w-full pl-8 pr-3 py-1.5 bg-slate-900/80 border border-slate-800 rounded-lg text-xs text-slate-200 placeholder-slate-400 focus:outline-none focus:border-blue-500 transition-colors"
+            className="w-full pl-8 pr-3 py-1.5 bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg text-xs text-[#ededed] placeholder-slate-400 focus:outline-none focus:border-[#333333] transition-colors"
           />
         </div>
 
@@ -233,8 +233,8 @@ export function FileExplorer() {
             onClick={() => setSelectedFolderId(null)}
             className={`px-2.5 py-1 rounded-md text-[11px] font-medium transition-colors ${
               selectedFolderId === null
-                ? 'bg-blue-600/20 text-blue-400 border border-blue-500/30'
-                : 'text-slate-400 hover:text-slate-200 bg-slate-900/50 border border-slate-800'
+                ? 'bg-[#ffffff] !text-black text-[#ffffff] border border-[#333333]'
+                : 'text-[#888888] hover:text-[#ededed] bg-[#0a0a0a] border border-[#1a1a1a]'
             }`}
           >
             All Files ({documents.length})
@@ -247,8 +247,8 @@ export function FileExplorer() {
                 onClick={() => setSelectedFolderId(f.id)}
                 className={`px-2.5 py-1 rounded-md text-[11px] font-medium transition-colors flex items-center gap-1.5 ${
                   selectedFolderId === f.id
-                    ? 'bg-blue-600/20 text-blue-400 border border-blue-500/30'
-                    : 'text-slate-400 hover:text-slate-200 bg-slate-900/50 border border-slate-800'
+                    ? 'bg-[#ffffff] !text-black text-[#ffffff] border border-[#333333]'
+                    : 'text-[#888888] hover:text-[#ededed] bg-[#0a0a0a] border border-[#1a1a1a]'
                 }`}
               >
                 <Folder className="h-3 w-3" />
@@ -261,18 +261,18 @@ export function FileExplorer() {
 
         {/* Sort & View Options */}
         <div className="flex items-center gap-2">
-          <div className="flex items-center gap-1 bg-slate-900/80 border border-slate-800 rounded-lg p-0.5">
+          <div className="flex items-center gap-1 bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg p-0.5">
             <button
               onClick={() => {
                 if (sortBy === 'date') setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
                 else setSortBy('date');
               }}
               className={`px-2 py-1 rounded text-[11px] flex items-center gap-1 ${
-                sortBy === 'date' ? 'bg-slate-800 text-white font-medium' : 'text-slate-400'
+                sortBy === 'date' ? 'bg-[#141414] text-white font-medium' : 'text-[#888888]'
               }`}
             >
               Date
-              {sortBy === 'date' && <ArrowUpDown className="h-2.5 w-2.5 text-blue-400" />}
+              {sortBy === 'date' && <ArrowUpDown className="h-2.5 w-2.5 text-[#ffffff]" />}
             </button>
             <button
               onClick={() => {
@@ -280,11 +280,11 @@ export function FileExplorer() {
                 else setSortBy('name');
               }}
               className={`px-2 py-1 rounded text-[11px] flex items-center gap-1 ${
-                sortBy === 'name' ? 'bg-slate-800 text-white font-medium' : 'text-slate-400'
+                sortBy === 'name' ? 'bg-[#141414] text-white font-medium' : 'text-[#888888]'
               }`}
             >
               Name
-              {sortBy === 'name' && <ArrowUpDown className="h-2.5 w-2.5 text-blue-400" />}
+              {sortBy === 'name' && <ArrowUpDown className="h-2.5 w-2.5 text-[#ffffff]" />}
             </button>
             <button
               onClick={() => {
@@ -292,25 +292,25 @@ export function FileExplorer() {
                 else setSortBy('sensitivity');
               }}
               className={`px-2 py-1 rounded text-[11px] flex items-center gap-1 ${
-                sortBy === 'sensitivity' ? 'bg-slate-800 text-white font-medium' : 'text-slate-400'
+                sortBy === 'sensitivity' ? 'bg-[#141414] text-white font-medium' : 'text-[#888888]'
               }`}
             >
               Security
-              {sortBy === 'sensitivity' && <ArrowUpDown className="h-2.5 w-2.5 text-blue-400" />}
+              {sortBy === 'sensitivity' && <ArrowUpDown className="h-2.5 w-2.5 text-[#ffffff]" />}
             </button>
           </div>
 
-          <div className="flex items-center gap-0.5 bg-slate-900/80 border border-slate-800 rounded-lg p-0.5">
+          <div className="flex items-center gap-0.5 bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg p-0.5">
             <button
               onClick={() => setViewMode('table')}
-              className={`p-1 rounded ${viewMode === 'table' ? 'bg-slate-800 text-blue-400' : 'text-slate-400'}`}
+              className={`p-1 rounded ${viewMode === 'table' ? 'bg-[#141414] text-[#ffffff]' : 'text-[#888888]'}`}
               title="Table View"
             >
               <List className="h-3.5 w-3.5" />
             </button>
             <button
               onClick={() => setViewMode('grid')}
-              className={`p-1 rounded ${viewMode === 'grid' ? 'bg-slate-800 text-blue-400' : 'text-slate-400'}`}
+              className={`p-1 rounded ${viewMode === 'grid' ? 'bg-[#141414] text-[#ffffff]' : 'text-[#888888]'}`}
               title="Grid View"
             >
               <LayoutGrid className="h-3.5 w-3.5" />
@@ -322,26 +322,26 @@ export function FileExplorer() {
       {/* Explorer Main Content Area */}
       <div className="flex-1 overflow-y-auto p-4">
         {filteredDocs.length === 0 ? (
-          <div className="h-64 flex flex-col items-center justify-center text-center p-6 border-2 border-dashed border-slate-800/80 rounded-2xl bg-slate-950/20">
-            <FileCheck className="h-10 w-10 text-slate-600 mb-2" />
-            <h4 className="text-sm font-semibold text-slate-300">No documents found</h4>
-            <p className="text-xs text-slate-400 max-w-sm mt-1">
+          <div className="h-64 flex flex-col items-center justify-center text-center p-6 border-2 border-dashed border-[#1a1a1a] rounded-2xl bg-[#050505]">
+            <FileCheck className="h-10 w-10 text-[#444444] mb-2" />
+            <h4 className="text-sm font-semibold text-[#d1d1d1]">No documents found</h4>
+            <p className="text-xs text-[#888888] max-w-sm mt-1">
               {searchQuery
                 ? `No documents match "${searchQuery}". Try clearing your search.`
                 : 'This folder is currently empty. Upload files or create a new document.'}
             </p>
             <button
               onClick={() => setIsUploadModalOpen(true)}
-              className="mt-4 px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-xs font-medium"
+              className="mt-4 px-3 py-1.5 rounded-lg bg-[#ffffff] !text-black hover:bg-[#e5e5e5] text-white text-xs font-medium"
             >
               Upload Document
             </button>
           </div>
         ) : viewMode === 'table' ? (
           /* Table View */
-          <div className="border border-slate-800/80 rounded-xl overflow-hidden bg-slate-900/20">
+          <div className="border border-[#1a1a1a] rounded-xl overflow-hidden bg-[#0a0a0a]">
             <table className="w-full text-left text-xs">
-              <thead className="bg-slate-900/60 text-slate-400 font-semibold border-b border-slate-800/80">
+              <thead className="bg-[#0a0a0a] text-[#888888] font-semibold border-b border-[#1a1a1a]">
                 <tr>
                   <th className="py-2.5 px-3 w-8">
                     <button
@@ -350,10 +350,10 @@ export function FileExplorer() {
                           ? clearDocSelection()
                           : selectAllDocs(filteredDocs.map((d) => d.id))
                       }
-                      className="text-slate-400 hover:text-white"
+                      className="text-[#888888] hover:text-white"
                     >
                       {allFilteredSelected ? (
-                        <CheckSquare className="h-4 w-4 text-blue-400" />
+                        <CheckSquare className="h-4 w-4 text-[#ffffff]" />
                       ) : (
                         <Square className="h-4 w-4" />
                       )}
@@ -367,7 +367,7 @@ export function FileExplorer() {
                   <th className="py-2.5 px-3 text-right">Actions</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-800/60">
+              <tbody className="divide-y divide-[#1a1a1a]">
                 {filteredDocs.map((doc) => {
                   const isSelected = selectedDocId === doc.id;
                   const isChecked = selectedDocIds.includes(doc.id);
@@ -382,17 +382,17 @@ export function FileExplorer() {
                       }}
                       className={`group cursor-pointer transition-colors ${
                         isSelected
-                          ? 'bg-blue-600/10 hover:bg-blue-600/15'
-                          : 'hover:bg-slate-900/50'
+                          ? 'bg-[#ffffff] !text-black hover:bg-[#ffffff] !text-black'
+                          : 'hover:bg-[#0a0a0a]'
                       }`}
                     >
                       <td className="py-2.5 px-3" onClick={(e) => e.stopPropagation()}>
                         <button
                           onClick={() => toggleDocSelection(doc.id)}
-                          className="text-slate-400 hover:text-white"
+                          className="text-[#888888] hover:text-white"
                         >
                           {isChecked ? (
-                            <CheckSquare className="h-4 w-4 text-blue-400" />
+                            <CheckSquare className="h-4 w-4 text-[#ffffff]" />
                           ) : (
                             <Square className="h-4 w-4" />
                           )}
@@ -400,7 +400,7 @@ export function FileExplorer() {
                       </td>
                       <td className="py-2.5 px-3">
                         <div className="flex items-center gap-2.5 min-w-0">
-                          <div className="p-1.5 rounded-lg bg-slate-900 border border-slate-800 shrink-0">
+                          <div className="p-1.5 rounded-lg bg-[#0a0a0a] border border-[#1a1a1a] shrink-0">
                             {getFileIcon(doc.extension)}
                           </div>
                           <div className="min-w-0">
@@ -417,18 +417,18 @@ export function FileExplorer() {
                                     if (e.key === 'Enter') handleSaveRename(doc.id);
                                     if (e.key === 'Escape') setRenamingDocId(null);
                                   }}
-                                  className="px-2 py-0.5 bg-slate-950 border border-blue-500 rounded text-xs text-white focus:outline-none"
+                                  className="px-2 py-0.5 bg-[#050505] border border-[#333333] rounded text-xs text-white focus:outline-none"
                                   autoFocus
                                 />
                                 <button
                                   onClick={() => handleSaveRename(doc.id)}
-                                  className="text-[10px] px-1.5 py-0.5 rounded bg-blue-600 text-white font-semibold"
+                                  className="text-[10px] px-1.5 py-0.5 rounded bg-[#ffffff] !text-black text-white font-semibold"
                                 >
                                   Save
                                 </button>
                               </div>
                             ) : (
-                              <div className="font-medium text-slate-200 group-hover:text-blue-300 truncate">
+                              <div className="font-medium text-[#ededed] group-hover:text-[#ededed] truncate">
                                 {doc.name}
                               </div>
                             )}
@@ -436,7 +436,7 @@ export function FileExplorer() {
                               {doc.tags.map((tag) => (
                                 <span
                                   key={tag}
-                                  className="text-[9px] px-1.5 py-0.2 rounded bg-slate-900 text-slate-400 border border-slate-800"
+                                  className="text-[9px] px-1.5 py-0.2 rounded bg-[#0a0a0a] text-[#888888] border border-[#1a1a1a]"
                                 >
                                   {tag}
                                 </span>
@@ -464,10 +464,10 @@ export function FileExplorer() {
                           <span className="text-[11px] text-emerald-400/80">Clean</span>
                         )}
                       </td>
-                      <td className="py-2.5 px-3 text-slate-400 hidden lg:table-cell font-mono text-[11px]">
+                      <td className="py-2.5 px-3 text-[#888888] hidden lg:table-cell font-mono text-[11px]">
                         {formatFileSize(doc.sizeBytes)}
                       </td>
-                      <td className="py-2.5 px-3 text-slate-400 hidden sm:table-cell text-[11px]">
+                      <td className="py-2.5 px-3 text-[#888888] hidden sm:table-cell text-[11px]">
                         {new Date(doc.updatedAt).toLocaleDateString(undefined, {
                           month: 'short',
                           day: 'numeric',
@@ -484,7 +484,7 @@ export function FileExplorer() {
                               setIsPermissionModalOpen(true);
                             }}
                             title="Manage Permissions & Sensitivity"
-                            className="p-1.5 rounded-lg text-slate-400 hover:text-blue-400 hover:bg-slate-800 transition-colors"
+                            className="p-1.5 rounded-lg text-[#888888] hover:text-[#ffffff] hover:bg-[#141414] transition-colors"
                           >
                             <Lock className="h-3.5 w-3.5" />
                           </button>
@@ -494,14 +494,14 @@ export function FileExplorer() {
                               setIsAuditDrawerOpen(true);
                             }}
                             title="View Audit Trail"
-                            className="p-1.5 rounded-lg text-slate-400 hover:text-amber-400 hover:bg-slate-800 transition-colors"
+                            className="p-1.5 rounded-lg text-[#888888] hover:text-amber-400 hover:bg-[#141414] transition-colors"
                           >
                             <History className="h-3.5 w-3.5" />
                           </button>
                           <button
                             onClick={(e) => handleStartRename(e, doc)}
                             title="Rename"
-                            className="p-1.5 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800 transition-colors"
+                            className="p-1.5 rounded-lg text-[#888888] hover:text-[#ededed] hover:bg-[#141414] transition-colors"
                           >
                             <Edit2 className="h-3.5 w-3.5" />
                           </button>
@@ -530,13 +530,13 @@ export function FileExplorer() {
                   }}
                   className={`group relative p-3.5 rounded-xl border transition-all cursor-pointer flex flex-col justify-between ${
                     isSelected
-                      ? 'bg-blue-600/10 border-blue-500/40 shadow-lg shadow-blue-500/10 ring-1 ring-blue-500/30'
-                      : 'bg-slate-900/40 border-slate-800/80 hover:border-slate-700 hover:bg-slate-900/70'
+                      ? 'bg-[#ffffff] !text-black border-[#333333] shadow-lg shadow-blue-500/10 ring-1 ring-white'
+                      : 'bg-[#0a0a0a] border-[#1a1a1a] hover:border-[#262626] hover:bg-[#0a0a0a]'
                   }`}
                 >
                   <div>
                     <div className="flex items-center justify-between mb-2">
-                      <div className="p-2 rounded-lg bg-slate-950 border border-slate-800 group-hover:scale-105 transition-transform">
+                      <div className="p-2 rounded-lg bg-[#050505] border border-[#1a1a1a] group-hover:scale-105 transition-transform">
                         {getFileIcon(doc.extension)}
                       </div>
                       <div
@@ -545,10 +545,10 @@ export function FileExplorer() {
                       >
                         <button
                           onClick={() => toggleDocSelection(doc.id)}
-                          className="text-slate-400 hover:text-white"
+                          className="text-[#888888] hover:text-white"
                         >
                           {isChecked ? (
-                            <CheckSquare className="h-4 w-4 text-blue-400" />
+                            <CheckSquare className="h-4 w-4 text-[#ffffff]" />
                           ) : (
                             <Square className="h-4 w-4 opacity-40 hover:opacity-100" />
                           )}
@@ -556,7 +556,7 @@ export function FileExplorer() {
                       </div>
                     </div>
 
-                    <h5 className="font-semibold text-xs text-slate-200 group-hover:text-blue-300 line-clamp-2 mb-1.5">
+                    <h5 className="font-semibold text-xs text-[#ededed] group-hover:text-[#ededed] line-clamp-2 mb-1.5">
                       {doc.name}
                     </h5>
 
@@ -577,7 +577,7 @@ export function FileExplorer() {
                     </div>
                   </div>
 
-                  <div className="pt-2 border-t border-slate-800/60 flex items-center justify-between text-[11px] text-slate-400">
+                  <div className="pt-2 border-t border-[#1a1a1a] flex items-center justify-between text-[11px] text-[#888888]">
                     <span className="font-mono">{formatFileSize(doc.sizeBytes)}</span>
                     <div
                       className="flex items-center gap-1"
@@ -589,7 +589,7 @@ export function FileExplorer() {
                           setIsPermissionModalOpen(true);
                         }}
                         title="Permissions"
-                        className="p-1 hover:text-blue-400 transition-colors"
+                        className="p-1 hover:text-[#ffffff] transition-colors"
                       >
                         <Lock className="h-3 w-3" />
                       </button>
@@ -615,9 +615,9 @@ export function FileExplorer() {
       {/* New Folder Modal */}
       {isNewFolderModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4">
-          <div className="w-full max-w-sm rounded-2xl bg-slate-900 border border-slate-800 p-5 shadow-2xl">
+          <div className="w-full max-w-sm rounded-2xl bg-[#0a0a0a] border border-[#1a1a1a] p-5 shadow-2xl">
             <h3 className="text-sm font-semibold text-white mb-3 flex items-center gap-2">
-              <FolderPlus className="h-4 w-4 text-blue-400" />
+              <FolderPlus className="h-4 w-4 text-[#ffffff]" />
               Create Compliance Folder
             </h3>
             <form onSubmit={handleCreateFolder}>
@@ -626,21 +626,21 @@ export function FileExplorer() {
                 value={newFolderName}
                 onChange={(e) => setNewFolderName(e.target.value)}
                 placeholder="e.g. 2026 FINRA Exam Filings"
-                className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-xs text-white placeholder-slate-400 focus:outline-none focus:border-blue-500 mb-4"
+                className="w-full px-3 py-2 bg-[#050505] border border-[#262626] rounded-lg text-xs text-white placeholder-slate-400 focus:outline-none focus:border-[#333333] mb-4"
                 autoFocus
               />
               <div className="flex items-center justify-end gap-2">
                 <button
                   type="button"
                   onClick={() => setIsNewFolderModalOpen(false)}
-                  className="px-3 py-1.5 rounded-lg text-xs text-slate-400 hover:text-white hover:bg-slate-800"
+                  className="px-3 py-1.5 rounded-lg text-xs text-[#888888] hover:text-white hover:bg-[#141414]"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={!newFolderName.trim()}
-                  className="px-3 py-1.5 rounded-lg text-xs font-semibold bg-blue-600 hover:bg-blue-500 text-white disabled:opacity-50"
+                  className="px-3 py-1.5 rounded-lg text-xs font-semibold bg-[#ffffff] !text-black hover:bg-[#e5e5e5] text-white disabled:opacity-50"
                 >
                   Create Folder
                 </button>

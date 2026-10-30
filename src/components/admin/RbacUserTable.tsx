@@ -80,26 +80,26 @@ export function RbacUserTable() {
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div className="flex items-center gap-2 flex-1 max-w-md">
           <div className="relative w-full">
-            <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-slate-500" />
+            <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-[#666666]" />
             <input
               type="text"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search personnel by name, email, or department..."
-              className="w-full pl-8 pr-3 py-1.5 bg-slate-900 border border-slate-800 rounded-lg text-xs text-white placeholder-slate-500 focus:outline-none focus:border-blue-500"
+              className="w-full pl-8 pr-3 py-1.5 bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg text-xs text-white placeholder-slate-500 focus:outline-none focus:border-[#333333]"
             />
           </div>
         </div>
 
         <div className="flex items-center gap-2">
           {/* Role Filter Chips */}
-          <div className="flex items-center gap-1 bg-slate-900 border border-slate-800 rounded-lg p-0.5 text-xs">
+          <div className="flex items-center gap-1 bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg p-0.5 text-xs">
             {['All', 'Admin', 'Compliance Officer', 'Auditor', 'Advisor'].map((r) => (
               <button
                 key={r}
                 onClick={() => setRoleFilter(r)}
                 className={`px-2.5 py-1 rounded text-[11px] font-medium transition-colors ${
-                  roleFilter === r ? 'bg-blue-600 text-white' : 'text-slate-400 hover:text-white'
+                  roleFilter === r ? 'bg-[#ffffff] !text-black text-white' : 'text-[#888888] hover:text-white'
                 }`}
               >
                 {r}
@@ -109,7 +109,7 @@ export function RbacUserTable() {
 
           <button
             onClick={() => setIsAddUserModalOpen(true)}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold shadow-md shadow-blue-600/20"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#ffffff] !text-black hover:bg-[#e5e5e5] text-white text-xs font-semibold shadow-md shadow-blue-600/20"
           >
             <UserPlus className="h-3.5 w-3.5" />
             <span>Add User</span>
@@ -118,9 +118,9 @@ export function RbacUserTable() {
       </div>
 
       {/* Users Table */}
-      <div className="border border-slate-800/80 rounded-2xl overflow-hidden bg-slate-900/40 shadow-xl">
+      <div className="border border-[#1a1a1a] rounded-2xl overflow-hidden bg-[#0a0a0a] shadow-xl">
         <table className="w-full text-left text-xs">
-          <thead className="bg-slate-950/80 text-slate-400 font-semibold border-b border-slate-800">
+          <thead className="bg-[#050505] text-[#888888] font-semibold border-b border-[#1a1a1a]">
             <tr>
               <th className="py-3 px-4">User & Contact</th>
               <th className="py-3 px-4">Role</th>
@@ -130,24 +130,24 @@ export function RbacUserTable() {
               <th className="py-3 px-4 text-right">Actions</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-slate-800/60">
+          <tbody className="divide-y divide-[#1a1a1a]">
             {filteredUsers.map((user) => (
-              <tr key={user.id} className="hover:bg-slate-900/70 transition-colors">
+              <tr key={user.id} className="hover:bg-[#0a0a0a] transition-colors">
                 <td className="py-3 px-4">
                   <div className="flex items-center gap-3">
                     <div className="h-8 w-8 rounded-full bg-gradient-to-tr from-blue-600 to-indigo-600 text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-md">
                       {user.name.charAt(0)}
                     </div>
                     <div className="min-w-0">
-                      <p className="font-bold text-slate-200 truncate">{user.name}</p>
-                      <p className="text-[11px] text-slate-400 truncate">{user.email}</p>
+                      <p className="font-bold text-[#ededed] truncate">{user.name}</p>
+                      <p className="text-[11px] text-[#888888] truncate">{user.email}</p>
                     </div>
                   </div>
                 </td>
                 <td className="py-3 px-4">
-                  <span className="font-semibold text-blue-400">{user.role}</span>
+                  <span className="font-semibold text-[#ffffff]">{user.role}</span>
                 </td>
-                <td className="py-3 px-4 hidden md:table-cell text-slate-400">
+                <td className="py-3 px-4 hidden md:table-cell text-[#888888]">
                   {user.department}
                 </td>
                 <td className="py-3 px-4">
@@ -161,13 +161,13 @@ export function RbacUserTable() {
                 </td>
                 <td className="py-3 px-4 hidden lg:table-cell">
                   <div className="flex items-center gap-1.5 text-[10px] font-mono">
-                    <span className="px-1.5 py-0.5 rounded bg-slate-950 text-slate-300 border border-slate-800">
+                    <span className="px-1.5 py-0.5 rounded bg-[#050505] text-[#d1d1d1] border border-[#1a1a1a]">
                       VDR: {user.permissions.vdr}
                     </span>
-                    <span className="px-1.5 py-0.5 rounded bg-slate-950 text-slate-300 border border-slate-800">
+                    <span className="px-1.5 py-0.5 rounded bg-[#050505] text-[#d1d1d1] border border-[#1a1a1a]">
                       Chat: {user.permissions.chat}
                     </span>
-                    <span className="px-1.5 py-0.5 rounded bg-slate-950 text-slate-300 border border-slate-800">
+                    <span className="px-1.5 py-0.5 rounded bg-[#050505] text-[#d1d1d1] border border-[#1a1a1a]">
                       Tree: {user.permissions.tree}
                     </span>
                   </div>
@@ -177,7 +177,7 @@ export function RbacUserTable() {
                     <button
                       onClick={() => setEditingUser(user)}
                       title="Edit RBAC Permissions"
-                      className="p-1.5 rounded-lg text-slate-400 hover:text-blue-400 hover:bg-slate-800"
+                      className="p-1.5 rounded-lg text-[#888888] hover:text-[#ffffff] hover:bg-[#141414]"
                     >
                       <Edit2 className="h-3.5 w-3.5" />
                     </button>
@@ -185,7 +185,7 @@ export function RbacUserTable() {
                       <button
                         onClick={() => deleteUser(user.id)}
                         title="Delete User"
-                        className="p-1.5 rounded-lg text-slate-400 hover:text-rose-400 hover:bg-slate-800"
+                        className="p-1.5 rounded-lg text-[#888888] hover:text-rose-400 hover:bg-[#141414]"
                       >
                         <Trash2 className="h-3.5 w-3.5" />
                       </button>
@@ -201,20 +201,20 @@ export function RbacUserTable() {
       {/* Edit Role Modal */}
       {editingUser && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 backdrop-blur-sm p-4">
-          <div className="w-full max-w-md rounded-2xl bg-slate-900 border border-slate-800 p-5 shadow-2xl">
-            <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+          <div className="w-full max-w-md rounded-2xl bg-[#0a0a0a] border border-[#1a1a1a] p-5 shadow-2xl">
+            <div className="flex items-center justify-between pb-3 border-b border-[#1a1a1a]">
               <div className="flex items-center gap-2">
-                <div className="p-1.5 rounded-lg bg-blue-600/20 text-blue-400">
+                <div className="p-1.5 rounded-lg bg-[#ffffff] !text-black text-[#ffffff]">
                   <Shield className="h-4 w-4" />
                 </div>
                 <div>
                   <h4 className="text-xs font-bold text-white">Edit RBAC Profile</h4>
-                  <p className="text-[10px] text-slate-400">{editingUser.name}</p>
+                  <p className="text-[10px] text-[#888888]">{editingUser.name}</p>
                 </div>
               </div>
               <button
                 onClick={() => setEditingUser(null)}
-                className="p-1 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800"
+                className="p-1 rounded-lg text-[#888888] hover:text-white hover:bg-[#141414]"
               >
                 <X className="h-4 w-4" />
               </button>
@@ -222,13 +222,13 @@ export function RbacUserTable() {
 
             <div className="py-4 space-y-3 text-xs">
               <div>
-                <label className="block text-slate-300 font-semibold mb-1">Assigned Role</label>
+                <label className="block text-[#d1d1d1] font-semibold mb-1">Assigned Role</label>
                 <select
                   value={editingUser.role}
                   onChange={(e) =>
                     setEditingUser({ ...editingUser, role: e.target.value as UserRole })
                   }
-                  className="w-full px-2.5 py-1.5 bg-slate-950 border border-slate-800 rounded-lg text-xs text-white"
+                  className="w-full px-2.5 py-1.5 bg-[#050505] border border-[#1a1a1a] rounded-lg text-xs text-white"
                 >
                   <option value="Admin">Admin (Full Control)</option>
                   <option value="Compliance Officer">Compliance Officer</option>
@@ -238,7 +238,7 @@ export function RbacUserTable() {
               </div>
 
               <div>
-                <label className="block text-slate-300 font-semibold mb-1">Account Status</label>
+                <label className="block text-[#d1d1d1] font-semibold mb-1">Account Status</label>
                 <select
                   value={editingUser.status}
                   onChange={(e) =>
@@ -247,7 +247,7 @@ export function RbacUserTable() {
                       status: e.target.value as SystemUser['status'],
                     })
                   }
-                  className="w-full px-2.5 py-1.5 bg-slate-950 border border-slate-800 rounded-lg text-xs text-white"
+                  className="w-full px-2.5 py-1.5 bg-[#050505] border border-[#1a1a1a] rounded-lg text-xs text-white"
                 >
                   <option value="Active">Active</option>
                   <option value="Pending">Pending Verification</option>
@@ -256,12 +256,12 @@ export function RbacUserTable() {
               </div>
 
               <div>
-                <label className="block text-slate-300 font-semibold mb-1">
+                <label className="block text-[#d1d1d1] font-semibold mb-1">
                   Module Permissions Matrix
                 </label>
-                <div className="space-y-1.5 p-2.5 rounded-xl bg-slate-950 border border-slate-800">
+                <div className="space-y-1.5 p-2.5 rounded-xl bg-[#050505] border border-[#1a1a1a]">
                   <div className="flex items-center justify-between">
-                    <span className="text-slate-400">Virtual Data Room:</span>
+                    <span className="text-[#888888]">Virtual Data Room:</span>
                     <select
                       value={editingUser.permissions.vdr}
                       onChange={(e) =>
@@ -270,7 +270,7 @@ export function RbacUserTable() {
                           permissions: { ...editingUser.permissions, vdr: e.target.value as any },
                         })
                       }
-                      className="px-2 py-0.5 bg-slate-900 border border-slate-800 rounded text-xs text-white"
+                      className="px-2 py-0.5 bg-[#0a0a0a] border border-[#1a1a1a] rounded text-xs text-white"
                     >
                       <option value="Read">Read</option>
                       <option value="Write">Write</option>
@@ -278,7 +278,7 @@ export function RbacUserTable() {
                     </select>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="text-slate-400">Compliance AI Chat:</span>
+                    <span className="text-[#888888]">Compliance AI Chat:</span>
                     <select
                       value={editingUser.permissions.chat}
                       onChange={(e) =>
@@ -287,7 +287,7 @@ export function RbacUserTable() {
                           permissions: { ...editingUser.permissions, chat: e.target.value as any },
                         })
                       }
-                      className="px-2 py-0.5 bg-slate-900 border border-slate-800 rounded text-xs text-white"
+                      className="px-2 py-0.5 bg-[#0a0a0a] border border-[#1a1a1a] rounded text-xs text-white"
                     >
                       <option value="Read">Read</option>
                       <option value="Write">Write</option>
@@ -295,7 +295,7 @@ export function RbacUserTable() {
                     </select>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="text-slate-400">Visual Tree DAG:</span>
+                    <span className="text-[#888888]">Visual Tree DAG:</span>
                     <select
                       value={editingUser.permissions.tree}
                       onChange={(e) =>
@@ -304,7 +304,7 @@ export function RbacUserTable() {
                           permissions: { ...editingUser.permissions, tree: e.target.value as any },
                         })
                       }
-                      className="px-2 py-0.5 bg-slate-900 border border-slate-800 rounded text-xs text-white"
+                      className="px-2 py-0.5 bg-[#0a0a0a] border border-[#1a1a1a] rounded text-xs text-white"
                     >
                       <option value="Read">Read</option>
                       <option value="Write">Write</option>
@@ -315,10 +315,10 @@ export function RbacUserTable() {
               </div>
             </div>
 
-            <div className="pt-3 border-t border-slate-800 flex items-center justify-end gap-2">
+            <div className="pt-3 border-t border-[#1a1a1a] flex items-center justify-end gap-2">
               <button
                 onClick={() => setEditingUser(null)}
-                className="px-3 py-1.5 rounded-lg text-xs text-slate-400 hover:text-white"
+                className="px-3 py-1.5 rounded-lg text-xs text-[#888888] hover:text-white"
               >
                 Cancel
               </button>
@@ -332,7 +332,7 @@ export function RbacUserTable() {
                   );
                   setEditingUser(null);
                 }}
-                className="px-4 py-1.5 rounded-lg text-xs font-semibold bg-blue-600 hover:bg-blue-500 text-white shadow-md shadow-blue-600/20"
+                className="px-4 py-1.5 rounded-lg text-xs font-semibold bg-[#ffffff] !text-black hover:bg-[#e5e5e5] text-white shadow-md shadow-blue-600/20"
               >
                 Save Role Updates
               </button>
@@ -344,42 +344,42 @@ export function RbacUserTable() {
       {/* Add User Modal */}
       {isAddUserModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 backdrop-blur-sm p-4">
-          <div className="w-full max-w-md rounded-2xl bg-slate-900 border border-slate-800 p-5 shadow-2xl">
+          <div className="w-full max-w-md rounded-2xl bg-[#0a0a0a] border border-[#1a1a1a] p-5 shadow-2xl">
             <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-3 flex items-center gap-2">
-              <UserPlus className="h-4 w-4 text-blue-400" />
+              <UserPlus className="h-4 w-4 text-[#ffffff]" />
               Register New Personnel
             </h4>
             <form onSubmit={handleCreateUser} className="space-y-3 text-xs">
               <div>
-                <label className="block text-slate-300 font-semibold mb-1">Full Name</label>
+                <label className="block text-[#d1d1d1] font-semibold mb-1">Full Name</label>
                 <input
                   type="text"
                   required
                   value={newUserName}
                   onChange={(e) => setNewUserName(e.target.value)}
                   placeholder="e.g. Rachel Cooper, CFA"
-                  className="w-full px-2.5 py-1.5 bg-slate-950 border border-slate-800 rounded-lg text-xs text-white focus:outline-none focus:border-blue-500"
+                  className="w-full px-2.5 py-1.5 bg-[#050505] border border-[#1a1a1a] rounded-lg text-xs text-white focus:outline-none focus:border-[#333333]"
                 />
               </div>
 
               <div>
-                <label className="block text-slate-300 font-semibold mb-1">Corporate Email</label>
+                <label className="block text-[#d1d1d1] font-semibold mb-1">Corporate Email</label>
                 <input
                   type="email"
                   required
                   value={newUserEmail}
                   onChange={(e) => setNewUserEmail(e.target.value)}
                   placeholder="r.cooper@glynaccapital.com"
-                  className="w-full px-2.5 py-1.5 bg-slate-950 border border-slate-800 rounded-lg text-xs text-white focus:outline-none focus:border-blue-500"
+                  className="w-full px-2.5 py-1.5 bg-[#050505] border border-[#1a1a1a] rounded-lg text-xs text-white focus:outline-none focus:border-[#333333]"
                 />
               </div>
 
               <div>
-                <label className="block text-slate-300 font-semibold mb-1">Assigned Role</label>
+                <label className="block text-[#d1d1d1] font-semibold mb-1">Assigned Role</label>
                 <select
                   value={newUserRole}
                   onChange={(e) => setNewUserRole(e.target.value as UserRole)}
-                  className="w-full px-2.5 py-1.5 bg-slate-950 border border-slate-800 rounded-lg text-xs text-white"
+                  className="w-full px-2.5 py-1.5 bg-[#050505] border border-[#1a1a1a] rounded-lg text-xs text-white"
                 >
                   <option value="Compliance Officer">Compliance Officer</option>
                   <option value="Admin">System Administrator</option>
@@ -389,26 +389,26 @@ export function RbacUserTable() {
               </div>
 
               <div>
-                <label className="block text-slate-300 font-semibold mb-1">Department</label>
+                <label className="block text-[#d1d1d1] font-semibold mb-1">Department</label>
                 <input
                   type="text"
                   value={newUserDepartment}
                   onChange={(e) => setNewUserDepartment(e.target.value)}
-                  className="w-full px-2.5 py-1.5 bg-slate-950 border border-slate-800 rounded-lg text-xs text-white"
+                  className="w-full px-2.5 py-1.5 bg-[#050505] border border-[#1a1a1a] rounded-lg text-xs text-white"
                 />
               </div>
 
-              <div className="pt-3 border-t border-slate-800 flex items-center justify-end gap-2">
+              <div className="pt-3 border-t border-[#1a1a1a] flex items-center justify-end gap-2">
                 <button
                   type="button"
                   onClick={() => setIsAddUserModalOpen(false)}
-                  className="px-3 py-1.5 rounded-lg text-xs text-slate-400 hover:text-white"
+                  className="px-3 py-1.5 rounded-lg text-xs text-[#888888] hover:text-white"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-1.5 rounded-lg text-xs font-semibold bg-blue-600 hover:bg-blue-500 text-white shadow-md shadow-blue-600/20"
+                  className="px-4 py-1.5 rounded-lg text-xs font-semibold bg-[#ffffff] !text-black hover:bg-[#e5e5e5] text-white shadow-md shadow-blue-600/20"
                 >
                   Create User
                 </button>

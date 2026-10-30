@@ -12,15 +12,15 @@ export function CitationPopover() {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 animate-in fade-in duration-150">
-      <div className="w-full max-w-lg rounded-2xl bg-slate-900 border border-slate-800 shadow-2xl p-5 overflow-hidden">
+      <div className="w-full max-w-lg rounded-2xl bg-[#0a0a0a] border border-[#1a1a1a] shadow-2xl p-5 overflow-hidden">
         {/* Header */}
-        <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+        <div className="flex items-center justify-between pb-3 border-b border-[#1a1a1a]">
           <div className="flex items-center gap-2">
-            <div className="p-2 rounded-xl bg-blue-600/20 text-blue-400">
+            <div className="p-2 rounded-xl bg-[#ffffff] !text-black text-[#ffffff]">
               <BookmarkCheck className="h-4 w-4" />
             </div>
             <div>
-              <span className="text-[10px] uppercase font-bold text-blue-400 tracking-wider">
+              <span className="text-[10px] uppercase font-bold text-[#ffffff] tracking-wider">
                 Regulatory Reference
               </span>
               <h4 className="text-xs font-bold text-white">{activeCitation.ruleCode}</h4>
@@ -28,7 +28,7 @@ export function CitationPopover() {
           </div>
           <button
             onClick={() => setActiveCitation(null)}
-            className="p-1 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+            className="p-1 rounded-lg text-[#888888] hover:text-white hover:bg-[#141414] transition-colors"
           >
             <X className="h-4 w-4" />
           </button>
@@ -37,8 +37,8 @@ export function CitationPopover() {
         {/* Content */}
         <div className="py-4 space-y-3 text-xs">
           <div>
-            <h5 className="font-semibold text-slate-200 mb-1">{activeCitation.title}</h5>
-            <div className="p-3 rounded-xl bg-slate-950 border border-slate-800/80 text-slate-300 font-mono text-[11px] leading-relaxed italic">
+            <h5 className="font-semibold text-[#ededed] mb-1">{activeCitation.title}</h5>
+            <div className="p-3 rounded-xl bg-[#050505] border border-[#1a1a1a] text-[#d1d1d1] font-mono text-[11px] leading-relaxed italic">
               "{activeCitation.excerpt}"
             </div>
           </div>
@@ -50,12 +50,12 @@ export function CitationPopover() {
         </div>
 
         {/* Footer */}
-        <div className="pt-3 border-t border-slate-800 flex items-center justify-between text-xs">
+        <div className="pt-3 border-t border-[#1a1a1a] flex items-center justify-between text-xs">
           {activeCitation.documentId && (
             <Link
               href="/vdr"
               onClick={() => setActiveCitation(null)}
-              className="flex items-center gap-1.5 text-blue-400 hover:text-blue-300 font-medium"
+              className="flex items-center gap-1.5 text-[#ffffff] hover:text-[#ededed] font-medium"
             >
               <FileText className="h-3.5 w-3.5" />
               <span>View Source Document in VDR</span>
@@ -66,7 +66,7 @@ export function CitationPopover() {
             href={activeCitation.url || 'https://www.finra.org/rules-guidance'}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-1 text-slate-400 hover:text-white ml-auto"
+            className="flex items-center gap-1 text-[#888888] hover:text-white ml-auto"
           >
             <span>Official Rulebook</span>
             <ExternalLink className="h-3 w-3" />

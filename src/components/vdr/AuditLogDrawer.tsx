@@ -49,8 +49,8 @@ export function AuditLogDrawer() {
         };
       case 'Permission Changed':
         return {
-          icon: <Lock className="h-3.5 w-3.5 text-blue-400" />,
-          color: 'bg-blue-500/10 text-blue-400 border-blue-500/20',
+          icon: <Lock className="h-3.5 w-3.5 text-[#ffffff]" />,
+          color: 'bg-[#141414] text-[#ffffff] border-[#333333]',
         };
       case 'Downloaded':
         return {
@@ -59,8 +59,8 @@ export function AuditLogDrawer() {
         };
       case 'Viewed':
         return {
-          icon: <Eye className="h-3.5 w-3.5 text-slate-300" />,
-          color: 'bg-slate-800 text-slate-300 border-slate-700',
+          icon: <Eye className="h-3.5 w-3.5 text-[#d1d1d1]" />,
+          color: 'bg-[#141414] text-[#d1d1d1] border-[#262626]',
         };
       case 'Uploaded':
         return {
@@ -74,8 +74,8 @@ export function AuditLogDrawer() {
         };
       default:
         return {
-          icon: <Clock className="h-3.5 w-3.5 text-slate-400" />,
-          color: 'bg-slate-800 text-slate-300 border-slate-700',
+          icon: <Clock className="h-3.5 w-3.5 text-[#888888]" />,
+          color: 'bg-[#141414] text-[#d1d1d1] border-[#262626]',
         };
     }
   };
@@ -83,9 +83,9 @@ export function AuditLogDrawer() {
   return (
     <div className="fixed inset-0 z-50 overflow-hidden bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
       <div className="absolute inset-y-0 right-0 max-w-full flex pl-10">
-        <div className="w-screen max-w-md bg-slate-950 border-l border-slate-800 shadow-2xl flex flex-col">
+        <div className="w-screen max-w-md bg-[#050505] border-l border-[#1a1a1a] shadow-2xl flex flex-col">
           {/* Header */}
-          <div className="p-4 sm:p-5 border-b border-slate-800/80 bg-slate-900/40 flex items-center justify-between">
+          <div className="p-4 sm:p-5 border-b border-[#1a1a1a] bg-[#0a0a0a] flex items-center justify-between">
             <div className="flex items-center gap-2.5">
               <div className="p-2 rounded-xl bg-amber-500/10 text-amber-400 border border-amber-500/20">
                 <History className="h-4 w-4" />
@@ -94,22 +94,22 @@ export function AuditLogDrawer() {
                 <h3 className="text-sm font-bold text-white flex items-center gap-2">
                   SEC-17a-4 Audit Trail
                 </h3>
-                <p className="text-xs text-slate-400 truncate max-w-[240px]">
+                <p className="text-xs text-[#888888] truncate max-w-[240px]">
                   {activeDoc ? activeDoc.name : 'All Platform Activity'}
                 </p>
               </div>
             </div>
             <button
               onClick={() => setIsAuditDrawerOpen(false)}
-              className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+              className="p-1.5 rounded-lg text-[#888888] hover:text-white hover:bg-[#141414] transition-colors"
             >
               <X className="h-4 w-4" />
             </button>
           </div>
 
           {/* Filter Bar */}
-          <div className="p-3 border-b border-slate-800/60 bg-slate-900/20 flex items-center gap-1.5 overflow-x-auto text-xs">
-            <Filter className="h-3 w-3 text-slate-400 shrink-0 ml-1" />
+          <div className="p-3 border-b border-[#1a1a1a] bg-[#0a0a0a] flex items-center gap-1.5 overflow-x-auto text-xs">
+            <Filter className="h-3 w-3 text-[#888888] shrink-0 ml-1" />
             {['All', 'Flagged', 'Permission Changed', 'Downloaded', 'Viewed', 'Uploaded'].map(
               (action) => (
                 <button
@@ -117,8 +117,8 @@ export function AuditLogDrawer() {
                   onClick={() => setFilterAction(action)}
                   className={`px-2 py-0.5 rounded-md text-[11px] font-medium transition-colors shrink-0 ${
                     filterAction === action
-                      ? 'bg-blue-600/20 text-blue-400 border border-blue-500/30'
-                      : 'text-slate-400 hover:text-slate-200 bg-slate-900 border border-slate-800'
+                      ? 'bg-[#ffffff] !text-black text-[#ffffff] border border-[#333333]'
+                      : 'text-[#888888] hover:text-[#ededed] bg-[#0a0a0a] border border-[#1a1a1a]'
                   }`}
                 >
                   {action}
@@ -130,29 +130,29 @@ export function AuditLogDrawer() {
           {/* Timeline Events Feed */}
           <div className="flex-1 overflow-y-auto p-4 sm:p-5">
             {filteredLogs.length === 0 ? (
-              <div className="text-center py-12 text-slate-400 text-xs">
+              <div className="text-center py-12 text-[#888888] text-xs">
                 No audit events recorded matching filter.
               </div>
             ) : (
-              <div className="relative border-l border-slate-800 ml-3.5 space-y-6">
+              <div className="relative border-l border-[#1a1a1a] ml-3.5 space-y-6">
                 {filteredLogs.map((log) => {
                   const badge = getActionBadge(log.action);
                   return (
                     <div key={log.id} className="relative pl-6 group">
                       {/* Timeline Dot Icon */}
-                      <span className="absolute -left-3.5 top-0.5 flex h-7 w-7 items-center justify-center rounded-full bg-slate-900 border border-slate-800 group-hover:scale-110 transition-transform">
+                      <span className="absolute -left-3.5 top-0.5 flex h-7 w-7 items-center justify-center rounded-full bg-[#0a0a0a] border border-[#1a1a1a] group-hover:scale-110 transition-transform">
                         {badge.icon}
                       </span>
 
                       {/* Content Card */}
-                      <div className="rounded-xl border border-slate-800/80 bg-slate-900/40 p-3.5 text-xs hover:border-slate-700 transition-colors">
+                      <div className="rounded-xl border border-[#1a1a1a] bg-[#0a0a0a] p-3.5 text-xs hover:border-[#262626] transition-colors">
                         <div className="flex items-center justify-between mb-1.5">
                           <span
                             className={`text-[10px] font-bold px-2 py-0.5 rounded-md border ${badge.color}`}
                           >
                             {log.action}
                           </span>
-                          <span className="text-[10px] text-slate-400 font-mono">
+                          <span className="text-[10px] text-[#888888] font-mono">
                             {new Date(log.timestamp).toLocaleTimeString([], {
                               hour: '2-digit',
                               minute: '2-digit',
@@ -162,19 +162,19 @@ export function AuditLogDrawer() {
                         </div>
 
                         {log.details && (
-                          <p className="text-slate-200 font-medium mb-2 leading-relaxed">
+                          <p className="text-[#ededed] font-medium mb-2 leading-relaxed">
                             {log.details}
                           </p>
                         )}
 
-                        <div className="flex items-center justify-between pt-2 border-t border-slate-800/60 text-[10px] text-slate-400">
+                        <div className="flex items-center justify-between pt-2 border-t border-[#1a1a1a] text-[10px] text-[#888888]">
                           <div className="flex items-center gap-1.5">
-                            <div className="h-4 w-4 rounded-full bg-blue-600/30 text-blue-400 flex items-center justify-center text-[9px] font-bold">
+                            <div className="h-4 w-4 rounded-full bg-[#ffffff] !text-black text-[#ffffff] flex items-center justify-center text-[9px] font-bold">
                               {log.userName.charAt(0)}
                             </div>
-                            <span className="text-slate-300 font-semibold">{log.userName}</span>
+                            <span className="text-[#d1d1d1] font-semibold">{log.userName}</span>
                           </div>
-                          <span className="px-1.5 py-0.2 rounded bg-slate-800 text-slate-400 border border-slate-700">
+                          <span className="px-1.5 py-0.2 rounded bg-[#141414] text-[#888888] border border-[#262626]">
                             {log.userRole}
                           </span>
                         </div>
@@ -187,7 +187,7 @@ export function AuditLogDrawer() {
           </div>
 
           {/* Footer */}
-          <div className="p-3.5 border-t border-slate-800/80 bg-slate-950/60 flex items-center justify-between text-[11px] text-slate-400">
+          <div className="p-3.5 border-t border-[#1a1a1a] bg-[#050505] flex items-center justify-between text-[11px] text-[#888888]">
             <span className="flex items-center gap-1 text-emerald-400">
               <ShieldCheck className="h-3.5 w-3.5" />
               Cryptographic Hash Verified

@@ -59,7 +59,7 @@ export function PermissionModal() {
     {
       level: 'Internal Only',
       desc: 'Restricted to authenticated firm employees. External links blocked.',
-      color: 'border-blue-500/40 text-blue-400 bg-blue-500/10',
+      color: 'border-[#333333] text-[#ffffff] bg-[#141414]',
     },
     {
       level: 'Confidential',
@@ -75,23 +75,23 @@ export function PermissionModal() {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 backdrop-blur-sm p-4 animate-in fade-in duration-200">
-      <div className="w-full max-w-2xl rounded-2xl bg-slate-900 border border-slate-800 shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+      <div className="w-full max-w-2xl rounded-2xl bg-[#0a0a0a] border border-[#1a1a1a] shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
         {/* Modal Header */}
-        <div className="p-4 sm:p-5 border-b border-slate-800/80 bg-slate-950/60 flex items-center justify-between">
+        <div className="p-4 sm:p-5 border-b border-[#1a1a1a] bg-[#050505] flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="p-2 rounded-xl bg-blue-600/20 text-blue-400 border border-blue-500/30">
+            <div className="p-2 rounded-xl bg-[#ffffff] !text-black text-[#ffffff] border border-[#333333]">
               <Lock className="h-5 w-5" />
             </div>
             <div>
               <h3 className="text-sm font-bold text-white flex items-center gap-2">
                 Document Access Control & RBAC
               </h3>
-              <p className="text-xs text-slate-400 truncate max-w-md">{activeDoc.name}</p>
+              <p className="text-xs text-[#888888] truncate max-w-md">{activeDoc.name}</p>
             </div>
           </div>
           <button
             onClick={() => setIsPermissionModalOpen(false)}
-            className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+            className="p-1.5 rounded-lg text-[#888888] hover:text-white hover:bg-[#141414] transition-colors"
           >
             <X className="h-4 w-4" />
           </button>
@@ -101,8 +101,8 @@ export function PermissionModal() {
         <div className="p-5 overflow-y-auto space-y-5 text-xs">
           {/* Sensitivity Tier Selection */}
           <div>
-            <label className="block text-slate-300 font-semibold mb-2 flex items-center gap-1.5">
-              <Shield className="h-4 w-4 text-blue-400" />
+            <label className="block text-[#d1d1d1] font-semibold mb-2 flex items-center gap-1.5">
+              <Shield className="h-4 w-4 text-[#ffffff]" />
               Security Sensitivity Level
             </label>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
@@ -115,8 +115,8 @@ export function PermissionModal() {
                     onClick={() => setSensitivity(opt.level)}
                     className={`p-3 rounded-xl border text-left transition-all relative ${
                       isSelected
-                        ? `${opt.color} ring-1 ring-blue-500/50 shadow-md`
-                        : 'border-slate-800 bg-slate-950/50 text-slate-400 hover:border-slate-700 hover:text-slate-300'
+                        ? `${opt.color} ring-1 ring-white shadow-md`
+                        : 'border-[#1a1a1a] bg-[#050505] text-[#888888] hover:border-[#262626] hover:text-[#d1d1d1]'
                     }`}
                   >
                     <div className="flex items-center justify-between mb-1">
@@ -132,12 +132,12 @@ export function PermissionModal() {
 
           {/* Granular Role Permissions Matrix */}
           <div>
-            <label className="block text-slate-300 font-semibold mb-2">
+            <label className="block text-[#d1d1d1] font-semibold mb-2">
               Role-Based Access Rights (RBAC)
             </label>
-            <div className="border border-slate-800 rounded-xl overflow-hidden bg-slate-950/40">
+            <div className="border border-[#1a1a1a] rounded-xl overflow-hidden bg-[#050505]">
               <table className="w-full text-left text-xs">
-                <thead className="bg-slate-900/80 text-slate-400 border-b border-slate-800 font-semibold">
+                <thead className="bg-[#0a0a0a] text-[#888888] border-b border-[#1a1a1a] font-semibold">
                   <tr>
                     <th className="py-2.5 px-3">Role</th>
                     <th className="py-2.5 px-2 text-center">
@@ -162,10 +162,10 @@ export function PermissionModal() {
                     </th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-800/60">
+                <tbody className="divide-y divide-[#1a1a1a]">
                   {permissions.map((perm) => (
-                    <tr key={perm.role} className="hover:bg-slate-900/30">
-                      <td className="py-2.5 px-3 font-medium text-slate-200">
+                    <tr key={perm.role} className="hover:bg-[#0a0a0a]">
+                      <td className="py-2.5 px-3 font-medium text-[#ededed]">
                         {perm.role}
                       </td>
                       <td className="py-2.5 px-2 text-center">
@@ -173,7 +173,7 @@ export function PermissionModal() {
                           type="checkbox"
                           checked={perm.canView}
                           onChange={() => handleTogglePermission(perm.role, 'canView')}
-                          className="rounded border-slate-700 text-blue-600 focus:ring-0 bg-slate-900 cursor-pointer h-4 w-4"
+                          className="rounded border-[#262626] text-blue-600 focus:ring-0 bg-[#0a0a0a] cursor-pointer h-4 w-4"
                         />
                       </td>
                       <td className="py-2.5 px-2 text-center">
@@ -181,7 +181,7 @@ export function PermissionModal() {
                           type="checkbox"
                           checked={perm.canEdit}
                           onChange={() => handleTogglePermission(perm.role, 'canEdit')}
-                          className="rounded border-slate-700 text-blue-600 focus:ring-0 bg-slate-900 cursor-pointer h-4 w-4"
+                          className="rounded border-[#262626] text-blue-600 focus:ring-0 bg-[#0a0a0a] cursor-pointer h-4 w-4"
                         />
                       </td>
                       <td className="py-2.5 px-2 text-center">
@@ -189,7 +189,7 @@ export function PermissionModal() {
                           type="checkbox"
                           checked={perm.canShare}
                           onChange={() => handleTogglePermission(perm.role, 'canShare')}
-                          className="rounded border-slate-700 text-blue-600 focus:ring-0 bg-slate-900 cursor-pointer h-4 w-4"
+                          className="rounded border-[#262626] text-blue-600 focus:ring-0 bg-[#0a0a0a] cursor-pointer h-4 w-4"
                         />
                       </td>
                       <td className="py-2.5 px-2 text-center">
@@ -197,7 +197,7 @@ export function PermissionModal() {
                           type="checkbox"
                           checked={perm.canDownload}
                           onChange={() => handleTogglePermission(perm.role, 'canDownload')}
-                          className="rounded border-slate-700 text-blue-600 focus:ring-0 bg-slate-900 cursor-pointer h-4 w-4"
+                          className="rounded border-[#262626] text-blue-600 focus:ring-0 bg-[#0a0a0a] cursor-pointer h-4 w-4"
                         />
                       </td>
                     </tr>
@@ -209,15 +209,15 @@ export function PermissionModal() {
         </div>
 
         {/* Modal Footer */}
-        <div className="p-4 border-t border-slate-800/80 bg-slate-950/60 flex items-center justify-between">
-          <div className="flex items-center gap-1.5 text-[11px] text-slate-400">
-            <AlertCircle className="h-3.5 w-3.5 text-blue-400" />
+        <div className="p-4 border-t border-[#1a1a1a] bg-[#050505] flex items-center justify-between">
+          <div className="flex items-center gap-1.5 text-[11px] text-[#888888]">
+            <AlertCircle className="h-3.5 w-3.5 text-[#ffffff]" />
             Changes are logged to the immutable WORM audit trail.
           </div>
           <div className="flex items-center gap-2">
             <button
               onClick={() => setIsPermissionModalOpen(false)}
-              className="px-3 py-1.5 rounded-lg text-xs text-slate-400 hover:text-white hover:bg-slate-800"
+              className="px-3 py-1.5 rounded-lg text-xs text-[#888888] hover:text-white hover:bg-[#141414]"
             >
               Cancel
             </button>

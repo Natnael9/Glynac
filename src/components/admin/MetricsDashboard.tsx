@@ -32,8 +32,8 @@ export function MetricsDashboard() {
       change: '+18.4%',
       trend: 'up',
       subtitle: 'vs previous quarter',
-      icon: <FileText className="h-5 w-5 text-blue-400" />,
-      bg: 'bg-blue-500/10 border-blue-500/20',
+      icon: <FileText className="h-5 w-5 text-[#ffffff]" />,
+      bg: 'bg-[#141414] border-[#333333]',
     },
     {
       title: 'Compliance Violations Flagged',
@@ -71,10 +71,10 @@ export function MetricsDashboard() {
         {kpis.map((kpi, idx) => (
           <div
             key={idx}
-            className="p-4 rounded-2xl bg-slate-900/60 border border-slate-800/80 shadow-lg relative overflow-hidden"
+            className="p-4 rounded-2xl bg-[#0a0a0a] border border-[#1a1a1a] shadow-lg relative overflow-hidden"
           >
             <div className="flex items-center justify-between mb-2">
-              <span className="text-xs font-semibold text-slate-400">{kpi.title}</span>
+              <span className="text-xs font-semibold text-[#888888]">{kpi.title}</span>
               <div className={`p-2 rounded-xl border ${kpi.bg}`}>{kpi.icon}</div>
             </div>
             <div className="flex items-baseline gap-2 mb-1">
@@ -84,7 +84,7 @@ export function MetricsDashboard() {
                 {kpi.change}
               </span>
             </div>
-            <p className="text-[11px] text-slate-500">{kpi.subtitle}</p>
+            <p className="text-[11px] text-[#666666]">{kpi.subtitle}</p>
           </div>
         ))}
       </div>
@@ -92,20 +92,20 @@ export function MetricsDashboard() {
       {/* Charts Row */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
         {/* Trend Area Chart */}
-        <div className="lg:col-span-2 p-5 rounded-2xl bg-slate-900/60 border border-slate-800/80 shadow-lg">
+        <div className="lg:col-span-2 p-5 rounded-2xl bg-[#0a0a0a] border border-[#1a1a1a] shadow-lg">
           <div className="flex items-center justify-between mb-4">
             <div>
               <h4 className="text-xs font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                <TrendingUp className="h-4 w-4 text-blue-400" />
+                <TrendingUp className="h-4 w-4 text-[#ffffff]" />
                 Document Review Volume & Audit Pass Rate %
               </h4>
-              <p className="text-[11px] text-slate-400 mt-0.5">
+              <p className="text-[11px] text-[#888888] mt-0.5">
                 Monthly throughput across SEC filings, client agreements, and disclosure packages.
               </p>
             </div>
             <div className="flex items-center gap-3 text-xs">
-              <span className="flex items-center gap-1.5 text-blue-400">
-                <span className="h-2 w-2 rounded-full bg-blue-500" />
+              <span className="flex items-center gap-1.5 text-[#ffffff]">
+                <span className="h-2 w-2 rounded-full bg-[#141414]" />
                 Audited Docs
               </span>
               <span className="flex items-center gap-1.5 text-emerald-400">
@@ -157,13 +157,13 @@ export function MetricsDashboard() {
         </div>
 
         {/* Violations Severity Distribution Bar Chart */}
-        <div className="p-5 rounded-2xl bg-slate-900/60 border border-slate-800/80 shadow-lg flex flex-col justify-between">
+        <div className="p-5 rounded-2xl bg-[#0a0a0a] border border-[#1a1a1a] shadow-lg flex flex-col justify-between">
           <div>
             <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-1 flex items-center gap-2">
               <AlertTriangle className="h-4 w-4 text-amber-400" />
               Violation Severity Breakdown
             </h4>
-            <p className="text-[11px] text-slate-400 mb-4">
+            <p className="text-[11px] text-[#888888] mb-4">
               Distribution of flagged clauses across active platform rules.
             </p>
 
@@ -192,7 +192,7 @@ export function MetricsDashboard() {
             </div>
           </div>
 
-          <div className="pt-3 border-t border-slate-800/60 text-center">
+          <div className="pt-3 border-t border-[#1a1a1a] text-center">
             <span className="text-[11px] text-emerald-400 font-semibold flex items-center justify-center gap-1">
               <ShieldCheck className="h-3.5 w-3.5" />
               100% of Critical Violations Contained in VDR

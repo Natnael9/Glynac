@@ -199,7 +199,7 @@ export default function TreePage() {
   return (
     <div className="flex flex-col h-full bg-[#090d16] overflow-hidden select-none">
       {/* Top Controls Toolbar */}
-      <div className="p-3 border-b border-slate-800/80 bg-slate-950/60 flex flex-wrap items-center justify-between gap-3 z-10">
+      <div className="p-3 border-b border-[#1a1a1a] bg-[#050505] flex flex-wrap items-center justify-between gap-3 z-10">
         <div className="flex items-center gap-2.5">
           <div className="p-2 rounded-xl bg-indigo-600/15 text-indigo-400 border border-indigo-500/20">
             <Network className="h-5 w-5" />
@@ -208,7 +208,7 @@ export default function TreePage() {
             <h2 className="text-sm font-semibold text-slate-900">
               Policy Graph Editor
             </h2>
-            <p className="text-xs text-slate-500">
+            <p className="text-xs text-[#666666]">
               Interactive rule tree and parent-child dependency graph
             </p>
           </div>
@@ -218,19 +218,19 @@ export default function TreePage() {
         <div className="flex items-center gap-2 text-xs">
           {/* Search Box */}
           <div className="relative">
-            <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-slate-500" />
+            <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-[#666666]" />
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search rule node..."
-              className="pl-8 pr-3 py-1.5 bg-slate-900 border border-slate-800 rounded-lg text-xs text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 w-44"
+              className="pl-8 pr-3 py-1.5 bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg text-xs text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 w-44"
             />
           </div>
 
           <button
             onClick={handleAutoLayout}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 hover:border-slate-700 text-slate-300 hover:text-white font-medium transition-colors"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#0a0a0a] border border-[#1a1a1a] hover:border-[#262626] text-[#d1d1d1] hover:text-white font-medium transition-colors"
           >
             <LayoutTemplate className="h-3.5 w-3.5 text-indigo-400" />
             <span>Auto-Layout</span>
@@ -238,7 +238,7 @@ export default function TreePage() {
 
           <button
             onClick={handleValidateTree}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 hover:border-slate-700 text-slate-300 hover:text-white font-medium transition-colors"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#0a0a0a] border border-[#1a1a1a] hover:border-[#262626] text-[#d1d1d1] hover:text-white font-medium transition-colors"
           >
             <CheckCircle2 className="h-3.5 w-3.5 text-emerald-400" />
             <span>Validate DAG</span>
@@ -305,11 +305,11 @@ export default function TreePage() {
               size={1.5}
               color="#1e293b"
             />
-            <Controls className="!bg-slate-900 !border-slate-800 !text-slate-400" />
+            <Controls className="!bg-[#0a0a0a] !border-[#1a1a1a] !text-[#888888]" />
             <MiniMap
               nodeColor="#3b82f6"
               maskColor="rgba(15, 23, 42, 0.85)"
-              className="!bg-slate-950 !border !border-slate-800 !rounded-xl overflow-hidden"
+              className="!bg-[#050505] !border !border-[#1a1a1a] !rounded-xl overflow-hidden"
             />
           </ReactFlow>
         </div>

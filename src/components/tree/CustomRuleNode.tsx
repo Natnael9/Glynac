@@ -23,23 +23,23 @@ export const CustomRuleNode = memo(({ data, selected }: NodeProps) => {
           badge: 'Root Policy',
           badgeColor: 'bg-purple-500/20 text-purple-300 border-purple-500/30',
           borderColor: 'border-purple-500/50',
-          bgColor: 'bg-slate-950/90',
+          bgColor: 'bg-[#050505]',
         };
       case 'rule':
         return {
           icon: <AlertOctagon className="h-4 w-4 text-rose-400" />,
           badge: 'Regulatory Rule',
           badgeColor: 'bg-rose-500/20 text-rose-300 border-rose-500/30',
-          borderColor: nodeData.isViolated ? 'border-rose-500' : 'border-slate-800',
-          bgColor: 'bg-slate-950/90',
+          borderColor: nodeData.isViolated ? 'border-rose-500' : 'border-[#1a1a1a]',
+          bgColor: 'bg-[#050505]',
         };
       case 'condition':
         return {
           icon: <FileSpreadsheet className="h-4 w-4 text-amber-400" />,
           badge: 'Evaluation Condition',
           badgeColor: 'bg-amber-500/20 text-amber-300 border-amber-500/30',
-          borderColor: nodeData.isViolated ? 'border-amber-500' : 'border-slate-800',
-          bgColor: 'bg-slate-950/90',
+          borderColor: nodeData.isViolated ? 'border-amber-500' : 'border-[#1a1a1a]',
+          bgColor: 'bg-[#050505]',
         };
       case 'action':
         return {
@@ -47,15 +47,15 @@ export const CustomRuleNode = memo(({ data, selected }: NodeProps) => {
           badge: 'Automated Action',
           badgeColor: 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30',
           borderColor: 'border-emerald-500/40',
-          bgColor: 'bg-slate-950/90',
+          bgColor: 'bg-[#050505]',
         };
       default:
         return {
-          icon: <ShieldCheck className="h-4 w-4 text-blue-400" />,
+          icon: <ShieldCheck className="h-4 w-4 text-[#ffffff]" />,
           badge: 'Node',
-          badgeColor: 'bg-blue-500/20 text-blue-300 border-blue-500/30',
-          borderColor: 'border-slate-800',
-          bgColor: 'bg-slate-950/90',
+          badgeColor: 'bg-[#141414] text-[#ededed] border-[#333333]',
+          borderColor: 'border-[#1a1a1a]',
+          bgColor: 'bg-[#050505]',
         };
     }
   };
@@ -67,7 +67,7 @@ export const CustomRuleNode = memo(({ data, selected }: NodeProps) => {
       className={`min-w-[240px] max-w-[280px] rounded-2xl border-2 p-3.5 shadow-2xl transition-all select-none ${
         style.bgColor
       } ${style.borderColor} ${
-        selected ? 'ring-2 ring-blue-500 shadow-blue-500/30 scale-105' : 'hover:border-slate-600'
+        selected ? 'ring-2 ring-white shadow-blue-500/30 scale-105' : 'hover:border-[#333333]'
       }`}
     >
       {/* Input Handle */}
@@ -75,7 +75,7 @@ export const CustomRuleNode = memo(({ data, selected }: NodeProps) => {
         <Handle
           type="target"
           position={Position.Top}
-          className="!h-3 !w-3 !bg-blue-500 !border-2 !border-slate-950"
+          className="!h-3 !w-3 !bg-[#141414] !border-2 !border-slate-950"
         />
       )}
 
@@ -93,7 +93,7 @@ export const CustomRuleNode = memo(({ data, selected }: NodeProps) => {
               ? 'bg-rose-500/20 text-rose-400'
               : nodeData.severity === 'High'
               ? 'bg-amber-500/20 text-amber-400'
-              : 'bg-blue-500/20 text-blue-400'
+              : 'bg-[#141414] text-[#ffffff]'
           }`}
         >
           {nodeData.severity}
@@ -103,13 +103,13 @@ export const CustomRuleNode = memo(({ data, selected }: NodeProps) => {
       {/* Title & Code */}
       <div className="space-y-1">
         <div className="text-xs font-bold text-white line-clamp-1">{nodeData.label}</div>
-        <div className="text-[10px] text-blue-400 font-mono font-semibold">
+        <div className="text-[10px] text-[#ffffff] font-mono font-semibold">
           ID: {nodeData.ruleId}
         </div>
       </div>
 
       {/* Description Snippet */}
-      <p className="text-[11px] text-slate-400 mt-2 line-clamp-2 leading-relaxed">
+      <p className="text-[11px] text-[#888888] mt-2 line-clamp-2 leading-relaxed">
         {nodeData.description}
       </p>
 
@@ -125,7 +125,7 @@ export const CustomRuleNode = memo(({ data, selected }: NodeProps) => {
       <Handle
         type="source"
         position={Position.Bottom}
-        className="!h-3 !w-3 !bg-blue-500 !border-2 !border-slate-950"
+        className="!h-3 !w-3 !bg-[#141414] !border-2 !border-slate-950"
       />
     </div>
   );

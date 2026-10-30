@@ -110,21 +110,21 @@ export function UploadModal() {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 backdrop-blur-sm p-4 animate-in fade-in duration-200 select-none">
-      <div className="w-full max-w-lg rounded-2xl bg-slate-900 border border-slate-800 shadow-2xl overflow-hidden flex flex-col">
+      <div className="w-full max-w-lg rounded-2xl bg-[#0a0a0a] border border-[#1a1a1a] shadow-2xl overflow-hidden flex flex-col">
         {/* Header */}
-        <div className="p-4 border-b border-slate-800/80 bg-slate-950/60 flex items-center justify-between">
+        <div className="p-4 border-b border-[#1a1a1a] bg-[#050505] flex items-center justify-between">
           <div className="flex items-center gap-2.5">
-            <div className="p-2 rounded-xl bg-blue-600/20 text-blue-400 border border-blue-500/30">
+            <div className="p-2 rounded-xl bg-[#ffffff] !text-black text-[#ffffff] border border-[#333333]">
               <Upload className="h-5 w-5" />
             </div>
             <div>
               <h3 className="text-sm font-bold text-white">Upload Compliance Document</h3>
-              <p className="text-xs text-slate-400">PDF, TXT, Markdown, or JSON data files</p>
+              <p className="text-xs text-[#888888]">PDF, TXT, Markdown, or JSON data files</p>
             </div>
           </div>
           <button
             onClick={() => setIsUploadModalOpen(false)}
-            className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+            className="p-1.5 rounded-lg text-[#888888] hover:text-white hover:bg-[#141414] transition-colors"
           >
             <X className="h-4 w-4" />
           </button>
@@ -141,10 +141,10 @@ export function UploadModal() {
             onClick={() => fileInputRef.current?.click()}
             className={`border-2 border-dashed rounded-2xl p-6 flex flex-col items-center justify-center text-center cursor-pointer transition-all ${
               dragActive
-                ? 'border-blue-500 bg-blue-500/10 scale-[1.01]'
+                ? 'border-[#333333] bg-[#141414] scale-[1.01]'
                 : selectedFile
                 ? 'border-emerald-500/50 bg-emerald-500/5'
-                : 'border-slate-800 hover:border-slate-700 bg-slate-950/40'
+                : 'border-[#1a1a1a] hover:border-[#262626] bg-[#050505]'
             }`}
           >
             <input
@@ -160,21 +160,21 @@ export function UploadModal() {
                 <div className="h-10 w-10 mx-auto rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center">
                   <FileCheck className="h-5 w-5" />
                 </div>
-                <p className="font-bold text-slate-200">{selectedFile.name}</p>
-                <p className="text-[11px] text-slate-400">
+                <p className="font-bold text-[#ededed]">{selectedFile.name}</p>
+                <p className="text-[11px] text-[#888888]">
                   {(selectedFile.size / 1024).toFixed(1)} KB • Ready for scanning
                 </p>
-                <p className="text-[10px] text-blue-400 underline">Click to choose a different file</p>
+                <p className="text-[10px] text-[#ffffff] underline">Click to choose a different file</p>
               </div>
             ) : (
               <div className="space-y-2">
-                <div className="h-10 w-10 mx-auto rounded-xl bg-blue-600/10 text-blue-400 flex items-center justify-center">
+                <div className="h-10 w-10 mx-auto rounded-xl bg-[#ffffff] !text-black text-[#ffffff] flex items-center justify-center">
                   <Upload className="h-5 w-5" />
                 </div>
                 <div>
-                  <span className="font-semibold text-blue-400">Click to upload</span> or drag and drop
+                  <span className="font-semibold text-[#ffffff]">Click to upload</span> or drag and drop
                 </div>
-                <p className="text-[11px] text-slate-400">
+                <p className="text-[11px] text-[#888888]">
                   SEC Form ADV, FINRA communications, bilateral NDAs (max 25MB)
                 </p>
               </div>
@@ -183,7 +183,7 @@ export function UploadModal() {
 
           {/* Quick Mock Template Selectors */}
           <div className="space-y-1.5">
-            <label className="text-slate-400 text-[11px] font-semibold">Or use a sample financial document:</label>
+            <label className="text-[#888888] text-[11px] font-semibold">Or use a sample financial document:</label>
             <div className="grid grid-cols-2 gap-2">
               <button
                 type="button"
@@ -195,10 +195,10 @@ export function UploadModal() {
                     extension: 'pdf',
                   })
                 }
-                className="p-2 rounded-lg bg-slate-950 border border-slate-800 hover:border-blue-500/50 text-left text-slate-300 hover:text-white transition-colors"
+                className="p-2 rounded-lg bg-[#050505] border border-[#1a1a1a] hover:border-[#333333] text-left text-[#d1d1d1] hover:text-white transition-colors"
               >
                 <div className="font-semibold text-[11px] truncate">FINRA_Rule_2210_Review.pdf</div>
-                <div className="text-[10px] text-slate-400">Marketing disclosure check</div>
+                <div className="text-[10px] text-[#888888]">Marketing disclosure check</div>
               </button>
               <button
                 type="button"
@@ -210,18 +210,18 @@ export function UploadModal() {
                     extension: 'json',
                   })
                 }
-                className="p-2 rounded-lg bg-slate-950 border border-slate-800 hover:border-blue-500/50 text-left text-slate-300 hover:text-white transition-colors"
+                className="p-2 rounded-lg bg-[#050505] border border-[#1a1a1a] hover:border-[#333333] text-left text-[#d1d1d1] hover:text-white transition-colors"
               >
                 <div className="font-semibold text-[11px] truncate">LP_Subscription_A.json</div>
-                <div className="text-[10px] text-slate-400">Cap table allocation schema</div>
+                <div className="text-[10px] text-[#888888]">Cap table allocation schema</div>
               </button>
             </div>
           </div>
 
           {/* Security Tag Selector */}
           <div>
-            <label className="block text-slate-300 font-semibold mb-1.5 flex items-center gap-1.5">
-              <Shield className="h-4 w-4 text-blue-400" />
+            <label className="block text-[#d1d1d1] font-semibold mb-1.5 flex items-center gap-1.5">
+              <Shield className="h-4 w-4 text-[#ffffff]" />
               Security Sensitivity Tier
             </label>
             <div className="grid grid-cols-4 gap-1.5">
@@ -233,8 +233,8 @@ export function UploadModal() {
                     onClick={() => setSensitivity(lvl)}
                     className={`py-1.5 px-2 rounded-lg font-semibold text-[11px] border transition-all text-center ${
                       sensitivity === lvl
-                        ? 'bg-blue-600/20 text-blue-300 border-blue-500/50 shadow-sm'
-                        : 'bg-slate-950/60 text-slate-400 border-slate-800 hover:text-slate-300'
+                        ? 'bg-[#ffffff] !text-black text-[#ededed] border-[#333333] shadow-sm'
+                        : 'bg-[#050505] text-[#888888] border-[#1a1a1a] hover:text-[#d1d1d1]'
                     }`}
                   >
                     {lvl}
@@ -247,11 +247,11 @@ export function UploadModal() {
           {/* Upload Progress Bar */}
           {uploadProgress !== null && (
             <div className="space-y-1.5 pt-1">
-              <div className="flex justify-between text-[11px] text-slate-300 font-semibold">
+              <div className="flex justify-between text-[11px] text-[#d1d1d1] font-semibold">
                 <span>Scanning & Ingesting Document...</span>
                 <span>{uploadProgress}%</span>
               </div>
-              <div className="w-full h-2 rounded-full bg-slate-950 overflow-hidden">
+              <div className="w-full h-2 rounded-full bg-[#050505] overflow-hidden">
                 <div
                   className="h-full bg-gradient-to-r from-blue-500 to-indigo-500 transition-all duration-150"
                   style={{ width: `${uploadProgress}%` }}
@@ -262,10 +262,10 @@ export function UploadModal() {
         </div>
 
         {/* Footer */}
-        <div className="p-4 border-t border-slate-800/80 bg-slate-950/60 flex items-center justify-end gap-2">
+        <div className="p-4 border-t border-[#1a1a1a] bg-[#050505] flex items-center justify-end gap-2">
           <button
             onClick={() => setIsUploadModalOpen(false)}
-            className="px-3 py-1.5 rounded-lg text-xs text-slate-400 hover:text-white hover:bg-slate-800"
+            className="px-3 py-1.5 rounded-lg text-xs text-[#888888] hover:text-white hover:bg-[#141414]"
           >
             Cancel
           </button>
