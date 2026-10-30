@@ -114,7 +114,7 @@ export function UploadModal() {
         {/* Header */}
         <div className="p-4 border-b border-[#1a1a1a] bg-[#050505] flex items-center justify-between">
           <div className="flex items-center gap-2.5">
-            <div className="p-2 rounded-xl bg-[#ffffff] !text-black text-[#ffffff] border border-[#333333]">
+            <div className="p-2 rounded-xl bg-[#181818] border border-[#2b2b2b] text-[#ffffff] border border-[#333333]">
               <Upload className="h-5 w-5" />
             </div>
             <div>
@@ -168,7 +168,7 @@ export function UploadModal() {
               </div>
             ) : (
               <div className="space-y-2">
-                <div className="h-10 w-10 mx-auto rounded-xl bg-[#ffffff] !text-black text-[#ffffff] flex items-center justify-center">
+                <div className="h-10 w-10 mx-auto rounded-xl bg-[#181818] border border-[#2b2b2b] text-[#ffffff] flex items-center justify-center">
                   <Upload className="h-5 w-5" />
                 </div>
                 <div>
@@ -233,7 +233,7 @@ export function UploadModal() {
                     onClick={() => setSensitivity(lvl)}
                     className={`py-1.5 px-2 rounded-lg font-semibold text-[11px] border transition-all text-center ${
                       sensitivity === lvl
-                        ? 'bg-[#ffffff] !text-black text-[#ededed] border-[#333333] shadow-sm'
+                        ? 'bg-[#181818] border border-[#2b2b2b] text-[#ededed] border-[#333333] shadow-sm'
                         : 'bg-[#050505] text-[#888888] border-[#1a1a1a] hover:text-[#d1d1d1]'
                     }`}
                   >

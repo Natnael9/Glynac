@@ -227,13 +227,13 @@ export function FileExplorer() {
           />
         </div>
 
-        {/* Folder Chips */}
+        {/* Folder Filter Bar - Uniform height buttons */}
         <div className="hidden lg:flex items-center gap-1.5 overflow-x-auto">
           <button
             onClick={() => setSelectedFolderId(null)}
-            className={`h-7 px-3 rounded-md text-[11px] font-medium transition-colors shrink-0 flex items-center justify-center whitespace-nowrap ${
+            className={`h-7 px-3 rounded text-[11px] font-medium transition-colors whitespace-nowrap shrink-0 flex items-center ${
               selectedFolderId === null
-                ? 'bg-white text-black font-semibold'
+                ? 'bg-[#ffffff] text-[#000000]'
                 : 'text-[#888888] hover:text-[#ededed] bg-[#0a0a0a] border border-[#1a1a1a]'
             }`}
           >
@@ -241,19 +241,21 @@ export function FileExplorer() {
           </button>
           {folders.map((f) => {
             const count = documents.filter((d) => d.folderId === f.id).length;
+            const isSelected = selectedFolderId === f.id;
             return (
               <button
                 key={f.id}
                 onClick={() => setSelectedFolderId(f.id)}
-                className={`h-7 px-3 rounded-md text-[11px] font-medium transition-colors flex items-center gap-1.5 shrink-0 whitespace-nowrap ${
-                  selectedFolderId === f.id
-                    ? 'bg-white text-black font-semibold'
+                className={`h-7 px-3 rounded text-[11px] font-medium transition-colors whitespace-nowrap shrink-0 flex items-center gap-1.5 ${
+                  isSelected
+                    ? 'bg-[#ffffff] text-[#000000]'
                     : 'text-[#888888] hover:text-[#ededed] bg-[#0a0a0a] border border-[#1a1a1a]'
                 }`}
               >
-                <Folder className="h-3 w-3 shrink-0" />
-                <span className="truncate max-w-[140px]">{f.name}</span>
-                <span className="text-[10px] opacity-70">({count})</span>
+                <span>{f.name}</span>
+                <span className={`text-[10px] ${isSelected ? 'text-[#333333]' : 'text-[#555555]'}`}>
+                  ({count})
+                </span>
               </button>
             );
           })}
@@ -261,14 +263,14 @@ export function FileExplorer() {
 
         {/* Sort & View Options */}
         <div className="flex items-center gap-2">
-          <div className="h-7 flex items-center gap-0.5 bg-[#0a0a0a] border border-[#1a1a1a] rounded-md p-0.5">
+          <div className="flex items-center gap-1 bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg p-0.5">
             <button
               onClick={() => {
                 if (sortBy === 'date') setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
                 else setSortBy('date');
               }}
-              className={`h-full px-2.5 rounded text-[11px] flex items-center gap-1 transition-colors ${
-                sortBy === 'date' ? 'bg-[#1e1e1e] text-white font-medium' : 'text-[#888888] hover:text-white'
+              className={`px-2 py-1 rounded text-[11px] flex items-center gap-1 ${
+                sortBy === 'date' ? 'bg-[#141414] text-white font-medium' : 'text-[#888888]'
               }`}
             >
               Date
@@ -279,8 +281,8 @@ export function FileExplorer() {
                 if (sortBy === 'name') setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
                 else setSortBy('name');
               }}
-              className={`h-full px-2.5 rounded text-[11px] flex items-center gap-1 transition-colors ${
-                sortBy === 'name' ? 'bg-[#1e1e1e] text-white font-medium' : 'text-[#888888] hover:text-white'
+              className={`px-2 py-1 rounded text-[11px] flex items-center gap-1 ${
+                sortBy === 'name' ? 'bg-[#141414] text-white font-medium' : 'text-[#888888]'
               }`}
             >
               Name
@@ -291,8 +293,8 @@ export function FileExplorer() {
                 if (sortBy === 'sensitivity') setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
                 else setSortBy('sensitivity');
               }}
-              className={`h-full px-2.5 rounded text-[11px] flex items-center gap-1 transition-colors ${
-                sortBy === 'sensitivity' ? 'bg-[#1e1e1e] text-white font-medium' : 'text-[#888888] hover:text-white'
+              className={`px-2 py-1 rounded text-[11px] flex items-center gap-1 ${
+                sortBy === 'sensitivity' ? 'bg-[#141414] text-white font-medium' : 'text-[#888888]'
               }`}
             >
               Security
@@ -300,21 +302,17 @@ export function FileExplorer() {
             </button>
           </div>
 
-          <div className="h-7 flex items-center gap-0.5 bg-[#0a0a0a] border border-[#1a1a1a] rounded-md p-0.5">
+          <div className="flex items-center gap-0.5 bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg p-0.5">
             <button
               onClick={() => setViewMode('table')}
-              className={`h-full px-1.5 rounded flex items-center justify-center transition-colors ${
-                viewMode === 'table' ? 'bg-[#1e1e1e] text-white' : 'text-[#888888] hover:text-white'
-              }`}
+              className={`p-1 rounded ${viewMode === 'table' ? 'bg-[#141414] text-[#ffffff]' : 'text-[#888888]'}`}
               title="Table View"
             >
               <List className="h-3.5 w-3.5" />
             </button>
             <button
               onClick={() => setViewMode('grid')}
-              className={`h-full px-1.5 rounded flex items-center justify-center transition-colors ${
-                viewMode === 'grid' ? 'bg-[#1e1e1e] text-white' : 'text-[#888888] hover:text-white'
-              }`}
+              className={`p-1 rounded ${viewMode === 'grid' ? 'bg-[#141414] text-[#ffffff]' : 'text-[#888888]'}`}
               title="Grid View"
             >
               <LayoutGrid className="h-3.5 w-3.5" />

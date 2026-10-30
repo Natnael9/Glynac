@@ -108,7 +108,7 @@ export function MessageBubble({ message }: { message: ChatMessage }) {
             {message.attachments.map((att) => (
               <div
                 key={att.id}
-                className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#ffffff] !text-black border border-[#333333] text-[#ededed] text-[11px] font-medium"
+                className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#181818] border border-[#2b2b2b] border border-[#333333] text-[#ededed] text-[11px] font-medium"
               >
                 <FileText className="h-3.5 w-3.5 text-[#ffffff]" />
                 <span>{att.name}</span>

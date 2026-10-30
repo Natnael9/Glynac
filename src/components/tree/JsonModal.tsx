@@ -96,7 +96,7 @@ export function JsonModal({
         {/* Header */}
         <div className="p-4 border-b border-[#1a1a1a] bg-[#050505] flex items-center justify-between">
           <div className="flex items-center gap-2.5">
-            <div className="p-2 rounded-xl bg-[#ffffff] !text-black text-[#ffffff]">
+            <div className="p-2 rounded-xl bg-[#181818] border border-[#2b2b2b] text-[#ffffff]">
               <FileCode className="h-5 w-5" />
             </div>
             <div>
@@ -148,7 +148,7 @@ export function JsonModal({
                   </button>
                   <button
                     onClick={handleDownload}
-                    className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#ffffff] !text-black hover:bg-[#e5e5e5] text-white text-xs font-semibold"
+                    className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white text-black hover:bg-[#e0e0e0] text-xs font-semibold"
                   >
                     <Download className="h-3.5 w-3.5" />
                     <span>Download</span>
@@ -196,7 +196,7 @@ export function JsonModal({
             <button
               onClick={handleExecuteImport}
               disabled={!importText.trim()}
-              className="px-4 py-1.5 rounded-lg text-xs font-semibold bg-[#ffffff] !text-black hover:bg-[#e5e5e5] text-white disabled:opacity-50"
+              className="px-4 py-1.5 rounded-lg text-xs font-semibold bg-white text-black hover:bg-[#e0e0e0] disabled:opacity-50"
             >
               Confirm Import
             </button>

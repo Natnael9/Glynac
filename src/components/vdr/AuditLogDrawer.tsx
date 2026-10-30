@@ -117,7 +117,7 @@ export function AuditLogDrawer() {
                   onClick={() => setFilterAction(action)}
                   className={`px-2 py-0.5 rounded-md text-[11px] font-medium transition-colors shrink-0 ${
                     filterAction === action
-                      ? 'bg-[#ffffff] !text-black text-[#ffffff] border border-[#333333]'
+                      ? 'bg-[#181818] border border-[#2b2b2b] text-[#ffffff] border border-[#333333]'
                       : 'text-[#888888] hover:text-[#ededed] bg-[#0a0a0a] border border-[#1a1a1a]'
                   }`}
                 >
@@ -169,7 +169,7 @@ export function AuditLogDrawer() {
 
                         <div className="flex items-center justify-between pt-2 border-t border-[#1a1a1a] text-[10px] text-[#888888]">
                           <div className="flex items-center gap-1.5">
-                            <div className="h-4 w-4 rounded-full bg-[#ffffff] !text-black text-[#ffffff] flex items-center justify-center text-[9px] font-bold">
+                            <div className="h-4 w-4 rounded-full bg-[#181818] border border-[#2b2b2b] text-[#ffffff] flex items-center justify-center text-[9px] font-bold">
                               {log.userName.charAt(0)}
                             </div>
                             <span className="text-[#d1d1d1] font-semibold">{log.userName}</span>

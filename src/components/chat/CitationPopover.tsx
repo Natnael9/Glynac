@@ -16,7 +16,7 @@ export function CitationPopover() {
         {/* Header */}
         <div className="flex items-center justify-between pb-3 border-b border-[#1a1a1a]">
           <div className="flex items-center gap-2">
-            <div className="p-2 rounded-xl bg-[#ffffff] !text-black text-[#ffffff]">
+            <div className="p-2 rounded-xl bg-[#181818] border border-[#2b2b2b] text-[#ffffff]">
               <BookmarkCheck className="h-4 w-4" />
             </div>
             <div>

@@ -57,7 +57,7 @@ export function ChatSidebar() {
       <div className="p-4 border-b border-[#1a1a1a] bg-[#0a0a0a]">
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center gap-2">
-            <div className="p-1.5 rounded-lg bg-[#ffffff] !text-black text-[#ffffff]">
+            <div className="p-1.5 rounded-lg bg-[#181818] border border-[#2b2b2b] text-[#ffffff]">
               <Sparkles className="h-4 w-4" />
             </div>
             <h3 className="text-xs font-bold text-white tracking-wide uppercase">
@@ -66,7 +66,7 @@ export function ChatSidebar() {
           </div>
           <button
             onClick={() => createNewThread()}
-            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-[#ffffff] !text-black hover:bg-[#e5e5e5] text-white text-xs font-semibold shadow-md shadow-blue-600/20 transition-colors"
+            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-white text-black hover:bg-[#e0e0e0] text-xs font-semibold shadow-md shadow-blue-600/20 transition-colors"
           >
             <Plus className="h-3.5 w-3.5" />
             <span>New Chat</span>
@@ -192,7 +192,7 @@ function ThreadItem({
       onClick={onSelect}
       className={`group relative flex items-center justify-between p-2.5 rounded-xl cursor-pointer transition-all ${
         isActive
-          ? 'bg-[#ffffff] !text-black border border-[#333333] text-white shadow-sm'
+          ? 'bg-[#181818] border border-[#2b2b2b] border border-[#333333] text-white shadow-sm'
           : 'border border-transparent text-[#888888] hover:text-[#ededed] hover:bg-[#0a0a0a]'
       }`}
     >
@@ -214,7 +214,7 @@ function ThreadItem({
             />
             <button
               onClick={onRenameSave}
-              className="p-1 rounded bg-[#ffffff] !text-black text-white hover:bg-[#e5e5e5]"
+              className="p-1 rounded bg-[#181818] border border-[#2b2b2b] text-white hover:bg-[#e5e5e5]"
             >
               <Check className="h-3 w-3" />
             </button>

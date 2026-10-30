@@ -200,18 +200,13 @@ export default function TreePage() {
     <div className="flex flex-col h-full bg-[#090d16] overflow-hidden select-none">
       {/* Top Controls Toolbar */}
       <div className="p-3 border-b border-[#1a1a1a] bg-[#050505] flex flex-wrap items-center justify-between gap-3 z-10">
-        <div className="flex items-center gap-2.5">
-          <div className="p-2 rounded-xl bg-indigo-600/15 text-indigo-400 border border-indigo-500/20">
-            <Network className="h-5 w-5" />
-          </div>
-          <div>
-            <h2 className="text-sm font-semibold text-slate-900">
-              Policy Graph Editor
-            </h2>
-            <p className="text-xs text-[#666666]">
-              Interactive rule tree and parent-child dependency graph
-            </p>
-          </div>
+        <div>
+          <h2 className="text-base font-bold text-white tracking-tight">
+            Policy Graph Editor
+          </h2>
+          <p className="text-xs text-[#888888]">
+            Interactive rule tree and parent-child dependency graph
+          </p>
         </div>
 
         {/* Toolbar Action Buttons */}

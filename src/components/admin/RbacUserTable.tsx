@@ -99,7 +99,7 @@ export function RbacUserTable() {
                 key={r}
                 onClick={() => setRoleFilter(r)}
                 className={`px-2.5 py-1 rounded text-[11px] font-medium transition-colors ${
-                  roleFilter === r ? 'bg-[#ffffff] !text-black text-white' : 'text-[#888888] hover:text-white'
+                  roleFilter === r ? 'bg-[#181818] border border-[#2b2b2b] text-white' : 'text-[#888888] hover:text-white'
                 }`}
               >
                 {r}
@@ -109,7 +109,7 @@ export function RbacUserTable() {
 
           <button
             onClick={() => setIsAddUserModalOpen(true)}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#ffffff] !text-black hover:bg-[#e5e5e5] text-white text-xs font-semibold shadow-md shadow-blue-600/20"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white text-black hover:bg-[#e0e0e0] text-xs font-semibold shadow-md shadow-blue-600/20"
           >
             <UserPlus className="h-3.5 w-3.5" />
             <span>Add User</span>
@@ -204,7 +204,7 @@ export function RbacUserTable() {
           <div className="w-full max-w-md rounded-2xl bg-[#0a0a0a] border border-[#1a1a1a] p-5 shadow-2xl">
             <div className="flex items-center justify-between pb-3 border-b border-[#1a1a1a]">
               <div className="flex items-center gap-2">
-                <div className="p-1.5 rounded-lg bg-[#ffffff] !text-black text-[#ffffff]">
+                <div className="p-1.5 rounded-lg bg-[#181818] border border-[#2b2b2b] text-[#ffffff]">
                   <Shield className="h-4 w-4" />
                 </div>
                 <div>
@@ -332,7 +332,7 @@ export function RbacUserTable() {
                   );
                   setEditingUser(null);
                 }}
-                className="px-4 py-1.5 rounded-lg text-xs font-semibold bg-[#ffffff] !text-black hover:bg-[#e5e5e5] text-white shadow-md shadow-blue-600/20"
+                className="px-4 py-1.5 rounded-lg text-xs font-semibold bg-white text-black hover:bg-[#e0e0e0] shadow-md shadow-blue-600/20"
               >
                 Save Role Updates
               </button>
@@ -408,7 +408,7 @@ export function RbacUserTable() {
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-1.5 rounded-lg text-xs font-semibold bg-[#ffffff] !text-black hover:bg-[#e5e5e5] text-white shadow-md shadow-blue-600/20"
+                  className="px-4 py-1.5 rounded-lg text-xs font-semibold bg-white text-black hover:bg-[#e0e0e0] shadow-md shadow-blue-600/20"
                 >
                   Create User
                 </button>

@@ -79,7 +79,7 @@ export function PermissionModal() {
         {/* Modal Header */}
         <div className="p-4 sm:p-5 border-b border-[#1a1a1a] bg-[#050505] flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="p-2 rounded-xl bg-[#ffffff] !text-black text-[#ffffff] border border-[#333333]">
+            <div className="p-2 rounded-xl bg-[#181818] border border-[#2b2b2b] text-[#ffffff] border border-[#333333]">
               <Lock className="h-5 w-5" />
             </div>
             <div>

@@ -37,7 +37,7 @@ export function PropertiesPanel({
       {/* Header */}
       <div className="p-4 border-b border-[#1a1a1a] bg-[#0a0a0a] flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <div className="p-1.5 rounded-lg bg-[#ffffff] !text-black text-[#ffffff]">
+          <div className="p-1.5 rounded-lg bg-[#181818] border border-[#2b2b2b] text-[#ffffff]">
             <SlidersHorizontal className="h-4 w-4" />
           </div>
           <div>
@@ -171,7 +171,7 @@ export function PropertiesPanel({
 
         <button
           onClick={onClose}
-          className="px-3 py-1.5 rounded-lg bg-[#ffffff] !text-black hover:bg-[#e5e5e5] text-white text-xs font-semibold shadow-md shadow-blue-600/20"
+          className="px-3 py-1.5 rounded-lg bg-white text-black hover:bg-[#e0e0e0] text-xs font-semibold shadow-md shadow-blue-600/20"
         >
           Done
         </button>

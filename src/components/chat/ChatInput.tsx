@@ -72,7 +72,7 @@ export function ChatInput() {
           {selectedAttachments.map((att) => (
             <div
               key={att.id}
-              className="flex items-center gap-1.5 px-2 py-0.5 rounded-lg bg-[#ffffff] !text-black border border-[#333333] text-[#ededed] text-xs font-medium"
+              className="flex items-center gap-1.5 px-2 py-0.5 rounded-lg bg-[#181818] border border-[#2b2b2b] border border-[#333333] text-[#ededed] text-xs font-medium"
             >
               <FileText className="h-3 w-3" />
               <span className="truncate max-w-[160px]">{att.name}</span>
@@ -115,7 +115,7 @@ export function ChatInput() {
           <button
             type="submit"
             disabled={(!input.trim() && selectedAttachments.length === 0) || isStreaming}
-            className="p-2 rounded-xl bg-[#ffffff] !text-black hover:bg-[#e5e5e5] text-white disabled:opacity-40 disabled:hover:bg-[#ffffff] !text-black transition-all shadow-md shadow-blue-600/20 shrink-0"
+            className="p-2 rounded-xl bg-white text-black hover:bg-[#e0e0e0] disabled:opacity-40 disabled:hover:bg-[#181818] border border-[#2b2b2b] transition-all shadow-md shadow-blue-600/20 shrink-0"
           >
             <Send className="h-4 w-4" />
           </button>
@@ -128,7 +128,7 @@ export function ChatInput() {
           <div className="w-full max-w-md rounded-2xl bg-[#0a0a0a] border border-[#1a1a1a] p-5 shadow-2xl">
             <div className="flex items-center justify-between pb-3 border-b border-[#1a1a1a]">
               <div className="flex items-center gap-2">
-                <div className="p-1.5 rounded-lg bg-[#ffffff] !text-black text-[#ffffff]">
+                <div className="p-1.5 rounded-lg bg-[#181818] border border-[#2b2b2b] text-[#ffffff]">
                   <FileCheck className="h-4 w-4" />
                 </div>
                 <h4 className="text-xs font-bold text-white">Attach Document from VDR</h4>
@@ -161,7 +161,7 @@ export function ChatInput() {
                     }}
                     className={`flex items-center justify-between p-2.5 rounded-xl border cursor-pointer text-xs transition-colors ${
                       isAttached
-                        ? 'bg-[#ffffff] !text-black border-[#333333] text-[#ededed]'
+                        ? 'bg-[#181818] border border-[#2b2b2b] border-[#333333] text-[#ededed]'
                         : 'bg-[#050505] border-[#1a1a1a] text-[#d1d1d1] hover:border-[#262626] hover:bg-[#050505]'
                     }`}
                   >

@@ -24,18 +24,13 @@ export default function AdminPage() {
       {/* Header Banner */}
       <div className="border-b border-[#1a1a1a] bg-[#050505] px-4 sm:px-6 py-4">
         <div className="flex flex-wrap items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <div className="p-2.5 rounded-2xl bg-cyan-600/15 text-cyan-400 border border-cyan-500/20">
-              <ShieldAlert className="h-6 w-6" />
-            </div>
-            <div>
-              <h1 className="text-sm font-semibold text-slate-900">
-                System Administration
-              </h1>
-              <p className="text-xs text-[#666666]">
-                Manage access roles, compliance policies, and system configuration.
-              </p>
-            </div>
+          <div>
+            <h1 className="text-base font-bold text-white tracking-tight">
+              System Administration
+            </h1>
+            <p className="text-xs text-[#888888]">
+              Manage access roles, compliance policies, and system configuration.
+            </p>
           </div>
 
           <div className="flex items-center gap-2">
@@ -48,7 +43,7 @@ export default function AdminPage() {
             </Link>
             <Link
               href="/chat"
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#ffffff] !text-black border border-[#333333] text-[#ededed] hover:bg-[#ffffff] !text-black text-xs font-semibold transition-colors"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#181818] border border-[#2b2b2b] border border-[#333333] text-[#ededed] hover:bg-[#181818] border border-[#2b2b2b] text-xs font-semibold transition-colors"
             >
               <Sparkles className="h-3.5 w-3.5" />
               <span>AI Assistant</span>
@@ -62,7 +57,7 @@ export default function AdminPage() {
             onClick={() => setActiveTab('metrics')}
             className={`flex items-center gap-2 px-3 py-1.5 rounded-xl font-semibold transition-all ${
               activeTab === 'metrics'
-                ? 'bg-[#ffffff] !text-black text-[#ffffff] border border-[#333333]'
+                ? 'bg-[#181818] border border-[#2b2b2b] text-[#ffffff] border border-[#333333]'
                 : 'text-[#888888] hover:text-[#ededed] hover:bg-[#0a0a0a]'
             }`}
           >
@@ -74,7 +69,7 @@ export default function AdminPage() {
             onClick={() => setActiveTab('rbac')}
             className={`flex items-center gap-2 px-3 py-1.5 rounded-xl font-semibold transition-all ${
               activeTab === 'rbac'
-                ? 'bg-[#ffffff] !text-black text-[#ffffff] border border-[#333333]'
+                ? 'bg-[#181818] border border-[#2b2b2b] text-[#ffffff] border border-[#333333]'
                 : 'text-[#888888] hover:text-[#ededed] hover:bg-[#0a0a0a]'
             }`}
           >
@@ -86,7 +81,7 @@ export default function AdminPage() {
             onClick={() => setActiveTab('policies')}
             className={`flex items-center gap-2 px-3 py-1.5 rounded-xl font-semibold transition-all ${
               activeTab === 'policies'
-                ? 'bg-[#ffffff] !text-black text-[#ffffff] border border-[#333333]'
+                ? 'bg-[#181818] border border-[#2b2b2b] text-[#ffffff] border border-[#333333]'
                 : 'text-[#888888] hover:text-[#ededed] hover:bg-[#0a0a0a]'
             }`}
           >
@@ -98,7 +93,7 @@ export default function AdminPage() {
             onClick={() => setActiveTab('flags')}
             className={`flex items-center gap-2 px-3 py-1.5 rounded-xl font-semibold transition-all ${
               activeTab === 'flags'
-                ? 'bg-[#ffffff] !text-black text-[#ffffff] border border-[#333333]'
+                ? 'bg-[#181818] border border-[#2b2b2b] text-[#ffffff] border border-[#333333]'
                 : 'text-[#888888] hover:text-[#ededed] hover:bg-[#0a0a0a]'
             }`}
           >
