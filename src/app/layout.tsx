@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { AppShell } from '@/components/layout/AppShell';
 import { VDRProvider } from '@/lib/vdrContext';
+import { ChatProvider } from '@/lib/chatContext';
 
 export const metadata: Metadata = {
   title: 'Glynac Wealth Management & Compliance Platform',
@@ -18,10 +19,11 @@ export default function RootLayout({
     <html lang="en" className="h-full antialiased dark">
       <body className="min-h-full flex flex-col bg-[#090d16] text-slate-100 font-sans selection:bg-blue-600 selection:text-white">
         <VDRProvider>
-          <AppShell>{children}</AppShell>
+          <ChatProvider>
+            <AppShell>{children}</AppShell>
+          </ChatProvider>
         </VDRProvider>
       </body>
     </html>
   );
 }
-

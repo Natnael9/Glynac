@@ -54,3 +54,83 @@ export interface VDRFolder {
   description?: string;
 }
 
+// ----------------------------------------------------
+// Task 2: Chat & AI Assistant Types
+// ----------------------------------------------------
+
+export interface Citation {
+  id: string;
+  ruleCode: string;
+  title: string;
+  excerpt: string;
+  documentId?: string;
+  url?: string;
+}
+
+export interface ChatAttachment {
+  id: string;
+  name: string;
+  size: number;
+  extension: string;
+  sourceDocId?: string;
+}
+
+export interface ChatMessage {
+  id: string;
+  role: 'user' | 'assistant';
+  content: string;
+  timestamp: string;
+  isStreaming?: boolean;
+  citations?: Citation[];
+  attachments?: ChatAttachment[];
+  feedback?: 'like' | 'dislike' | null;
+}
+
+export interface ChatThread {
+  id: string;
+  title: string;
+  createdAt: string;
+  updatedAt: string;
+  pinned: boolean;
+  messages: ChatMessage[];
+}
+
+// ----------------------------------------------------
+// Task 4: Visual Tree & DAG Editor Types
+// ----------------------------------------------------
+
+export type RuleNodeType = 'root' | 'rule' | 'condition' | 'action';
+
+export interface RuleNodeData {
+  label: string;
+  ruleId: string;
+  nodeType: RuleNodeType;
+  severity: 'Low' | 'Medium' | 'High' | 'Critical';
+  description: string;
+  conditionFormula?: string;
+  actionHandler?: string;
+  tags?: string[];
+  isViolated?: boolean;
+}
+
+export interface RuleGraphJSON {
+  version: string;
+  metadata: {
+    title: string;
+    description: string;
+    lastExported: string;
+    totalNodes: number;
+  };
+  nodes: {
+    id: string;
+    type: string;
+    position: { x: number; y: number };
+    data: RuleNodeData;
+  }[];
+  edges: {
+    id: string;
+    source: string;
+    target: string;
+    label?: string;
+  }[];
+}
