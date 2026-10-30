@@ -1,36 +1,99 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Glynac Wealth Management & Compliance Platform
 
-## Getting Started
+An enterprise-grade frontend system for financial compliance, document governance, and policy graph modeling built with **Next.js (App Router)**, **TypeScript**, and **TailwindCSS**.
 
-First, run the development server:
+Developed by **Natnael Ashenafi** (`ashenafinatnael9@gmail.com`).
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## 🌟 Executive System Overview
+
+The platform addresses regulatory compliance workflows under SEC & FINRA rules (including **FINRA Rule 2210**, **SEC Marketing Rule DISC-09**, and **SEA Rule 17a-4 WORM storage**) across four deeply integrated modules:
+
+1. **Virtual Data Room (VDR) (`/vdr`)** — Hierarchical document explorer, split-screen previewer with highlighted compliance violations, granular RBAC sensitivity tagging, and a sliding WORM activity audit log drawer.
+2. **Real-Time Compliance Chat & AI Assistant (`/chat`)** — Conversational compliance reasoning engine with typewriter-style streaming responses, markdown and diff blocks, clickable regulatory citation popovers, and direct file attachment from the VDR.
+3. **Interactive Visual Tree & DAG Editor (`/tree`)** — Canvas-based rule policy hierarchy editor with pan, zoom, draggable node palette, real-time properties inspector, automatic hierarchical layout, graph cycle validation, and schema JSON import/export.
+4. **Enterprise Admin Panel (`/admin`)** — Central governance suite featuring Recharts analytics dashboards, searchable RBAC user management with granular module permissions, active compliance rule policy manager, and real-time feature flag toggles.
+
+---
+
+## 🔄 End-to-End User Story Walkthrough
+
+The platform demonstrates the complete cross-module compliance lifecycle:
+
+```
+[ Virtual Data Room (/vdr) ]
+  └── Compliance Officer opens `Investment_Agreement_2026.pdf`
+  └── Observes highlighted violation: FINRA-2210 § 4 (Guaranteed yield clause)
+  └── Inspects immutable WORM audit logs and elevates sensitivity to Restricted
+       │
+       ▼
+[ AI Compliance Chat (/chat) ]
+  └── Attaches `Investment_Agreement_2026.pdf` directly into the chat prompt
+  └── Asks: "Does Section 4 violate FINRA Rule 2210 promissory restrictions?"
+  └── Assistant streams analysis with clickable [FINRA-2210] & [DISC-09] citation popovers
+  └── Generates remediation diff proposal to replace guarantee with target yield disclaimer
+       │
+       ▼
+[ Visual Tree Editor (/tree) ]
+  └── Navigates to `/tree` to inspect rule node `FINRA-2210`
+  └── Connects a new evaluation Condition node `DISC-09` using directional handles
+  └── Edits severity to "Critical" in the properties inspector panel
+  └── Validates DAG for cycles/orphans and exports structured workflow JSON
+       │
+       ▼
+[ Enterprise Admin Panel (/admin) ]
+  └── Reviews executive review throughput and violation severity charts
+  └── Updates Officer and Auditor permissions in the RBAC personnel table
+  └── Enforces or disables compliance rule policies
+  └── Toggles `ENABLE_AI_SUBSTRING_VALIDATION` and inspects real-time latency
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🚀 Getting Started
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Prerequisites
+- Node.js `v20.x` or higher
+- npm `v10.x` or higher
 
-## Learn More
+### Installation
+```bash
+# Clone the repository
+git clone <repository-url>
+cd SpringerCpital
 
-To learn more about Next.js, take a look at the following resources:
+# Install dependencies
+npm install
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Start development server
+npm run dev
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-## Deploy on Vercel
+### Production Build
+```bash
+npm run build
+npm run start
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🏗️ Technology Stack
+
+- **Framework:** Next.js 16 (App Router)
+- **Language:** TypeScript 5 (Strict Mode)
+- **Styling:** TailwindCSS v4
+- **Interactive Graph Canvas:** `@xyflow/react`
+- **Analytics & Charts:** `recharts`
+- **Iconography:** `lucide-react`
+- **Architecture:** Context Providers (`VDRProvider`, `ChatProvider`, `AdminProvider`) with shared mock fixtures.
+
+---
+
+## 👨‍💻 Author
+
+**Natnael Ashenafi**  
+Email: [ashenafinatnael9@gmail.com](mailto:ashenafinatnael9@gmail.com)  
+Role: Compliance Officer / Frontend Systems Architect
