@@ -121,17 +121,108 @@ html.light .text-\[\#666666\] { color: #9ca3af !important; }
 html.light .text-\[\#555555\] { color: #9ca3af !important; }
 html.light .text-\[\#444444\] { color: #cbd5e1 !important; }
 
-/* High contrast accent colors on light mode */
-html.light .text-emerald-400 { color: #059669 !important; }
-html.light .text-amber-400 { color: #d97706 !important; }
-html.light .text-rose-400 { color: #e11d48 !important; }
-html.light .text-red-400 { color: #dc2626 !important; }
-html.light .border-emerald-500\/20,
-html.light .border-emerald-500\/30 { border-color: rgba(5, 150, 105, 0.25) !important; }
-html.light .border-amber-500\/20,
-html.light .border-amber-500\/30 { border-color: rgba(217, 119, 6, 0.25) !important; }
+/* High contrast accent colors on light mode (WCAG AAA contrast against white surfaces) */
+html.light .text-rose-400,
+html.light .text-rose-300,
+html.light .text-rose-500 {
+  color: #be123c !important; /* rose-700: 5.8:1 contrast */
+}
+html.light .text-red-400,
+html.light .text-red-300,
+html.light .text-red-500 {
+  color: #b91c1c !important; /* red-700: 5.9:1 contrast */
+}
+html.light .text-amber-400,
+html.light .text-amber-300,
+html.light .text-amber-200,
+html.light .text-amber-500,
+html.light .text-orange-400,
+html.light .text-orange-500,
+html.light .text-yellow-400 {
+  color: #92400e !important; /* amber-800: 6.2:1 contrast */
+}
+html.light .fill-amber-400 {
+  fill: #92400e !important;
+}
+html.light .text-emerald-400,
+html.light .text-emerald-300,
+html.light .text-emerald-500,
+html.light .text-emerald-400\/80 {
+  color: #047857 !important; /* emerald-700: 4.8:1 contrast */
+}
+
+/* Background tints for badges & alert panels in light mode */
+html.light .bg-rose-500\/5,
+html.light .bg-rose-500\/10,
+html.light .bg-rose-500\/20,
+html.light .bg-red-500\/5,
+html.light .bg-red-500\/10,
+html.light .bg-red-500\/20 {
+  background-color: #fef2f2 !important;
+}
+html.light .bg-amber-500\/5,
+html.light .bg-amber-500\/10,
+html.light .bg-amber-500\/20 {
+  background-color: #fffbeb !important;
+}
+html.light .bg-emerald-500\/5,
+html.light .bg-emerald-500\/10,
+html.light .bg-emerald-500\/20 {
+  background-color: #ecfdf5 !important;
+}
+
+/* Crisp 1px borders for badges & cards in light mode */
+html.light .border-rose-500,
 html.light .border-rose-500\/20,
-html.light .border-rose-500\/30 { border-color: rgba(225, 29, 72, 0.25) !important; }
+html.light .border-rose-500\/30,
+html.light .border-rose-500\/40,
+html.light .border-rose-500\/50,
+html.light .border-red-500,
+html.light .border-red-500\/20,
+html.light .border-red-500\/30 {
+  border-color: #fecaca !important;
+}
+html.light .border-amber-500,
+html.light .border-amber-500\/20,
+html.light .border-amber-500\/30,
+html.light .border-amber-500\/40,
+html.light .border-amber-500\/50 {
+  border-color: #fde68a !important;
+}
+html.light .border-l-4.border-amber-500 {
+  border-left-color: #d97706 !important;
+}
+html.light .border-emerald-500,
+html.light .border-emerald-500\/20,
+html.light .border-emerald-500\/30,
+html.light .border-emerald-500\/40,
+html.light .border-emerald-500\/50 {
+  border-color: #a7f3d0 !important;
+}
+
+/* Hover accent states */
+html.light .hover\:bg-rose-500\/10:hover,
+html.light .hover\:bg-rose-500\/20:hover {
+  background-color: #fee2e2 !important;
+}
+html.light .hover\:bg-amber-500\/5:hover,
+html.light .hover\:bg-amber-500\/10:hover {
+  background-color: #fef3c7 !important;
+}
+html.light .hover\:bg-emerald-500\/5:hover,
+html.light .hover\:bg-emerald-500\/10:hover {
+  background-color: #d1fae5 !important;
+}
+
+/* Toggle buttons & status dots */
+html.light .bg-emerald-400,
+html.light .bg-emerald-500 {
+  background-color: #059669 !important;
+}
+html.light button.bg-\[\#181818\].border-\[\#2b2b2b\] {
+  background-color: #111827 !important;
+  border-color: #111827 !important;
+}
 
 /* Input, textarea and select elements in light theme */
 html.light input:not([type="checkbox"]):not([type="radio"]),

@@ -108,7 +108,7 @@ export function MetricsDashboard() {
             </div>
             <div className="flex items-center gap-3 text-xs">
               <span className="flex items-center gap-1.5 text-[#ffffff]">
-                <span className="h-2 w-2 rounded-full bg-[#141414]" />
+                <span className={`h-2 w-2 rounded-full ${isLight ? 'bg-[#111827]' : 'bg-[#141414]'}`} />
                 Audited Docs
               </span>
               <span className="flex items-center gap-1.5 text-emerald-400">
@@ -186,9 +186,16 @@ export function MetricsDashboard() {
                     }}
                   />
                   <Bar dataKey="count" radius={[6, 6, 0, 0]}>
-                    {severityDistributionData.map((entry, index) => (
-                      <Cell key={`cell-${index}`} fill={entry.fill} />
-                    ))}
+                    {severityDistributionData.map((entry, index) => {
+                      let fill = entry.fill;
+                      if (isLight) {
+                        if (entry.name === 'Critical') fill = '#e11d48';
+                        if (entry.name === 'High') fill = '#d97706';
+                        if (entry.name === 'Medium') fill = '#6b7280';
+                        if (entry.name === 'Low') fill = '#059669';
+                      }
+                      return <Cell key={`cell-${index}`} fill={fill} />;
+                    })}
                   </Bar>
                 </BarChart>
               </ResponsiveContainer>
