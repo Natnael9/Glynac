@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import {
-  FolderLock,
+  Folder,
   MessageSquare,
   Network,
   Shield,
@@ -26,7 +26,7 @@ export function AppShell({ children }: AppShellProps) {
     {
       name: 'Data Room',
       href: '/vdr',
-      icon: FolderLock,
+      icon: Folder,
       current: pathname === '/vdr' || pathname === '/',
     },
     {
@@ -50,35 +50,35 @@ export function AppShell({ children }: AppShellProps) {
   ];
 
   return (
-    <div className="flex h-screen w-full bg-[#f8fafc] text-[#0f172a] overflow-hidden select-none font-sans text-sm">
-      {/* Retractable Desktop Sidebar */}
+    <div className="flex h-screen w-full bg-[#000000] text-[#ededed] overflow-hidden select-none font-sans text-xs">
+      {/* Retractable Desktop Sidebar - Pure Neutral Monochrome */}
       <aside
-        className={`hidden md:flex flex-col bg-[#0f172a] text-slate-300 border-r border-slate-800 transition-all duration-200 shrink-0 select-none ${
-          isCollapsed ? 'w-16' : 'w-60'
+        className={`hidden md:flex flex-col bg-[#050505] text-[#a1a1a1] border-r border-[#1c1c1c] transition-all duration-150 shrink-0 select-none ${
+          isCollapsed ? 'w-14' : 'w-56'
         }`}
       >
         {/* Brand & Toggle Bar */}
-        <div className="h-14 px-4 flex items-center justify-between border-b border-slate-800">
+        <div className="h-12 px-3.5 flex items-center justify-between border-b border-[#1c1c1c]">
           {!isCollapsed && (
-            <span className="font-semibold text-white tracking-tight text-base">
+            <span className="font-semibold text-white tracking-tight text-xs">
               Glynac
             </span>
           )}
           <button
             onClick={() => setIsCollapsed(!isCollapsed)}
-            className="p-1.5 rounded-md text-slate-400 hover:text-white hover:bg-slate-800 transition-colors ml-auto"
+            className="p-1 rounded text-[#737373] hover:text-white hover:bg-[#171717] transition-colors ml-auto"
             title={isCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
           >
             {isCollapsed ? (
-              <PanelLeftOpen className="h-4 w-4" />
+              <PanelLeftOpen className="h-3.5 w-3.5" />
             ) : (
-              <PanelLeftClose className="h-4 w-4" />
+              <PanelLeftClose className="h-3.5 w-3.5" />
             )}
           </button>
         </div>
 
         {/* Navigation Items */}
-        <nav className="flex-1 px-2.5 py-4 space-y-1">
+        <nav className="flex-1 px-2 py-3 space-y-0.5">
           {navigation.map((item) => {
             const Icon = item.icon;
             return (
@@ -86,10 +86,10 @@ export function AppShell({ children }: AppShellProps) {
                 key={item.name}
                 href={item.href}
                 title={isCollapsed ? item.name : undefined}
-                className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-xs font-medium transition-colors ${
+                className={`flex items-center gap-2.5 px-2.5 py-2 rounded-md text-xs transition-colors ${
                   item.current
-                    ? 'bg-sky-600 text-white shadow-sm'
-                    : 'text-slate-400 hover:text-white hover:bg-slate-800/60'
+                    ? 'bg-[#1c1c1c] text-white font-medium'
+                    : 'text-[#8a8a8a] hover:text-[#ededed] hover:bg-[#121212]'
                 }`}
               >
                 <Icon className="h-4 w-4 shrink-0" />
@@ -100,14 +100,14 @@ export function AppShell({ children }: AppShellProps) {
         </nav>
 
         {/* User Card */}
-        <div className="p-3 border-t border-slate-800">
+        <div className="p-3 border-t border-[#1c1c1c]">
           {!isCollapsed ? (
             <div className="px-1 text-xs">
-              <p className="font-semibold text-white truncate">Natnael Ashenafi</p>
-              <p className="text-slate-400 text-[11px] truncate">Compliance Officer</p>
+              <p className="font-medium text-[#ededed] truncate">Natnael Ashenafi</p>
+              <p className="text-[#666666] text-[11px] truncate">Compliance Officer</p>
             </div>
           ) : (
-            <div className="h-8 w-8 mx-auto rounded-full bg-slate-800 text-slate-200 flex items-center justify-center font-bold text-xs">
+            <div className="h-7 w-7 mx-auto rounded bg-[#171717] border border-[#262626] text-[#ededed] flex items-center justify-center font-semibold text-[10px]">
               NA
             </div>
           )}
@@ -115,42 +115,42 @@ export function AppShell({ children }: AppShellProps) {
       </aside>
 
       {/* Main Panel */}
-      <div className="flex-1 flex flex-col min-w-0 overflow-hidden bg-white">
+      <div className="flex-1 flex flex-col min-w-0 overflow-hidden bg-[#000000]">
         {/* Top Header */}
-        <header className="h-14 border-b border-slate-200 bg-white px-4 sm:px-6 flex items-center justify-between shrink-0">
-          <div className="flex items-center gap-3">
+        <header className="h-12 border-b border-[#1c1c1c] bg-[#050505] px-4 flex items-center justify-between shrink-0">
+          <div className="flex items-center gap-2.5">
             <button
               onClick={() => setIsMobileOpen(!isMobileOpen)}
-              className="md:hidden p-1.5 rounded-md text-slate-600 hover:text-slate-900 hover:bg-slate-100"
+              className="md:hidden p-1 rounded text-[#737373] hover:text-white hover:bg-[#171717]"
             >
-              <Menu className="h-5 w-5" />
+              <Menu className="h-4 w-4" />
             </button>
-            <h2 className="font-semibold text-slate-900 text-sm">
+            <span className="font-medium text-[#ededed] text-xs">
               {pathname === '/vdr' || pathname === '/'
                 ? 'Virtual Data Room'
                 : pathname === '/chat'
                 ? 'Compliance Chat'
                 : pathname === '/tree'
-                ? 'Policy Graph Editor'
-                : 'System Administration'}
-            </h2>
+                ? 'Policy Graph'
+                : 'Administration'}
+            </span>
           </div>
 
-          <div className="text-xs text-slate-500 font-medium">
-            SEC & FINRA Audited
+          <div className="text-[11px] text-[#525252] font-mono">
+            SEC 17a-4
           </div>
         </header>
 
         {/* Mobile Navigation Drawer */}
         {isMobileOpen && (
-          <div className="md:hidden border-b border-slate-200 bg-[#0f172a] text-white p-3 space-y-1">
+          <div className="md:hidden border-b border-[#1c1c1c] bg-[#050505] text-[#ededed] p-2 space-y-0.5">
             {navigation.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
                 onClick={() => setIsMobileOpen(false)}
-                className={`flex items-center gap-3 px-3 py-2 rounded-md text-xs ${
-                  item.current ? 'bg-sky-600 text-white' : 'text-slate-400'
+                className={`flex items-center gap-2.5 px-2.5 py-2 rounded text-xs ${
+                  item.current ? 'bg-[#1c1c1c] text-white' : 'text-[#8a8a8a]'
                 }`}
               >
                 <span>{item.name}</span>
@@ -160,7 +160,7 @@ export function AppShell({ children }: AppShellProps) {
         )}
 
         {/* Content View */}
-        <main className="flex-1 overflow-hidden relative bg-[#f8fafc]">{children}</main>
+        <main className="flex-1 overflow-hidden relative bg-[#000000]">{children}</main>
       </div>
     </div>
   );

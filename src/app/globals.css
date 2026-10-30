@@ -1,45 +1,51 @@
 @import "tailwindcss";
 
 :root {
-  --bg-app: #f8fafc;
-  --bg-sidebar: #0f172a;
-  --bg-surface: #ffffff;
-  --border-app: #e2e8f0;
-  --border-strong: #cbd5e1;
-  --text-main: #0f172a;
-  --text-muted: #64748b;
-  --primary: #0284c7;
+  --bg-app: #000000;
+  --bg-sidebar: #050505;
+  --bg-surface: #0a0a0a;
+  --bg-surface-elevated: #121212;
+  --bg-surface-hover: #171717;
+  
+  --border-subtle: #1c1c1c;
+  --border-strong: #262626;
+  --border-focus: #404040;
+  
+  --text-primary: #ededed;
+  --text-secondary: #a1a1a1;
+  --text-muted: #525252;
 }
 
-/* Institutional Clean Professional Theme (Datasite / Carta style) */
+/* Linear / Raycast pure neutral monochrome */
 body {
-  background-color: #f8fafc;
-  color: #0f172a;
-  font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: #000000;
+  color: #ededed;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
 
-/* Scrollbars */
+/* Slim monochrome scrollbars */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 4px;
+  height: 4px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f5f9;
+  background: #000000;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
-  border-radius: 3px;
+  background: #262626;
+  border-radius: 2px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+  background: #404040;
 }
 
+/* Subtle neutral focus ring */
 *:focus-visible {
-  outline: 2px solid #0284c7 !important;
+  outline: 1px solid #737373 !important;
   outline-offset: 1px;
 }

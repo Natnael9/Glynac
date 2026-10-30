@@ -17,52 +17,49 @@ export default function VDRPage() {
   const restrictedCount = documents.filter((d) => d.sensitivity === 'Restricted').length;
 
   return (
-    <div className="flex flex-col h-full bg-[#0c0d0e] overflow-hidden select-none font-mono text-[11px]">
-      {/* Dense Utilitarian Stats Header */}
-      <div className="border-b border-[#1f2126] bg-[#0c0d0e] px-4 py-2 flex flex-wrap items-center justify-between gap-3 shrink-0">
-        <div className="flex items-center gap-4">
-          <span className="font-bold text-white uppercase tracking-wider">
-            DATA_ROOM // ARCHIVE
+    <div className="flex flex-col h-full bg-[#000000] overflow-hidden select-none text-xs">
+      {/* Top Simple Sub-header - Linear Monochrome */}
+      <div className="border-b border-[#1c1c1c] bg-[#050505] px-4 py-2.5 flex flex-wrap items-center justify-between gap-3 shrink-0">
+        <div className="flex items-center gap-3">
+          <span className="font-semibold text-white">
+            Repository
           </span>
-          <span className="text-[#525766]">|</span>
-          <div className="flex items-center gap-3 text-[10px]">
-            <span>
-              TOTAL: <span className="text-white font-bold">{totalDocs}</span>
-            </span>
-            <span>
-              FLAGGED: <span className="text-[#f59e0b] font-bold">{flaggedCount}</span>
-            </span>
-            <span>
-              RESTRICTED: <span className="text-[#f43f5e] font-bold">{restrictedCount}</span>
-            </span>
+          <span className="text-[#333333]">/</span>
+          <div className="flex items-center gap-3 text-[11px] text-[#8a8a8a]">
+            <span>{totalDocs} files</span>
+            <span>•</span>
+            <span className={flaggedCount > 0 ? 'text-[#e5e5e5]' : ''}>{flaggedCount} flagged</span>
+            <span>•</span>
+            <span>{restrictedCount} restricted</span>
           </div>
         </div>
 
         <div className="flex items-center gap-2">
           <Link
             href="/chat"
-            className="terminal-btn bg-[#17181c] hover:bg-[#f59e0b] hover:text-black hover:border-[#f59e0b] font-semibold text-[10px] px-2.5 py-1 uppercase"
+            className="px-2.5 py-1 rounded border border-[#262626] bg-[#0f0f0f] hover:bg-[#1a1a1a] text-[#ededed] text-xs transition-colors"
           >
-            [ DISPATCH_AI_AUDIT ]
+            Audit with AI
           </Link>
         </div>
       </div>
 
-      {/* Split Workstation View */}
+      {/* Main Split-Screen Workspace */}
       <div className="flex-1 flex overflow-hidden">
-        {/* Left Explorer */}
+        {/* Left: Dynamic File Explorer */}
         <div className={`h-full ${activeDoc ? 'w-full lg:w-3/5 xl:w-7/12' : 'w-full'}`}>
           <FileExplorer />
         </div>
 
-        {/* Right Preview */}
+        {/* Right: In-App Document Previewer */}
         {activeDoc && (
-          <div className="hidden lg:block lg:w-2/5 xl:w-5/12 h-full border-l border-[#1f2126] bg-[#0c0d0e]">
+          <div className="hidden lg:block lg:w-2/5 xl:w-5/12 h-full border-l border-[#1c1c1c] bg-[#050505]">
             <DocumentPreviewer />
           </div>
         )}
       </div>
 
+      {/* Modals & Drawers */}
       <PermissionModal />
       <AuditLogDrawer />
       <UploadModal />

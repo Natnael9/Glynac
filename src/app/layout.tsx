@@ -6,7 +6,7 @@ import { ChatProvider } from '@/lib/chatContext';
 import { AdminProvider } from '@/lib/adminContext';
 
 export const metadata: Metadata = {
-  title: 'Glynac — Financial Compliance Platform',
+  title: 'Glynac — Compliance Platform',
   description: 'Enterprise Virtual Data Room and Regulatory Compliance Suite.',
 };
 
@@ -16,8 +16,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="h-full antialiased">
-      <body className="min-h-full flex flex-col bg-[#f8fafc] text-[#0f172a] font-sans">
+    <html lang="en" className="h-full antialiased dark">
+      <body className="min-h-full flex flex-col bg-[#000000] text-[#ededed] font-sans selection:bg-[#262626] selection:text-white">
         <VDRProvider>
           <ChatProvider>
             <AdminProvider>
