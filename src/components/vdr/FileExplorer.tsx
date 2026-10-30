@@ -231,9 +231,9 @@ export function FileExplorer() {
         <div className="hidden lg:flex items-center gap-1.5 overflow-x-auto">
           <button
             onClick={() => setSelectedFolderId(null)}
-            className={`px-2.5 py-1 rounded-md text-[11px] font-medium transition-colors ${
+            className={`h-7 px-3 rounded-md text-[11px] font-medium transition-colors shrink-0 flex items-center justify-center whitespace-nowrap ${
               selectedFolderId === null
-                ? 'bg-[#ffffff] !text-black text-[#ffffff] border border-[#333333]'
+                ? 'bg-white text-black font-semibold'
                 : 'text-[#888888] hover:text-[#ededed] bg-[#0a0a0a] border border-[#1a1a1a]'
             }`}
           >
@@ -245,14 +245,14 @@ export function FileExplorer() {
               <button
                 key={f.id}
                 onClick={() => setSelectedFolderId(f.id)}
-                className={`px-2.5 py-1 rounded-md text-[11px] font-medium transition-colors flex items-center gap-1.5 ${
+                className={`h-7 px-3 rounded-md text-[11px] font-medium transition-colors flex items-center gap-1.5 shrink-0 whitespace-nowrap ${
                   selectedFolderId === f.id
-                    ? 'bg-[#ffffff] !text-black text-[#ffffff] border border-[#333333]'
+                    ? 'bg-white text-black font-semibold'
                     : 'text-[#888888] hover:text-[#ededed] bg-[#0a0a0a] border border-[#1a1a1a]'
                 }`}
               >
-                <Folder className="h-3 w-3" />
-                <span>{f.name}</span>
+                <Folder className="h-3 w-3 shrink-0" />
+                <span className="truncate max-w-[140px]">{f.name}</span>
                 <span className="text-[10px] opacity-70">({count})</span>
               </button>
             );
@@ -261,14 +261,14 @@ export function FileExplorer() {
 
         {/* Sort & View Options */}
         <div className="flex items-center gap-2">
-          <div className="flex items-center gap-1 bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg p-0.5">
+          <div className="h-7 flex items-center gap-0.5 bg-[#0a0a0a] border border-[#1a1a1a] rounded-md p-0.5">
             <button
               onClick={() => {
                 if (sortBy === 'date') setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
                 else setSortBy('date');
               }}
-              className={`px-2 py-1 rounded text-[11px] flex items-center gap-1 ${
-                sortBy === 'date' ? 'bg-[#141414] text-white font-medium' : 'text-[#888888]'
+              className={`h-full px-2.5 rounded text-[11px] flex items-center gap-1 transition-colors ${
+                sortBy === 'date' ? 'bg-[#1e1e1e] text-white font-medium' : 'text-[#888888] hover:text-white'
               }`}
             >
               Date
@@ -279,8 +279,8 @@ export function FileExplorer() {
                 if (sortBy === 'name') setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
                 else setSortBy('name');
               }}
-              className={`px-2 py-1 rounded text-[11px] flex items-center gap-1 ${
-                sortBy === 'name' ? 'bg-[#141414] text-white font-medium' : 'text-[#888888]'
+              className={`h-full px-2.5 rounded text-[11px] flex items-center gap-1 transition-colors ${
+                sortBy === 'name' ? 'bg-[#1e1e1e] text-white font-medium' : 'text-[#888888] hover:text-white'
               }`}
             >
               Name
@@ -291,8 +291,8 @@ export function FileExplorer() {
                 if (sortBy === 'sensitivity') setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
                 else setSortBy('sensitivity');
               }}
-              className={`px-2 py-1 rounded text-[11px] flex items-center gap-1 ${
-                sortBy === 'sensitivity' ? 'bg-[#141414] text-white font-medium' : 'text-[#888888]'
+              className={`h-full px-2.5 rounded text-[11px] flex items-center gap-1 transition-colors ${
+                sortBy === 'sensitivity' ? 'bg-[#1e1e1e] text-white font-medium' : 'text-[#888888] hover:text-white'
               }`}
             >
               Security
@@ -300,17 +300,21 @@ export function FileExplorer() {
             </button>
           </div>
 
-          <div className="flex items-center gap-0.5 bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg p-0.5">
+          <div className="h-7 flex items-center gap-0.5 bg-[#0a0a0a] border border-[#1a1a1a] rounded-md p-0.5">
             <button
               onClick={() => setViewMode('table')}
-              className={`p-1 rounded ${viewMode === 'table' ? 'bg-[#141414] text-[#ffffff]' : 'text-[#888888]'}`}
+              className={`h-full px-1.5 rounded flex items-center justify-center transition-colors ${
+                viewMode === 'table' ? 'bg-[#1e1e1e] text-white' : 'text-[#888888] hover:text-white'
+              }`}
               title="Table View"
             >
               <List className="h-3.5 w-3.5" />
             </button>
             <button
               onClick={() => setViewMode('grid')}
-              className={`p-1 rounded ${viewMode === 'grid' ? 'bg-[#141414] text-[#ffffff]' : 'text-[#888888]'}`}
+              className={`h-full px-1.5 rounded flex items-center justify-center transition-colors ${
+                viewMode === 'grid' ? 'bg-[#1e1e1e] text-white' : 'text-[#888888] hover:text-white'
+              }`}
               title="Grid View"
             >
               <LayoutGrid className="h-3.5 w-3.5" />
