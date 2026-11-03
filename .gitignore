@@ -32,3 +32,16 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# rules & task briefs
+rules/
+Frontend Tasks*.md
+*.task.md
+
+# ide & agent files
+AGENTS.md
+.cursor/
+.windsurf/
+.claude/
+.gemini/
+.vscode/
