@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { useVDR } from '@/lib/vdrContext';
 import {
   FileText,
@@ -47,13 +47,57 @@ export function DocumentPreviewer() {
     );
   }
 
+  const isRealPdf = useMemo(() => {
+    if (activeDoc.extension !== 'pdf') return false;
+    if (activeDoc.fileUrl) return true;
+    if (activeDoc.content.startsWith('data:application/pdf')) return true;
+    if (activeDoc.content.startsWith('blob:')) return true;
+    if (activeDoc.content.startsWith('%PDF')) return true;
+    return false;
+  }, [activeDoc]);
+
+  const pdfUrl = useMemo(() => {
+    if (!isRealPdf) return null;
+    if (activeDoc.fileUrl) return activeDoc.fileUrl;
+    if (activeDoc.content.startsWith('data:application/pdf') || activeDoc.content.startsWith('blob:')) {
+      return activeDoc.content;
+    }
+    if (activeDoc.content.startsWith('%PDF')) {
+      try {
+        const uint8Array = new Uint8Array(activeDoc.content.length);
+        for (let i = 0; i < activeDoc.content.length; i++) {
+          uint8Array[i] = activeDoc.content.charCodeAt(i);
+        }
+        const blob = new Blob([uint8Array], { type: 'application/pdf' });
+        return URL.createObjectURL(blob);
+      } catch (err) {
+        console.error('Error constructing PDF blob URL', err);
+        return null;
+      }
+    }
+    return null;
+  }, [activeDoc, isRealPdf]);
+
   const handleCopy = () => {
-    navigator.clipboard.writeText(activeDoc.content);
+    if (isRealPdf) {
+      navigator.clipboard.writeText(`[PDF Document: ${activeDoc.name}] (${(activeDoc.sizeBytes / 1024).toFixed(1)} KB)`);
+    } else {
+      navigator.clipboard.writeText(activeDoc.content);
+    }
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
 
   const handleDownload = () => {
+    if (isRealPdf && pdfUrl) {
+      const link = document.createElement('a');
+      link.href = pdfUrl;
+      link.download = activeDoc.name;
+      link.click();
+      addAuditLog('Downloaded', activeDoc.id, `Downloaded watermarked copy (${activeDoc.name})`);
+      return;
+    }
+
     const blob = new Blob([activeDoc.content], { type: 'text/plain;charset=utf-8' });
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
@@ -145,6 +189,17 @@ export function DocumentPreviewer() {
         </div>
 
         <div className="flex items-center gap-1">
+          {isRealPdf && pdfUrl && (
+            <a
+              href={pdfUrl}
+              target="_blank"
+              rel="noreferrer"
+              title="Open PDF in new tab"
+              className="p-1.5 rounded-lg text-[#888888] hover:text-white hover:bg-[#141414] transition-colors"
+            >
+              <ExternalLink className="h-4 w-4" />
+            </a>
+          )}
           <button
             onClick={handleCopy}
             title="Copy Content"
@@ -235,9 +290,25 @@ export function DocumentPreviewer() {
       {/* Tab Content Body */}
       <div className="flex-1 overflow-y-auto p-4">
         {activeTab === 'preview' && (
-          <div className="p-4 rounded-xl bg-[#0a0a0a] border border-[#1a1a1a] shadow-inner">
-            {renderHighlightedContent()}
-          </div>
+          isRealPdf && pdfUrl ? (
+            <div className="h-full min-h-[580px] w-full flex flex-col rounded-xl overflow-hidden border border-[#1a1a1a] bg-[#141414] shadow-inner">
+              <object
+                data={pdfUrl}
+                type="application/pdf"
+                className="w-full h-full min-h-[580px] flex-1 rounded-xl"
+              >
+                <iframe
+                  src={pdfUrl}
+                  title={activeDoc.name}
+                  className="w-full h-full min-h-[580px] flex-1 border-0 rounded-xl"
+                />
+              </object>
+            </div>
+          ) : (
+            <div className="p-4 rounded-xl bg-[#0a0a0a] border border-[#1a1a1a] shadow-inner">
+              {renderHighlightedContent()}
+            </div>
+          )
         )}
 
         {activeTab === 'flags' && (

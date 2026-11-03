@@ -34,7 +34,7 @@ interface VDRContextType {
   createFolder: (name: string, parentId?: string | null) => void;
   renameDocument: (id: string, newName: string) => void;
   deleteDocuments: (ids: string[]) => void;
-  uploadDocument: (file: { name: string; size: number; content: string; extension: 'pdf' | 'md' | 'txt' | 'json'; sensitivity: SensitivityLevel }) => void;
+  uploadDocument: (file: { name: string; size: number; content: string; fileUrl?: string; extension: 'pdf' | 'md' | 'txt' | 'json'; sensitivity: SensitivityLevel }) => void;
   updateDocumentPermissions: (docId: string, sensitivity: SensitivityLevel, permissions: DocumentPermission[]) => void;
   addAuditLog: (action: AuditEvent['action'], documentId: string, details?: string) => void;
 }
@@ -117,12 +117,14 @@ export function VDRProvider({ children }: { children: React.ReactNode }) {
     name,
     size,
     content,
+    fileUrl,
     extension,
     sensitivity,
   }: {
     name: string;
     size: number;
     content: string;
+    fileUrl?: string;
     extension: 'pdf' | 'md' | 'txt' | 'json';
     sensitivity: SensitivityLevel;
   }) => {
@@ -141,6 +143,7 @@ export function VDRProvider({ children }: { children: React.ReactNode }) {
       tags: ['Uploaded', 'Pending Review'],
       flaggedClauses: [],
       content,
+      fileUrl,
     };
     setDocuments((prev) => [newDoc, ...prev]);
     setSelectedDocId(newId);

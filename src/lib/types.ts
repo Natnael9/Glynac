@@ -43,6 +43,7 @@ export interface VDRDocument {
   permissions: DocumentPermission[];
   flaggedClauses: FlaggedClause[];
   content: string;
+  fileUrl?: string;
   tags: string[];
 }
 

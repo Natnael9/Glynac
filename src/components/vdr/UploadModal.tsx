@@ -25,6 +25,7 @@ export function UploadModal() {
     name: string;
     size: number;
     content: string;
+    fileUrl?: string;
     extension: 'pdf' | 'md' | 'txt' | 'json';
   } | null>(null);
   const [sensitivity, setSensitivity] = useState<SensitivityLevel>('Confidential');
@@ -48,20 +49,43 @@ export function UploadModal() {
     const validExts = ['pdf', 'md', 'txt', 'json'] as const;
     const extension = validExts.includes(ext as any) ? (ext as 'pdf' | 'md' | 'txt' | 'json') : 'txt';
 
-    const reader = new FileReader();
-    reader.onload = (event) => {
-      const content =
-        (event.target?.result as string) ||
-        `# ${file.name}\n\nUploaded file content preview.\nVerified for compliance ingestion.`;
+    if (extension === 'pdf') {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        const dataUrl = (event.target?.result as string) || '';
+        let objectUrl = '';
+        try {
+          objectUrl = URL.createObjectURL(file);
+        } catch {
+          objectUrl = dataUrl;
+        }
 
-      setSelectedFile({
-        name: file.name,
-        size: file.size,
-        content,
-        extension,
-      });
-    };
-    reader.readAsText(file);
+        setSelectedFile({
+          name: file.name,
+          size: file.size,
+          content: dataUrl,
+          fileUrl: objectUrl || dataUrl,
+          extension: 'pdf',
+        });
+      };
+      reader.readAsDataURL(file);
+    } else {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        const content =
+          (event.target?.result as string) ||
+          `# ${file.name}\n\nUploaded file content preview.\nVerified for compliance ingestion.`;
+
+        setSelectedFile({
+          name: file.name,
+          size: file.size,
+          content,
+          fileUrl: undefined,
+          extension,
+        });
+      };
+      reader.readAsText(file);
+    }
   };
 
   const handleDrop = (e: React.DragEvent) => {
@@ -94,6 +118,7 @@ export function UploadModal() {
               name: selectedFile.name,
               size: selectedFile.size,
               content: selectedFile.content,
+              fileUrl: selectedFile.fileUrl,
               extension: selectedFile.extension,
               sensitivity,
             });
